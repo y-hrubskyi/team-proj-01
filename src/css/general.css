@@ -1,4 +1,27 @@
 :root {
+  --primary-text-color-light-theme: #242424;
+  --primary-bg-color-light-theme: #fdfdff;
+
+  --primary-text-color-dark-theme: #fdfdff;
+  --primary-bg-color-dark-theme: #232330;
+
+  --accent-color: #7e8fdd;
+  --additional-color: #9cdfdf;
+
+  --primary-font-family: 'Poppins', sans-serif;
+  --secondary-font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  font-family: var(--primary-font-family);
+}
+
+body.dark-theme {
+  color: var(--primary-text-color-dark-theme);
+}
+
+body.light-theme {
+  color: var(--primary-text-color-light-theme);
 }
 
 /* 

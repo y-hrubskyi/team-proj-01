@@ -1,0 +1,1 @@
+import './js/random-cocktails';

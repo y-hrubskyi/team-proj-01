@@ -2,7 +2,7 @@ import axios from 'axios';
 const BASE_URL = 'https://drinkify.b.goit.study/api/v1/cocktails/';
 
 function getDeviceType() {
-  if (window.matchMedia('(min-width: 768px)').matches) {
+  if (window.matchMedia('(min-width: 1280px)').matches) {
     return 'desktop';
   } else {
     return 'tablet';

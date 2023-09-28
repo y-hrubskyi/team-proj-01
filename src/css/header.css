@@ -29,6 +29,9 @@
 }
 
 /* Header Styles */
+.no-scrolling-body {
+  overflow-y: hidden;
+}
 
 /* nav */
 .main_nav {
@@ -147,6 +150,7 @@
   font-weight: 400;
   line-height: 133.333%;
   letter-spacing: 0.36px;
+  column-gap: 4px;
 }
 
 .modal_nav__home {
@@ -294,6 +298,12 @@
     padding: 18px 24px;
     border-radius: 16px;
     background: #7e8fdd;
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: visibility 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      pointer-events 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   .header_link__nav {
     color: rgba(253, 253, 255, 0.5);
@@ -306,5 +316,13 @@
   .header_link__nav:focus,
   .header_link__nav:hover {
     color: var(--primary-bg-color-light-theme);
+  }
+  .is-open-drop-down-menu {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .is-active-arrow {
+    transform: rotate(180deg);
   }
 }

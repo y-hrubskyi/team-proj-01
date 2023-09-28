@@ -1,1 +1,1 @@
-import { fetchRandomCocktails } from './js/random-cocktails';
+import './js/random-cocktails';

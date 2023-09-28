@@ -1,0 +1,87 @@
+/* .hero {
+} */
+.hero-container {
+  padding-top: 68px;
+  padding-bottom: 33px;
+}
+.hero-textcontent-box {
+  max-width: 335px;
+  margin-bottom: 27px;
+}
+.slogan {
+  color: var(--primary-text-color-light-theme);
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+.slogan-accent {
+  font-style: italic;
+  color: var(--accent-color);
+}
+.slogsn-desc {
+  color: var(--primary-text-color-light-theme);
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 36px;
+}
+.hero-btn {
+  background-color: var(--accent-color);
+  color: var(--primary-text-color-dark-theme);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.28px;
+  text-transform: uppercase;
+  display: flex;
+  padding: 14px 28px;
+  align-items: flex-start;
+  gap: 10px;
+  border: none;
+  border-radius: 12px;
+}
+.hero-btn:hover,
+.hero-btn:focus {
+  background-color: #6e7fcf;
+}
+.hero-img-box {
+  position: relative;
+  left: -5px;
+  width: 354px;
+}
+.hero-icon {
+  position: absolute;
+  top: -7px;
+  left: 10px;
+  z-index: -2;
+}
+.hero-icon-box-desc {
+  margin-top: 40px;
+  color: var(--primary-text-color-light-theme);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.28px;
+  text-transform: uppercase;
+  width: 173px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rectangle {
+  position: absolute;
+  top: 49px;
+  left: 67px;
+  width: 230px;
+  height: 338px;
+  border-radius: 80px 0px;
+  background: #7e8fdd;
+  box-shadow: 0px 28px 75px 0px rgba(88, 109, 204, 0.5);
+  z-index: -1;
+}

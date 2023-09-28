@@ -1,6 +1,6 @@
-const dropDownBt = document.querySelector('.header_nav__favorite');
-const dropDownEl = document.querySelector('.header_link__nav___container');
-const arrowEl = document.querySelector('.arrow_header');
+const dropDownBt = document.querySelector('.header-nav-favorite');
+const dropDownEl = document.querySelector('.header-link-nav-container');
+const arrowEl = document.querySelector('.arrow-header');
 
 dropDownBt.addEventListener('click', onDropDownButtonClick);
 

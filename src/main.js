@@ -1,1 +1,2 @@
-import '/js/mobile-menu.js';
+import './js/mobile-menu';
+import './js/random-cocktails';

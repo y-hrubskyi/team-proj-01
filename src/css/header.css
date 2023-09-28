@@ -28,6 +28,9 @@
   stroke: var(--primary-bg-color-light-theme);
 }
 
+.star-icon {
+  display: none;
+}
 /* Header Styles */
 .no-scrolling-body {
   overflow-y: hidden;
@@ -117,6 +120,13 @@
 
 .modal-body {
   padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  justify-content: space-between;
+  max-height: 432px;
+  height: 100%;
+  padding-bottom: 20px;
 }
 
 .modal-logo {
@@ -135,10 +145,6 @@
 .flex-container-icon {
   display: flex;
   column-gap: 18px;
-}
-
-.header-modal-nav {
-  padding-top: 180px;
 }
 
 .modal-nav-favorite {
@@ -238,9 +244,6 @@
     height: 40px;
   }
   /* Modal nav */
-  .header-modal-nav {
-    padding-top: 250px;
-  }
   .modal-nav-home {
     font-size: 24px;
     letter-spacing: 0.48px;
@@ -251,6 +254,15 @@
   }
   .arrow-header-modal {
     transform: rotate(180deg);
+  }
+  /* icon */
+  .star-icon {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0.2;
   }
 }
 

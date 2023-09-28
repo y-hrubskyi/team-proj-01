@@ -16,12 +16,118 @@
     />
     <!-- STYLES -->
     
-    <link rel="stylesheet" href="/team-proj-01/assets/styles-521ef18c.css">
+    <script type="module" crossorigin src="/team-proj-01/assets/random-cocktails-4a60d473.js"></script>
+    <link rel="stylesheet" href="/team-proj-01/assets/random-cocktails-2912f755.css">
   </head>
   <body class="light-theme">
     <div class="bg">
-      <header class="container">
-  <h2 style="text-align: center">HEADER</h2>
+      <header>
+  <div class="container">
+    <nav class="main_nav">
+      <div class="header_nav">
+        <ul class="header_list__nav">
+          <li><a href="./index.html" class="header_nav__home">Home</a></li>
+          <li>
+            <button class="header_button__styles header_nav__favorite">
+              Favorite
+              <svg width="24" height="24" class="arrow_header">
+                <use href="/team-proj-01/assets/sprite-e36b991c.svg#icon-arrow"></use>
+              </svg>
+            </button>
+          </li>
+        </ul>
+        <div class="header_link__nav___container">
+          <a href="./favorite-cocktails.html" class="header_link__nav">
+            Favorite cocktails
+          </a>
+          <a href="./favorite-ingredients.html" class="header_link__nav">
+            Favorite ingredients
+          </a>
+        </div>
+      </div>
+      <!-- logo -->
+      <div class="logo_container">
+        <a href="" class="logo"
+          >DRINKIFY
+          <svg width="21" height="18" class="logo_icon">
+            <use href="/team-proj-01/assets/sprite-e36b991c.svg#icon-cocktail"></use>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Dark or light theme -->
+      <div class="dark_and_lite_container">
+        <button type="button" class="dark-lite header_button__styles">
+          <svg width="64" height="32" class="light_icon">
+            <use href="/team-proj-01/assets/sprite-e36b991c.svg#icon-light"></use>
+          </svg>
+        </button>
+
+        <!-- Burger -->
+        <button type="button" class="burger header_button__styles js-open-menu">
+          <svg width="32" height="32" class="burger_svg__header">
+            <use href="/team-proj-01/assets/sprite-e36b991c.svg#icon-burger"></use>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile-menu -->
+      <div class="burger_menu js-menu-container">
+        <div class="modal_body container">
+          <div class="header_modal">
+            <a href="" class="modal_logo"
+              >DRINKIFY
+              <svg width="21" height="18" class="logo_svg__modal___menu">
+                <use href="/team-proj-01/assets/sprite-e36b991c.svg#icon-cocktail"></use>
+              </svg>
+            </a>
+
+            <!-- Dark or light -->
+            <div class="flex_container__icon">
+              <button type="button" class="header_button__styles">
+                <svg width="50" height="25" class="light_icon__modal">
+                  <use href="/team-proj-01/assets/sprite-e36b991c.svg#icon-light"></use>
+                </svg>
+              </button>
+
+              <!-- Modal close -->
+              <button type="button" class="header_button__styles js-close-menu">
+                <svg width="32" height="32" class="close_svg__modal___header">
+                  <use href="/team-proj-01/assets/sprite-e36b991c.svg#icon-close-modal"></use>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Modal nav -->
+          <div class="header_modal_nav">
+            <ul class="list_modal__nav">
+              <li><a href="./index.html" class="modal_nav__home">Home</a></li>
+              <li>
+                <button
+                  class="header_button__styles modal_nav__favorite"
+                  type="button"
+                >
+                  Favorite
+                  <svg width="24" height="24" class="arrow_header__modal">
+                    <use href="/team-proj-01/assets/sprite-e36b991c.svg#icon-arrow"></use>
+                  </svg>
+                </button>
+              </li>
+            </ul>
+            <div class="link_modal__nav___container">
+              <a href="./favorite-cocktails.html" class="link_modal__nav">
+                Favorite cocktails
+              </a>
+              <a href="./favorite-ingredients.html" class="link_modal__nav">
+                Favorite ingredients
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
 </header>
 
       <main>
@@ -37,5 +143,6 @@
     </div>
 
     <!--SCRIPTS -->
+    
   </body>
 </html>

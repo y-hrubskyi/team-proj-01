@@ -1,0 +1,207 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background-color: #0000004d;
+  opacity: 1;
+  visibility: visible;
+  overflow: auto;
+  transition: opacity var(--general-transition),
+    visibility var(--general-transition);
+}
+.modal-ingredient-list {
+  list-style: disc;
+}
+
+.modal-ingredient-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--primary-bg-color-light-theme);
+  border-radius: 15px;
+  border: 1px solid;
+}
+
+/* @media screen and (min-width: 375px) { */
+.modal-ingredient-container {
+  width: 335px;
+  padding: 40px 20px;
+}
+
+.modal-ingredient-title {
+  color: var(--primary-text-color-light-theme);
+  font-size: 18px;
+  font-family: var(--primary-font-family);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.modal-ingredient-subtitle {
+  color: rgba(36.12, 36.12, 36.12, 0.5);
+  font-size: 14px;
+  font-family: var(--primary-font-family);
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1.2;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(36, 36, 36, 0.1);
+}
+
+.modal-close-icon {
+  fill: aqua;
+  stroke: aqua;
+}
+.modal-ingredient-text {
+  color: rgba(36.12, 36.12, 36.12, 0.5);
+  font-size: 14px;
+  font-family: var(--primary-font-family);
+  font-weight: 400;
+  line-height: 1.4;
+  margin-bottom: 40px;
+}
+.modal-ingredient-text-part {
+  font-weight: 600;
+  color: #242424;
+}
+.modal-close-icon {
+  width: 24px;
+  height: 24px;
+}
+.modal-ingredients-list-item {
+  color: rgba(36.12, 36.12, 36.12, 0.8);
+  font-size: 14px;
+  font-family: var(--primary-font-family);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.modal-close-btn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  background-color: aqua;
+  top: 14px;
+  right: 14px;
+  transition: fill var(--general-transition);
+  padding: 0;
+}
+
+.modal-ingredient-button-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modal-ingredient-add-and-remove-button {
+  color: var(--primary-bg-color-light-theme);
+  font-size: 14px;
+  font-family: var(--primary-font-family);
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1.4;
+  letter-spacing: 0.28px;
+  /* padding: 14px 58px; */
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border: none;
+  background-color: #7e8fdd;
+  transition: background-color var(--general-transition);
+  /* width: 295px; */
+  width: 100%;
+  border-radius: 12px;
+}
+.modal-ingredient-add-and-remove-button:hover,
+.modal-ingredient-add-and-remove-button:focus {
+  background-color: rgba(110, 127, 207, 1);
+}
+.modal-ingredient-cancel-button {
+  color: var(--primary-text-color-light-theme);
+  font-size: 14px;
+  font-family: var(--primary-font-family);
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1.4;
+  letter-spacing: 0.28px;
+  transition: background-color var(--general-transition);
+  /* width: 295px; */
+  width: 100%;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-radius: 12px;
+  /* padding: 58px 14px; */
+  border: none;
+  background-color: rgba(36, 36, 36, 0.1);
+}
+.modal-ingredient-cancel-button:hover,
+.modal-ingredient-cancel-button:focus {
+  background-color: rgba(36, 36, 36, 0.2);
+}
+
+.modal-ingredient-list {
+  padding-left: 20px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+/* } */
+
+@media screen and (min-width: 768px) {
+  .modal-ingredient-container {
+    width: 600px;
+    padding: 40px;
+  }
+  .modal-close-btn {
+    top: 18px;
+    right: 18px;
+  }
+  .modal-ingredient-title {
+    line-height: 1.2;
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  .modal-ingredient-subtitle {
+    font-size: 16px;
+
+    line-height: 1.1;
+    padding-bottom: 22px;
+    margin-bottom: 18px;
+  }
+
+  .modal-ingredient-add-and-remove-button {
+    font-size: 18px;
+    line-height: 1.3;
+    letter-spacing: 0.36px;
+    width: 251px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    /* height: 56px; */
+  }
+
+  .modal-ingredient-cancel-button {
+    font-size: 18px;
+
+    line-height: 1.3;
+    letter-spacing: 0.36px;
+    width: 172px;
+    padding: 16px 60px;
+  }
+  .modal-ingredient-remove-button {
+    width: 291px;
+  }
+
+  .modal-ingredient-button-section {
+    flex-direction: row;
+    gap: 18px;
+  }
+}
+@media screen and (min-width: 1280px) {
+}

@@ -1,9 +1,12 @@
 import axios from 'axios';
 import { renderCard } from './render-card';
-renderCard;
+import {
+  setupClickHandlerOnAddToLS,
+  setupClickHandlerOnRemoveFromLS,
+} from './setup-handlers';
+
 const BASE_URL = 'https://drinkify.b.goit.study/api/v1/cocktails/';
-const randonCocktailsBox = document.querySelector('.randon-cocktails-box-js');
-console.log(randonCocktailsBox);
+const randomCocktailsList = document.querySelector('.random-cocktails-list-js');
 
 function getDeviceType() {
   if (window.matchMedia('(min-width: 1280px)').matches) {
@@ -44,7 +47,9 @@ export async function fetchRandomCocktails() {
 
 async function responseProcessing(data) {
   try {
-    renderCard(data, randonCocktailsBox);
+    renderCard(data, randomCocktailsList);
+    setupClickHandlerOnAddToLS(data, randomCocktailsList);
+    setupClickHandlerOnRemoveFromLS(data, randomCocktailsList);
   } catch (error) {
     console.log(error);
   }

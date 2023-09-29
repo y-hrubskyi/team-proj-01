@@ -1,18 +1,23 @@
-export function setupClickHandlers(data, box) {
-  box.addEventListener('click', function (e) {
-    if (e.target.classList.contains('card-svg')) {
-      const cardId = e.target.closest('.cocktail-card').dataset.id;
-      const selectedCard = data.find(item => item._id === cardId);
-      if (selectedCard) {
-        addToLocalStorage(selectedCard);
-      }
-    }
-  });
-}
-
-function addToLocalStorage(card) {
+export function addToLocalStorage(card) {
   const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  const isInFavorite = favorites.find(favCard => favCard._id === card._id);
+  if (isInFavorite) {
+    return;
+  }
+
   favorites.push(card);
   localStorage.setItem('favorites', JSON.stringify(favorites));
   console.log('Карта в ЛОКАЛСТОРДЖ');
+}
+
+export function removeFromLocalStorage(card) {
+  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  const index = favorites.findIndex(favCard => favCard._id === card._id);
+  if (index === -1) {
+    return;
+  }
+
+  favorites.splice(index, 1);
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+  console.log('Карта в удалена с ЛОКАЛСТОРДЖ');
 }

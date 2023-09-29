@@ -41,22 +41,22 @@
   align-items: center;
   padding: 0;
 
-  /* need fix */
   background-color: transparent;
-  background-color: aqua;
-  /* need fix */
   border: none;
   transition: fill var(--general-transition);
 }
 
 .modal-close-icon {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
 
-  /* need fix */
-  fill: aqua;
-  stroke: aqua;
-  /* need fix */
+  stroke: var(--primary-text-color-light-theme);
+  transition: stroke var(--general-transition);
+}
+
+.modal-close-btn:hover .modal-close-icon,
+.modal-close-btn:focus .modal-close-icon {
+  stroke: var(--accent-color);
 }
 
 .ingredient-title {
@@ -170,6 +170,11 @@
   .modal-close-btn {
     top: 18px;
     right: 18px;
+  }
+
+  .modal-close-icon {
+    width: 24px;
+    height: 24px;
   }
 
   .ingredient-title {

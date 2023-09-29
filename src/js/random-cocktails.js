@@ -24,6 +24,18 @@ export async function fetchRandomCocktails() {
   try {
     const response = await axios.get(BASE_URL, { params });
     const data = response.data;
+
+    const imgArray = data.map(img => img.drinkThumb);
+    const arrayOfPromises = imgArray.map(img =>
+      fetch(img).then(response.json).catch()
+    );
+    const results = await Promise.allSettled(arrayOfPromises);
+    results.forEach((result, index) => {
+      if (!result.value.ok) {
+        data[index].drinkThumb = './img/placeholders/placeholder.jpg';
+      }
+    });
+
     responseProcessing(data);
   } catch (error) {
     console.log(error);

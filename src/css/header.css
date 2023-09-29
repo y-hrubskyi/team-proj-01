@@ -23,14 +23,16 @@
 .arrow-header {
   stroke: #7e8fdd;
 }
-
 .arrow-header-modal {
   stroke: var(--primary-bg-color-light-theme);
 }
-
+.dark-icon {
+  stroke: #7e8fdd;
+}
 .star-icon {
   display: none;
 }
+
 /* Header Styles */
 .no-scrolling-body {
   overflow-y: hidden;
@@ -80,7 +82,7 @@
 }
 
 /* Dark or light */
-.dark-lite {
+.dark-light-desctop {
   display: none;
 }
 .dark-and-lite-container {
@@ -184,6 +186,17 @@
   justify-content: center;
   flex-direction: column;
   row-gap: 8px;
+  background: #7e8fdd;
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: visibility 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    pointer-events 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.is-active-arrow {
+  transform: rotate(180deg);
 }
 
 .link-modal-nav {
@@ -197,6 +210,11 @@
   letter-spacing: 0.28px;
 }
 
+.is-open-drop-down-modal-menu {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
 /* Tablet */
 @media screen and (min-width: 768px) {
   .main-nav {
@@ -252,9 +270,6 @@
     font-size: 24px;
     letter-spacing: 0.48px;
   }
-  .arrow-header-modal {
-    transform: rotate(180deg);
-  }
   /* icon */
   .star-icon {
     display: block;
@@ -268,6 +283,9 @@
 
 /* Desctop */
 @media screen and (min-width: 1280px) {
+  .dark-icon {
+    stroke: #9cdfdf;
+  }
   .burger-menu {
     display: none;
   }
@@ -278,7 +296,7 @@
     display: block;
     margin-right: 28%;
   }
-  .dark-lite {
+  .dark-light-desctop {
     display: block;
   }
 
@@ -333,8 +351,5 @@
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
-  }
-  .is-active-arrow {
-    transform: rotate(180deg);
   }
 }

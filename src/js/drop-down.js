@@ -7,9 +7,11 @@ dropDownBt.addEventListener('click', onDropDownButtonClick);
 function onDropDownButtonClick() {
   if (dropDownEl.classList.contains('is-open-drop-down-menu') === false) {
     dropDownEl.classList.add('is-open-drop-down-menu');
+    dropDownEl.classList.remove('visually-hidden');
     arrowEl.classList.add('is-active-arrow');
     return;
   }
   dropDownEl.classList.remove('is-open-drop-down-menu');
+  dropDownEl.classList.add('visually-hidden');
   arrowEl.classList.remove('is-active-arrow');
 }

@@ -2,7 +2,7 @@ export function renderCard(arr, box) {
   const markup = arr
     .map(
       item =>
-        `<div class="cocktail-card">
+        `<div class="cocktail-card" data-id="${item._id}">
       <img src="${item.drinkThumb}" alt"${item.drink}" width ="300"/>
           <h2 class="cocktail-title">${item.drink}</h2>
       <p class="cocktail-description">${item.description}</p>

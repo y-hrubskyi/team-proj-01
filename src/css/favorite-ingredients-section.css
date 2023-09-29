@@ -1,146 +1,110 @@
-.container {
-    display: flex;
-    flex-direction: column;
+.favorite-ingredients-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
 
-.title-one {
-    margin-top: 87px;
-    margin-left: 20px;
-    margin-right: 114px;
-    display: flex;
-    color: #242424;
-    font-size: 24px;
-    font-family: Poppins;
-    font-weight: 500;
-    line-height: 28px;
-    word-wrap: break-word
-
+.fav-ingredients-section-title {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.16;
+  margin-bottom: 40px;
 }
 
-.card {
-   
-    margin-top: 40px;
-    width: 100%;
-    height: 100%;
-    background: #FDFDFF;
-    box-shadow: 0px 4px 46px rgba(0, 0, 0, 0.05);
-    border-radius: 20px;
-    overflow: hidden;
-    margin-bottom: 20px;
+.favorite-ingredients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.title-two {
-    padding-left: 20px;
-    padding-top: 20px;
-    color: #242424;
-    font-size: 18px;
-    font-family: Poppins;
-    font-weight: 600;
-    line-height: 24px;
+.favorite-ingredient-item {
+  padding: 20px;
 
+  background-color: var(--primary-bg-color-light-theme);
+  border-radius: 20px;
+  box-shadow: 0px 4px 46px rgba(0, 0, 0, 0.05);
 }
-.title-three {
-    padding-left: 20px;
-    padding-top: 4px;
-    color: rgba(36.12, 36.12, 36.12, 0.50);
-    font-size: 14px;
-    font-family: Poppins;
-    font-weight: 400;
-    line-height: 18px;
-}
-.ingredients {
-    padding-top: 14px;
-    padding-left: 20px;
-    padding-right: 20px;
-    color: #242424;
-    font-size: 14px;
-    font-family: Poppins;
-    font-weight: 400;
-    line-height: 18px;
-    word-wrap: break-word;
 
-}
-.learn-more {
-    width: 100%;
-    height: 100%;
-    padding-left: 71px;
-    padding-right: 71px;
-    padding-top: 14px;
-    padding-bottom: 14px;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px #7E8FDD solid;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    display: inline-flex;
-    background-color: #FDFDFF;
-    color: #242424;
-    font-size: 14px;
-    font-family: Poppins;
-    font-weight: 600;
-    text-transform: uppercase;
-    line-height: 20px;
-    letter-spacing: 0.28px;
-    white-space: nowrap;
-    margin-right: 15px;
-   
+.fav-ingredient-title {
+  margin-bottom: 4px;
 
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.33;
 }
-.delete {
-    width: 74px;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    background: #7E8FDD;
-    border-radius: 12px;
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    display: inline-flex;
-    border: none;
-        
-}
-.logo_svg__delete {
-    position: absolute;
-      
-}
-.button-ingredients {
-    display: flex;
-    height: 48px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-@media screen and (min-width: 768px)  {
-    .container {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
 
-    .card {
-        flex: 0 0 calc(50% - 16px);
-        margin-right: 16px;
-        margin-bottom: 20px;
-    }
+.is-alcoholic-drink-title {
+  margin-bottom: 14px;
+
+  font-size: 14px;
+  line-height: 1.28;
+  color: rgba(36, 36, 36, 0.5);
+}
+
+.fav-ingredient-description {
+  margin-bottom: 20px;
+  height: 54px;
+
+  font-size: 14px;
+  line-height: 1.28;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.learn-more-ingredient-btn {
+  width: 232px;
+  padding: 14px 0px;
+
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1.33;
+  letter-spacing: 0.28px;
+  white-space: nowrap;
+  color: var(--primary-text-color-light-theme);
+
+  background-color: var(--primary-bg-color-light-theme);
+  border: 1px solid var(--accent-color);
+  border-radius: 12px;
+}
+
+.remove-ingredient-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 15px;
+
+  background-color: var(--accent-color);
+  border-radius: 12px;
+  border: none;
+}
+
+.ingredient-card-btns {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .favorite-ingredients-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 16px;
+    row-gap: 32px;
+  }
+
+  .favorite-ingredient-item {
+    flex-basis: calc((100% - 1 * 16px) / 2);
+  }
 }
 
 @media screen and (min-width: 1280px) {
-    .container {
-            justify-content: space-between;
-          
-        }
+  .favorite-ingredients-list {
+    column-gap: 24px;
+    row-gap: 44px;
+  }
 
-    .card {
-        flex: 0 0 calc(33.33% - 34px);
-        margin-right: 34px;
-        margin-bottom: 44px;
-    }
-
-    
-    .title-two {
-        margin-top: 44px;
-    }
+  .favorite-ingredient-item {
+    flex-basis: calc((100% - 2 * 24px) / 3);
+  }
 }

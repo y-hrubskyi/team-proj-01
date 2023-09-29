@@ -1,4 +1,4 @@
-export function addToLocalStorage(card) {
+export function addToLocalStorage(card, key) {
   const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
   const isInFavorite = favorites.find(favCard => favCard._id === card._id);
   if (isInFavorite) {
@@ -10,7 +10,7 @@ export function addToLocalStorage(card) {
   console.log('Карта в ЛОКАЛСТОРДЖ');
 }
 
-export function removeFromLocalStorage(card) {
+export function removeFromLocalStorage(card, key) {
   const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
   const index = favorites.findIndex(favCard => favCard._id === card._id);
   if (index === -1) {

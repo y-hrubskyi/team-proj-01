@@ -1,11 +1,12 @@
 import axios from 'axios';
-import { renderCard } from './render-card';
+
+import { BASE_URL } from './constants';
+import { renderCocktails } from './render-functions';
 import {
   setupClickHandlerOnAddToLS,
   setupClickHandlerOnRemoveFromLS,
 } from './setup-handlers';
 
-const BASE_URL = 'https://drinkify.b.goit.study/api/v1/cocktails/';
 const randomCocktailsList = document.querySelector('.random-cocktails-list-js');
 
 function getDeviceType() {
@@ -35,7 +36,7 @@ export async function fetchRandomCocktails() {
     const results = await Promise.allSettled(arrayOfPromises);
     results.forEach((result, index) => {
       if (!result.value.ok) {
-        data[index].drinkThumb = './img/placeholders/placeholder.jpg';
+        data[index].drinkThumb = 'img/placeholders/placeholder.jpg';
       }
     });
 
@@ -47,7 +48,7 @@ export async function fetchRandomCocktails() {
 
 async function responseProcessing(data) {
   try {
-    renderCard(data, randomCocktailsList);
+    renderCocktails(data, randomCocktailsList);
     setupClickHandlerOnAddToLS(data, randomCocktailsList);
     setupClickHandlerOnRemoveFromLS(data, randomCocktailsList);
   } catch (error) {

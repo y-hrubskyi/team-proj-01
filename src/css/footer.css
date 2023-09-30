@@ -12,6 +12,13 @@
 
 .footer .logo {
   color: var(--primary-text-color-dark-theme);
+
+  transition: color var(--general-transition);
+}
+
+.footer .logo:hover,
+.footer .logo:focus {
+  color: var(--additional-color);
 }
 
 .footer .logo-icon {
@@ -52,7 +59,18 @@
 
 .footer-social-link:hover,
 .footer-social-link:focus {
-  background-color: var(--active-color);
+  background-color: var(--primary-bg-color-light-theme);
+}
+
+.footer-social-icon {
+  fill: var(--primary-bg-color-light-theme);
+
+  transition: fill var(--general-transition);
+}
+
+.footer-social-link:hover .footer-social-icon,
+.footer-social-link:focus .footer-social-icon {
+  fill: var(--active-color);
 }
 
 @media screen and (min-width: 768px) {

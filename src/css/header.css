@@ -342,6 +342,7 @@ header .nav-link:focus {
 
     display: block;
 
+    fill: var(--primary-bg-color-light-theme);
     opacity: 0.2;
   }
 }

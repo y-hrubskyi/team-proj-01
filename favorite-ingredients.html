@@ -7,133 +7,145 @@
     <link rel="icon" type="image/svg+xml" href="/team-proj-01/favicon.svg" />
     <title>Favorite ingredients</title>
     
-    <script type="module" crossorigin src="/team-proj-01/assets/drop-down-827c1913.js"></script>
-    <link rel="stylesheet" href="/team-proj-01/assets/drop-down-f676d281.css">
+    <script type="module" crossorigin src="/team-proj-01/assets/html-theme-4b6c6e4c.js"></script>
+    <link rel="stylesheet" href="/team-proj-01/assets/html-theme-0830cbac.css">
   </head>
   <body class="light-theme">
     <div class="bg">
       <header>
   <div class="container">
-    <nav class="main_nav">
-      <div class="header_nav">
-        <ul class="header_list__nav">
-          <li><a href="./index.html" class="header_nav__home">Home</a></li>
+    <nav class="main-nav">
+      <div class="header-nav">
+        <ul class="header-list-nav">
           <li>
-            <button class="header_button__styles header_nav__favorite">
+            <a href="./index.html" class="header-nav-home nav-link">Home</a>
+          </li>
+          <li>
+            <button class="header-button-styles header-nav-favorite nav-link">
               Favorite
-              <svg width="24" height="24" class="arrow_header">
-                <use href="/team-proj-01/assets/sprite-bd1c5ecc.svg#icon-arrow"></use>
+              <svg width="24" height="24" class="arrow-header">
+                <use href="/team-proj-01/assets/sprite-960c4c5e.svg#icon-arrow"></use>
               </svg>
             </button>
           </li>
         </ul>
-        <div class="header_link__nav___container">
-          <a href="./favorite-cocktails.html" class="header_link__nav">
+        <div class="header-link-nav-container">
+          <a href="./favorite-cocktails.html" class="header-link-nav">
             Favorite cocktails
           </a>
-          <a href="./favorite-ingredients.html" class="header_link__nav">
+          <a href="./favorite-ingredients.html" class="header-link-nav">
             Favorite ingredients
           </a>
         </div>
       </div>
       <!-- logo -->
-      <div class="logo_container">
-        <a href="./index.html" class="logo"
+      <div class="logo-container">
+        <a href="./index.html" class="logo nav-link"
           >DRINKIFY
-          <svg width="21" height="18" class="logo_icon">
-            <use href="/team-proj-01/assets/sprite-bd1c5ecc.svg#icon-cocktail"></use>
+          <svg width="21" height="18" class="logo-icon">
+            <use href="/team-proj-01/assets/sprite-960c4c5e.svg#icon-cocktail"></use>
           </svg>
         </a>
       </div>
 
       <!-- Dark or light theme -->
-      <div class="dark_and_lite_container">
+      <div class="dark-and-lite-container">
         <button
           type="button"
-          class="dark-lite header_button__styles"
+          class="dark-light header-button-styles dark-light-desctop"
           aria-label="toggle theme"
         >
-          <svg width="64" height="32" class="light_icon">
-            <use href="/team-proj-01/assets/sprite-bd1c5ecc.svg#icon-light"></use>
+          <svg width="64" height="32" class="light-icon">
+            <use href="/team-proj-01/assets/sprite-960c4c5e.svg#icon-light"></use>
+          </svg>
+          <svg width="64" height="32" class="dark-icon visually-hidden">
+            <use href="/team-proj-01/assets/sprite-960c4c5e.svg#icon-dark"></use>
           </svg>
         </button>
 
         <!-- Burger -->
         <button
           type="button"
-          class="burger header_button__styles js-open-menu"
+          class="burger header-button-styles js-open-menu"
           aria-label="open mobile menu"
         >
-          <svg width="32" height="32" class="burger_svg__header">
-            <use href="/team-proj-01/assets/sprite-bd1c5ecc.svg#icon-burger"></use>
+          <svg width="32" height="32" class="burger-svg-header">
+            <use href="/team-proj-01/assets/sprite-960c4c5e.svg#icon-burger"></use>
           </svg>
         </button>
       </div>
+    </nav>
+    <!--Mobile menu -->
+    <div class="burger-menu js-menu-container">
+      <div class="modal-body container">
+        <div class="header-modal">
+          <a href="./index.html" class="modal-logo"
+            >DRINKIFY
+            <svg width="21" height="18" class="logo-svg-modal-menu">
+              <use href="/team-proj-01/assets/sprite-960c4c5e.svg#icon-cocktail"></use>
+            </svg>
+          </a>
 
-      <!-- Mobile-menu -->
-      <div class="burger_menu js-menu-container">
-        <div class="modal_body container">
-          <div class="header_modal">
-            <a href="./index.html" class="modal_logo"
-              >DRINKIFY
-              <svg width="21" height="18" class="logo_svg__modal___menu">
-                <use href="/team-proj-01/assets/sprite-bd1c5ecc.svg#icon-cocktail"></use>
+          <!-- Dark or light -->
+          <div class="flex-container-icon">
+            <button
+              type="button"
+              class="header-button-styles dark-light"
+              aria-label="toggle theme"
+            >
+              <svg width="50" height="25" class="light-icon-modal">
+                <use href="/team-proj-01/assets/sprite-960c4c5e.svg#icon-light"></use>
               </svg>
-            </a>
+              <svg width="50" height="25" class="dark-icon visually-hidden">
+                <use href="/team-proj-01/assets/sprite-960c4c5e.svg#icon-dark"></use>
+              </svg>
+            </button>
 
-            <!-- Dark or light -->
-            <div class="flex_container__icon">
-              <button
-                type="button"
-                class="header_button__styles"
-                aria-label="toggle theme"
-              >
-                <svg width="50" height="25" class="light_icon__modal">
-                  <use href="/team-proj-01/assets/sprite-bd1c5ecc.svg#icon-light"></use>
-                </svg>
-              </button>
-
-              <!-- Modal close -->
-              <button
-                type="button"
-                class="header_button__styles js-close-menu"
-                aria-label="close mobile menu"
-              >
-                <svg width="32" height="32" class="close_svg__modal___header">
-                  <use href="/team-proj-01/assets/sprite-bd1c5ecc.svg#icon-close-modal"></use>
-                </svg>
-              </button>
-            </div>
+            <!-- Modal close -->
+            <button
+              type="button"
+              class="header-button-styles close-mob-menu-btn js-close-menu"
+              aria-label="close mobile menu"
+            >
+              <svg width="32" height="32" class="close-svg-modal-header">
+                <use href="/team-proj-01/assets/sprite-960c4c5e.svg#icon-close-modal"></use>
+              </svg>
+            </button>
           </div>
+        </div>
 
-          <!-- Modal nav -->
-          <div class="header_modal_nav">
-            <ul class="list_modal__nav">
-              <li><a href="./index.html" class="modal_nav__home">Home</a></li>
-              <li>
-                <button
-                  class="header_button__styles modal_nav__favorite"
-                  type="button"
-                >
-                  Favorite
-                  <svg width="24" height="24" class="arrow_header__modal">
-                    <use href="/team-proj-01/assets/sprite-bd1c5ecc.svg#icon-arrow"></use>
-                  </svg>
-                </button>
-              </li>
-            </ul>
-            <div class="link_modal__nav___container">
-              <a href="./favorite-cocktails.html" class="link_modal__nav">
-                Favorite cocktails
-              </a>
-              <a href="./favorite-ingredients.html" class="link_modal__nav">
-                Favorite ingredients
-              </a>
-            </div>
+        <!-- Modal nav -->
+        <div class="header-modal-nav">
+          <ul class="list-modal-nav">
+            <li><a href="./index.html" class="modal-nav-home">Home</a></li>
+            <li>
+              <button
+                class="header-button-styles modal-nav-favorite"
+                type="button"
+              >
+                Favorite
+                <svg width="24" height="24" class="arrow-header-modal">
+                  <use href="/team-proj-01/assets/sprite-960c4c5e.svg#icon-arrow"></use>
+                </svg>
+              </button>
+            </li>
+          </ul>
+          <div class="link-modal-nav-container">
+            <a href="./favorite-cocktails.html" class="link-modal-nav">
+              Favorite cocktails
+            </a>
+            <a href="./favorite-ingredients.html" class="link-modal-nav">
+              Favorite ingredients
+            </a>
           </div>
         </div>
       </div>
-    </nav>
+      <div>
+        <svg width="391px" height="391" class="star-icon">
+          <use href="/team-proj-01/assets/sprite-960c4c5e.svg#icon-star"></use>
+        </svg>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -153,7 +165,7 @@
           <button class="learn-more-ingredient-btn">learn more</button>
           <button class="remove-ingredient-btn">
             <svg width="18px" height="18px" class="logo_svg__delete">
-              <use href="/team-proj-01/assets/sprite-bd1c5ecc.svg#icon-trash"></use>
+              <use href="/team-proj-01/assets/sprite-960c4c5e.svg#icon-trash"></use>
             </svg>
           </button>
         </div>
@@ -169,7 +181,7 @@
           <button class="learn-more-ingredient-btn">learn more</button>
           <button class="remove-ingredient-btn">
             <svg width="18px" height="18px" class="logo_svg__delete">
-              <use href="/team-proj-01/assets/sprite-bd1c5ecc.svg#icon-trash"></use>
+              <use href="/team-proj-01/assets/sprite-960c4c5e.svg#icon-trash"></use>
             </svg>
           </button>
         </div>
@@ -185,7 +197,7 @@
           <button class="learn-more-ingredient-btn">learn more</button>
           <button class="remove-ingredient-btn">
             <svg width="18px" height="18px" class="logo_svg__delete">
-              <use href="/team-proj-01/assets/sprite-bd1c5ecc.svg#icon-trash"></use>
+              <use href="/team-proj-01/assets/sprite-960c4c5e.svg#icon-trash"></use>
             </svg>
           </button>
         </div>
@@ -201,7 +213,7 @@
           <button class="learn-more-ingredient-btn">learn more</button>
           <button class="remove-ingredient-btn">
             <svg width="18px" height="18px" class="logo_svg__delete">
-              <use href="/team-proj-01/assets/sprite-bd1c5ecc.svg#icon-trash"></use>
+              <use href="/team-proj-01/assets/sprite-960c4c5e.svg#icon-trash"></use>
             </svg>
           </button>
         </div>
@@ -217,7 +229,7 @@
           <button class="learn-more-ingredient-btn">learn more</button>
           <button class="remove-ingredient-btn">
             <svg width="18px" height="18px" class="logo_svg__delete">
-              <use href="/team-proj-01/assets/sprite-bd1c5ecc.svg#icon-trash"></use>
+              <use href="/team-proj-01/assets/sprite-960c4c5e.svg#icon-trash"></use>
             </svg>
           </button>
         </div>
@@ -233,7 +245,7 @@
           <button class="learn-more-ingredient-btn">learn more</button>
           <button class="remove-ingredient-btn">
             <svg width="18px" height="18px" class="logo_svg__delete">
-              <use href="/team-proj-01/assets/sprite-bd1c5ecc.svg#icon-trash"></use>
+              <use href="/team-proj-01/assets/sprite-960c4c5e.svg#icon-trash"></use>
             </svg>
           </button>
         </div>

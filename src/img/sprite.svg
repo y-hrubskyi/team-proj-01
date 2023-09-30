@@ -81,16 +81,15 @@
             <path d="M16.5 5.5L5.5 16.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M5.5 5.5L16.5 16.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </symbol>
-        <symbol id="icon-burger" viewBox="0 0 32 32"><path stroke="#242424" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="2" d="M28 13.334H4M28 8H4M28 18.666H4M28 24H4" /></symbol>
+        <symbol id="icon-burger" viewBox="0 0 32 32"><path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="2" d="M28 13.334H4M28 8H4M28 18.666H4M28 24H4" /></symbol>
         <symbol id="icon-dark" viewBox="0 0 60 32">
-            <path fill="#9cdfdf" d="M16 .889h28.444C52.79.889 59.555 7.654 59.555 16S52.79 31.111 44.444 31.111H16C7.654 31.111.889 24.346.889 16S7.654.889 16 .889z" style="fill: var(--color4, #9cdfdf);" />
-            <path fill="#fdfdff" d="M44.444 3.556c6.873 0 12.444 5.572 12.444 12.444v.002c0 6.873-5.572 12.444-12.444 12.444S32 22.874 32 16.002V16c0-6.873 5.572-12.444 12.444-12.444z" style="fill: var(--color1, #fdfdff);" />
+            <path fill="#9cdfdf" stroke="none" d="M16 .889h28.444C52.79.889 59.555 7.654 59.555 16S52.79 31.111 44.444 31.111H16C7.654 31.111.889 24.346.889 16S7.654.889 16 .889z" style="fill: var(--color4, #9cdfdf);" />
+            <path fill="#fdfdff" stroke="none" d="M44.444 3.556c6.873 0 12.444 5.572 12.444 12.444v.002c0 6.873-5.572 12.444-12.444 12.444S32 22.874 32 16.002V16c0-6.873 5.572-12.444 12.444-12.444z" style="fill: var(--color1, #fdfdff);" />
             <path
                 fill="none"
-                stroke="#7e8fdd"
                 stroke-width="1.778"
                 d="M16 .889h28.444C52.79.889 59.555 7.654 59.555 16S52.79 31.111 44.444 31.111H16C7.654 31.111.889 24.346.889 16S7.654.889 16 .889z"
-                style="stroke: var(--color3, #7e8fdd);"
+                style="stroke: var(--color3);"
             />
         </symbol>
         <symbol id="icon-light" viewBox="0 0 60 32">

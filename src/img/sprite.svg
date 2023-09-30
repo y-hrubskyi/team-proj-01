@@ -126,5 +126,6 @@
                 style="fill: var(--color1, #fdfdff);"
             />
         </symbol>
+        
     </defs>
 </svg>

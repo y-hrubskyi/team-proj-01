@@ -1,12 +1,5 @@
-/* .hero {
-} */
-.hero-container {
-  padding-top: 68px;
-  padding-bottom: 33px;
-}
 .hero-textcontent-box {
   max-width: 335px;
-  margin-bottom: 27px;
 }
 .slogan {
   color: var(--primary-text-color-light-theme);
@@ -22,11 +15,10 @@
 }
 .slogsn-desc {
   color: var(--primary-text-color-light-theme);
-
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.4;
   margin-bottom: 36px;
 }
 .hero-btn {
@@ -38,10 +30,9 @@
   line-height: 1.5;
   letter-spacing: 0.28px;
   text-transform: uppercase;
-  display: flex;
+  /* display: flex; */
   padding: 14px 28px;
-  align-items: flex-start;
-  gap: 10px;
+  /* align-items: flex-start; */
   border: none;
   border-radius: 12px;
 }
@@ -49,17 +40,62 @@
 .hero-btn:focus {
   background-color: #6e7fcf;
 }
-.hero-img-box {
-  position: relative;
-  left: -5px;
-  width: 354px;
+
+@media screen and (max-width: 767.9px) {
+  .hero-container {
+    padding-top: 68px;
+    padding-left: 15px;
+    padding-right: 6px;
+  }
+  .hero-textcontent-box {
+    margin-left: 5px;
+    margin-bottom: 27px;
+  }
+  .hero-img-box {
+    /* position: relative; */
+    /* left: -5px; */
+    /* max-width: 354px; */
+    height: 481px;
+    /* background: url(/img/hero/Rectangle725.png), url(/img/hero/elements.svg); */
+    /* background-position: 10px -7px; */
+    background: url(/img/hero/Rectangle725.png)-5px 17px,
+      url(/img/hero/elements.svg) 0px 0px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
 }
-.hero-icon {
-  position: absolute;
-  top: -7px;
-  left: 10px;
-  z-index: -2;
+@media screen and (min-width: 768px) {
+  .hero-container {
+    padding-top: 70px;
+    display: flex;
+    align-items: center;
+  }
+  .hero-textcontent-box {
+    max-width: 384px;
+  }
+  .slogan {
+    font-size: 44px;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .slogsn-desc {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 48px;
+    width: 338px;
+  }
+  .hero-btn {
+    font-size: 18px;
+    line-height: 1.3;
+    padding: 22px 44px;
+  }
+  .hero-img-box {
+    height: 593px;
+    background: url(/img/hero/Rectangle725_tablet.png)-5px 17px,
+      url(/img/hero/elements.svg) 0px 0px;
+  }
 }
+
 .hero-icon-box-desc {
   margin-top: 40px;
   color: var(--primary-text-color-light-theme);
@@ -72,16 +108,4 @@
   width: 173px;
   margin-left: auto;
   margin-right: auto;
-}
-
-.rectangle {
-  position: absolute;
-  top: 49px;
-  left: 67px;
-  width: 230px;
-  height: 338px;
-  border-radius: 80px 0px;
-  background: #7e8fdd;
-  box-shadow: 0px 28px 75px 0px rgba(88, 109, 204, 0.5);
-  z-index: -1;
 }

@@ -1,0 +1,110 @@
+.favorite-ingredients-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.fav-ingredients-section-title {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.16;
+  margin-bottom: 40px;
+}
+
+.favorite-ingredients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.favorite-ingredient-item {
+  padding: 20px;
+
+  background-color: var(--primary-bg-color-light-theme);
+  border-radius: 20px;
+  box-shadow: 0px 4px 46px rgba(0, 0, 0, 0.05);
+}
+
+.fav-ingredient-title {
+  margin-bottom: 4px;
+
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.33;
+}
+
+.is-alcoholic-drink-title {
+  margin-bottom: 14px;
+
+  font-size: 14px;
+  line-height: 1.28;
+  color: rgba(36, 36, 36, 0.5);
+}
+
+.fav-ingredient-description {
+  margin-bottom: 20px;
+  height: 54px;
+
+  font-size: 14px;
+  line-height: 1.28;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.learn-more-ingredient-btn {
+  width: 232px;
+  padding: 14px 0px;
+
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1.33;
+  letter-spacing: 0.28px;
+  white-space: nowrap;
+  color: var(--primary-text-color-light-theme);
+
+  background-color: var(--primary-bg-color-light-theme);
+  border: 1px solid var(--accent-color);
+  border-radius: 12px;
+}
+
+.remove-ingredient-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 15px;
+
+  background-color: var(--accent-color);
+  border-radius: 12px;
+  border: none;
+}
+
+.ingredient-card-btns {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .favorite-ingredients-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 16px;
+    row-gap: 32px;
+  }
+
+  .favorite-ingredient-item {
+    flex-basis: calc((100% - 1 * 16px) / 2);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .favorite-ingredients-list {
+    column-gap: 24px;
+    row-gap: 44px;
+  }
+
+  .favorite-ingredient-item {
+    flex-basis: calc((100% - 2 * 24px) / 3);
+  }
+}

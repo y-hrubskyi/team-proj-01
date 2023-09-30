@@ -1,3 +1,136 @@
-<header class="container">
-  <h2 style="text-align: center">HEADER</h2>
+<header>
+  <div class="container">
+    <nav class="main-nav">
+      <div class="header-nav">
+        <ul class="header-list-nav">
+          <li>
+            <a href="./index.html" class="header-nav-home nav-link">Home</a>
+          </li>
+          <li>
+            <button class="header-button-styles header-nav-favorite nav-link">
+              Favorite
+              <svg width="24" height="24" class="arrow-header">
+                <use href="./img/sprite.svg#icon-arrow"></use>
+              </svg>
+            </button>
+          </li>
+        </ul>
+        <div class="header-link-nav-container">
+          <a href="./favorite-cocktails.html" class="header-link-nav">
+            Favorite cocktails
+          </a>
+          <a href="./favorite-ingredients.html" class="header-link-nav">
+            Favorite ingredients
+          </a>
+        </div>
+      </div>
+      <!-- logo -->
+      <div class="logo-container">
+        <a href="./index.html" class="logo nav-link"
+          >DRINKIFY
+          <svg width="21" height="18" class="logo-icon">
+            <use href="./img/sprite.svg#icon-cocktail"></use>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Dark or light theme -->
+      <div class="dark-and-lite-container">
+        <button
+          type="button"
+          class="dark-light header-button-styles dark-light-desctop"
+          aria-label="toggle theme"
+        >
+          <svg width="64" height="32" class="light-icon">
+            <use href="./img/sprite.svg#icon-light"></use>
+          </svg>
+          <svg width="64" height="32" class="dark-icon visually-hidden">
+            <use href="./img/sprite.svg#icon-dark"></use>
+          </svg>
+        </button>
+
+        <!-- Burger -->
+        <button
+          type="button"
+          class="burger header-button-styles js-open-menu"
+          aria-label="open mobile menu"
+        >
+          <svg width="32" height="32" class="burger-svg-header">
+            <use href="./img/sprite.svg#icon-burger"></use>
+          </svg>
+        </button>
+      </div>
+    </nav>
+    <!--Mobile menu -->
+    <div class="burger-menu js-menu-container">
+      <div class="modal-body container">
+        <div class="header-modal">
+          <a href="./index.html" class="modal-logo"
+            >DRINKIFY
+            <svg width="21" height="18" class="logo-svg-modal-menu">
+              <use href="./img/sprite.svg#icon-cocktail"></use>
+            </svg>
+          </a>
+
+          <!-- Dark or light -->
+          <div class="flex-container-icon">
+            <button
+              type="button"
+              class="header-button-styles dark-light"
+              aria-label="toggle theme"
+            >
+              <svg width="50" height="25" class="light-icon-modal">
+                <use href="./img/sprite.svg#icon-light"></use>
+              </svg>
+              <svg width="50" height="25" class="dark-icon visually-hidden">
+                <use href="./img/sprite.svg#icon-dark"></use>
+              </svg>
+            </button>
+
+            <!-- Modal close -->
+            <button
+              type="button"
+              class="header-button-styles close-mob-menu-btn js-close-menu"
+              aria-label="close mobile menu"
+            >
+              <svg width="32" height="32" class="close-svg-modal-header">
+                <use href="./img/sprite.svg#icon-close-modal"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Modal nav -->
+        <div class="header-modal-nav">
+          <ul class="list-modal-nav">
+            <li><a href="./index.html" class="modal-nav-home">Home</a></li>
+            <li>
+              <button
+                class="header-button-styles modal-nav-favorite"
+                type="button"
+              >
+                Favorite
+                <svg width="24" height="24" class="arrow-header-modal">
+                  <use href="./img/sprite.svg#icon-arrow"></use>
+                </svg>
+              </button>
+            </li>
+          </ul>
+          <div class="link-modal-nav-container">
+            <a href="./favorite-cocktails.html" class="link-modal-nav">
+              Favorite cocktails
+            </a>
+            <a href="./favorite-ingredients.html" class="link-modal-nav">
+              Favorite ingredients
+            </a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <svg width="391px" height="391" class="star-icon">
+          <use href="./img/sprite.svg#icon-star"></use>
+        </svg>
+      </div>
+    </div>
+  </div>
 </header>

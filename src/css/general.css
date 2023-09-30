@@ -6,22 +6,74 @@
   --primary-bg-color-dark-theme: #232330;
 
   --accent-color: #7e8fdd;
+  --active-color: #6e7fcf;
   --additional-color: #9cdfdf;
 
   --primary-font-family: 'Poppins', sans-serif;
   --secondary-font-family: 'Montserrat', sans-serif;
+
+  --general-transition: 250ms linear;
 }
 
 body {
   font-family: var(--primary-font-family);
 }
 
+body.light-theme {
+  color: var(--primary-text-color-light-theme);
+}
+
 body.dark-theme {
   color: var(--primary-text-color-dark-theme);
 }
 
-body.light-theme {
-  color: var(--primary-text-color-light-theme);
+/* Fonts */
+@font-face {
+  font-display: swap;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/montserrat-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/montserrat-medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/poppins-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../fonts/poppins-italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/poppins-medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/poppins-semibold.woff2') format('woff2');
 }
 
 /* 
@@ -69,5 +121,138 @@ body.light-theme {
     width: 1280px;
     padding-left: 100px;
     padding-right: 100px;
+  }
+}
+
+/* bg */
+
+body .bg {
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+}
+
+body.light-theme .bg {
+  background-color: #fff;
+}
+
+body.dark-theme .bg {
+  background-color: #000;
+}
+
+/* bg mobile */
+@media screen and (max-width: 767px) {
+  @media screen and (max-device-pixel-ratio: 1.99),
+    screen and (-webkit-max-device-pixel-ratio: 1.99),
+    screen and (max-resolution: 191dpi),
+    screen and (max-resolution: 1.99dppx) {
+    body.light-theme .bg {
+      background-image: url('../img/bg/light/bg-mobile.webp');
+    }
+    body.dark-theme .bg {
+      background-image: url('../img/bg/dark/bg-mobile.webp');
+    }
+  }
+
+  @media screen and (min-device-pixel-ratio: 2) and (max-device-pixel-ratio: 2.99),
+    screen and (-webkit-min-device-pixel-ratio: 2) and (-webkit-max-device-pixel-ratio: 2.99),
+    screen and (min-resolution: 192dpi) and (max-resolution: 287dpi),
+    screen and (min-resolution: 2dppx) and (max-resolution: 2.99dppx) {
+    body.light-theme .bg {
+      background-image: url('../img/bg/light/bg-mobile@2x.webp');
+    }
+    body.dark-theme .bg {
+      background-image: url('../img/bg/dark/bg-mobile@2x.webp');
+    }
+  }
+
+  @media screen and (min-device-pixel-ratio: 3),
+    screen and (-webkit-min-device-pixel-ratio: 3),
+    screen and (min-resolution: 288dpi),
+    screen and (min-resolution: 3dppx) {
+    body.light-theme .bg {
+      background-image: url('../img/bg/light/bg-mobile@3x.webp');
+    }
+    body.dark-theme .bg {
+      background-image: url('../img/bg/dark/bg-mobile@3x.webp');
+    }
+  }
+}
+
+/* bg tablet */
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  @media screen and (max-device-pixel-ratio: 1.99),
+    screen and (-webkit-max-device-pixel-ratio: 1.99),
+    screen and (max-resolution: 191dpi),
+    screen and (max-resolution: 1.99dppx) {
+    body.light-theme .bg {
+      background-image: url('../img/bg/light/bg-tablet.webp');
+    }
+    body.dark-theme .bg {
+      background-image: url('../img/bg/dark/bg-tablet.webp');
+    }
+  }
+
+  @media screen and (min-device-pixel-ratio: 2) and (max-device-pixel-ratio: 2.99),
+    screen and (-webkit-min-device-pixel-ratio: 2) and (-webkit-max-device-pixel-ratio: 2.99),
+    screen and (min-resolution: 192dpi) and (max-resolution: 287dpi),
+    screen and (min-resolution: 2dppx) and (max-resolution: 2.99dppx) {
+    body.light-theme .bg {
+      background-image: url('../img/bg/light/bg-tablet@2x.webp');
+    }
+    body.dark-theme .bg {
+      background-image: url('../img/bg/dark/bg-tablet@2x.webp');
+    }
+  }
+
+  @media screen and (min-device-pixel-ratio: 3),
+    screen and (-webkit-min-device-pixel-ratio: 3),
+    screen and (min-resolution: 288dpi),
+    screen and (min-resolution: 3dppx) {
+    body.light-theme .bg {
+      background-image: url('../img/bg/light/bg-tablet@3x.webp');
+    }
+    body.dark-theme .bg {
+      background-image: url('../img/bg/dark/bg-tablet@3x.webp');
+    }
+  }
+}
+
+/* bg desktop */
+@media screen and (min-width: 1280px) {
+  @media screen and (max-device-pixel-ratio: 1.99),
+    screen and (-webkit-max-device-pixel-ratio: 1.99),
+    screen and (max-resolution: 191dpi),
+    screen and (max-resolution: 1.99dppx) {
+    body.light-theme .bg {
+      background-image: url('../img/bg/light/bg-desktop.webp');
+    }
+    body.dark-theme .bg {
+      background-image: url('../img/bg/dark/bg-desktop.webp');
+    }
+  }
+
+  @media screen and (min-device-pixel-ratio: 2) and (max-device-pixel-ratio: 2.99),
+    screen and (-webkit-min-device-pixel-ratio: 2) and (-webkit-max-device-pixel-ratio: 2.99),
+    screen and (min-resolution: 192dpi) and (max-resolution: 287dpi),
+    screen and (min-resolution: 2dppx) and (max-resolution: 2.99dppx) {
+    body.light-theme .bg {
+      background-image: url('../img/bg/light/bg-desktop@2x.webp');
+    }
+    body.dark-theme .bg {
+      background-image: url('../img/bg/dark/bg-desktop@2x.webp');
+    }
+  }
+
+  @media screen and (min-device-pixel-ratio: 3),
+    screen and (-webkit-min-device-pixel-ratio: 3),
+    screen and (min-resolution: 288dpi),
+    screen and (min-resolution: 3dppx) {
+    body.light-theme .bg {
+      background-image: url('../img/bg/light/bg-desktop@3x.webp');
+    }
+    body.dark-theme .bg {
+      background-image: url('../img/bg/dark/bg-desktop@3x.webp');
+    }
   }
 }

@@ -86,6 +86,10 @@
 }
 
 @media screen and (min-width: 768px) {
+  .fav-ingredients-section-title {
+    font-size: 40px;
+  }
+
   .favorite-ingredients-list {
     flex-direction: row;
     flex-wrap: wrap;

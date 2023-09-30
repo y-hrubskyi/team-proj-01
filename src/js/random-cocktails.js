@@ -9,7 +9,7 @@ import {
 
 const randomCocktailsList = document.querySelector('.random-cocktails-list-js');
 
-function getDeviceType() {
+export function getDeviceType() {
   if (window.matchMedia('(min-width: 1280px)').matches) {
     return 'desktop';
   } else {

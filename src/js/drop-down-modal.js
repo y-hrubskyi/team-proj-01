@@ -1,13 +1,11 @@
-const dropDownModalBt = document.querySelector('.modal-nav-favorite');
+const dropDownModalBtn = document.querySelector('.modal-nav-favorite');
 const dropDownModalEl = document.querySelector('.link-modal-nav-container');
 const arrowModalEl = document.querySelector('.arrow-header-modal');
 
-dropDownModalBt.addEventListener('click', onDropDownModalButtonClick);
+dropDownModalBtn.addEventListener('click', onDropDownModalBtnClick);
 
-function onDropDownModalButtonClick() {
-  if (
-    dropDownModalEl.classList.contains('is-open-drop-down-modal-menu') === false
-  ) {
+function onDropDownModalBtnClick() {
+  if (!dropDownModalEl.classList.contains('is-open-drop-down-modal-menu')) {
     dropDownModalEl.classList.add('is-open-drop-down-modal-menu');
     arrowModalEl.classList.add('is-active-arrow');
     return;

@@ -36,7 +36,7 @@ export async function fetchRandomCocktails() {
     const results = await Promise.allSettled(arrayOfPromises);
     results.forEach((result, index) => {
       if (!result.value.ok) {
-        data[index].drinkThumb = 'img/placeholders/placeholder.jpg';
+        data[index].drinkThumb = 'src/img/placeholders/placeholder.jpg';
       }
     });
 

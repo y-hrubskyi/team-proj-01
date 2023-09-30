@@ -10,11 +10,12 @@
 //   '.placeholder-empty-favorite-list'
 // );
 
-// const products = JSON.parse(localStorage.getItem('favorites'));
+// const products = JSON.parse(localStorage.getItem('favorites')) || [];
 
-// // favoriteCocktailsList.classList.add('visually-hidden');
+// if (products.length) {
+//   renderFavoriteCocktails(products, favoriteCocktailsList);
+// }
 
-// renderFavoriteCocktails(products, favoriteCocktailsList);
 // const clearBtn = document.querySelector('.remove-from-localstorage-btn');
 // placeholderEmptyFavoriteList.classList.add('visually-hidden');
 // favoriteCocktailsList.classList.remove('visually-hidden');

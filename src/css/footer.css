@@ -1,1 +1,15 @@
+footer {
+  height: 186px;
+  background-color: var(--accent-color);
+}
 
+@media screen and (min-width: 768px) {
+  footer {
+    height: 183px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  footer {
+    height: 191px;
+  }
+}

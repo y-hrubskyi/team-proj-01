@@ -1,25 +1,31 @@
-import { LOCAL_STORAGE_KEYS } from './constants';
-import { renderFavoriteCocktails } from './render-functions';
+//! demo version, not tested, will be change
 
-const cocktailsItem = document.querySelector('.cocktails-item');
-const favoriteContent = document.querySelector('.favorite-content');
-const clearBtn = document.querySelector('.remove-from-localstorage-btn');
+// import { LOCAL_STORAGE_KEYS } from './constants';
+// import { renderFavoriteCocktails } from './render-functions';
 
-const products = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.COCKTAILS));
+// const favoriteCocktailsList = document.querySelector(
+//   '.favorite-cocktails-list'
+// );
+// const placeholderEmptyFavoriteList = document.querySelector(
+//   '.placeholder-empty-favorite-list'
+// );
 
-cocktailsItem.classList.add('hidden');
+// const products = JSON.parse(localStorage.getItem('favorites'));
 
-renderFavoriteCocktails(products, cocktailsItem);
-favoriteContent.classList.add('hidden');
-cocktailsItem.classList.remove('hidden');
+// // favoriteCocktailsList.classList.add('visually-hidden');
 
-function clearCart() {
-  if (cocktailsItem.length === 0) {
-    favoriteContent.classList.remove('hidden');
-  } else {
-    localStorage.clear();
-    renderFavoriteCocktails(products, cocktailsItem);
-  }
-}
+// renderFavoriteCocktails(products, favoriteCocktailsList);
+// const clearBtn = document.querySelector('.remove-from-localstorage-btn');
+// placeholderEmptyFavoriteList.classList.add('visually-hidden');
+// favoriteCocktailsList.classList.remove('visually-hidden');
 
-clearBtn.addEventListener('click', clearCart);
+// function clearCart() {
+//   if (!favoriteCocktailsList.length) {
+//     placeholderEmptyFavoriteList.classList.remove('visually-hidden');
+//   } else {
+//     localStorage.clear();
+//     renderFavoriteCocktails(products, favoriteCocktailsList);
+//   }
+// }
+
+// clearBtn.addEventListener('click', clearCart);

@@ -1,178 +1,100 @@
-@media screen and (max-width: 767.9px) {
-  .container {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  .title-section {
-    color: #242424;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 28px; /* 116.667% */
-    padding-top: 87px;
-    padding-bottom: 138px;
-  }
+.favorite-cocktails-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
 
-  .favorite-content {
-    margin-left: auto;
-    margin-right: auto;
+.fav-cocktails-section-title {
+  margin-bottom: 40px;
 
-    width: 100%;
-    height: 100%;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.16;
+}
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-  .favorite-content-text {
-    color: #242424;
-    text-align: center;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
+.favorite-cocktails-section.is-empty .fav-cocktails-section-title {
+  margin-bottom: 80px;
+}
 
-    max-width: 244px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+.placeholder-empty-favorite-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
 
-  .favorite-cocktails {
-    padding-bottom: 138px;
-  }
-
-  .favorite-content-text-span {
-    color: #9cdfdf;
-    font-size: 18px;
-    font-style: italic;
-    font-weight: 400;
-    line-height: 24px;
-  }
-
-  .hidden {
-    display: none;
+@media screen and (max-width: 767px) and (min-height: 696px) {
+  .placeholder-empty-favorite-list {
+    height: calc(100vh - (696px - 190px));
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1279.9px) {
-  .container {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-  .title-section {
-    color: #242424;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 48px; /* 120% */
+.empty-favorite-img {
+  width: 142px;
+  height: 122px;
+}
+
+.empty-favorite-text {
+  max-width: 244px;
+  margin-left: auto;
+  margin-right: auto;
+
+  font-size: 18px;
+  text-align: center;
+  line-height: 1.33;
+}
+
+.empty-favorite-text-span {
+  color: var(--additional-color);
+  font-style: italic;
+}
+
+@media screen and (min-width: 768px) {
+  .favorite-cocktails-section {
     padding-top: 110px;
     padding-bottom: 100px;
   }
 
-  .favorite-content {
-    margin-left: auto;
-    margin-right: auto;
+  .fav-cocktails-section-title {
+    margin-bottom: 32px;
 
-    width: 100%;
+    font-size: 40px;
+    line-height: 1.2;
+  }
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .favorite-cocktails-section.is-empty .fav-cocktails-section-title {
+    margin-bottom: 100px;
+  }
+
+  .placeholder-empty-favorite-list {
     gap: 40px;
-    flex-shrink: 0;
-  }
-  .favorite-content-text {
-    color: #242424;
-    text-align: center;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 28px; /* 116.667% */
-    width: 372px;
-    margin-left: auto;
-    margin-right: auto;
   }
 
-  .favorite-content-text-span {
-    color: #9cdfdf;
-    font-size: 24px;
-    font-style: italic;
-    font-weight: 400;
-    line-height: 28px;
-  }
-  .favorite-cocktails {
-    padding-bottom: 140px;
+  @media screen and (min-height: 899px) {
+    .placeholder-empty-favorite-list {
+      height: calc(100vh - (899px - 297px));
+    }
   }
 
-  .favorite-content-img {
+  .empty-favorite-img {
     width: 234px;
     height: 201px;
   }
 
-  .hidden {
-    display: none;
+  .empty-favorite-text {
+    max-width: 359px;
+
+    font-size: 24px;
+    line-height: 1.16;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .container {
-    padding-left: 100px;
-    padding-right: 100px;
+  .fav-cocktails-section-title {
+    margin-bottom: 44px;
   }
 
-  .title-section {
-    color: #242424;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 48px; /* 120% */
-    padding-top: 110px;
-    padding-bottom: 100px;
-  }
-  .favorite-content {
-    margin-left: auto;
-    margin-right: auto;
-
-    width: 100%;
-
-    display: flex;
-    height: 297px;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-    flex-shrink: 0;
-  }
-  .favorite-content-text {
-    color: #242424;
-    text-align: center;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 28px; /* 116.667% */
-    width: 372px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .favorite-cocktails {
-    padding-bottom: 140px;
-  }
-
-  .favorite-content-text-span {
-    color: #9cdfdf;
-    font-size: 24px;
-    font-style: italic;
-    font-weight: 400;
-    line-height: 28px;
-  }
-
-  .favorite-content-img {
-    width: 234px;
-    height: 201px;
-  }
-
-  .hidden {
-    display: none;
+  .empty-favorite-text {
+    max-width: 372px;
   }
 }

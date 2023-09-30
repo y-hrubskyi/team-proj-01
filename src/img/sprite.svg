@@ -77,7 +77,10 @@
             <path fill="#7e8fdd" d="M6.894 30.272a.57.57 0 1 1-1.142 0 .57.57 0 0 1 1.142 0zM17.545 2.885a.428.428 0 1 1-.857-.001.428.428 0 0 1 .857.001z" style="fill: var(--color3, #7e8fdd);" />
             <path fill="#9cdfdf" d="M20.779 31.556a.428.428 0 1 1-.857-.001.428.428 0 0 1 .857.001z" style="fill: var(--color4, #9cdfdf);" />
         </symbol>
-        <symbol id="icon-close-modal" viewBox="0 0 32 32"><path fill="none" stroke="#fdfdff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M24 8 8 24M8 8l16 16" style="stroke: var(--color1, #fdfdff);" /></symbol>
+        <symbol id="icon-close-modal" viewBox="0 0 24 24">
+            <path d="M16.5 5.5L5.5 16.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5.5 5.5L16.5 16.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
         <symbol id="icon-burger" viewBox="0 0 32 32"><path stroke="#242424" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-width="2" d="M28 13.334H4M28 8H4M28 18.666H4M28 24H4" /></symbol>
         <symbol id="icon-dark" viewBox="0 0 60 32">
             <path fill="#9cdfdf" stroke="none" d="M16 .889h28.444C52.79.889 59.555 7.654 59.555 16S52.79 31.111 44.444 31.111H16C7.654 31.111.889 24.346.889 16S7.654.889 16 .889z" style="fill: var(--color4, #9cdfdf);" />

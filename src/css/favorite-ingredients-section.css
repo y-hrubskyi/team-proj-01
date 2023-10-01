@@ -3,13 +3,6 @@
   padding-bottom: 80px;
 }
 
-.fav-ingredients-section-title {
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 1.16;
-  margin-bottom: 40px;
-}
-
 .favorite-ingredients-list {
   display: flex;
   flex-direction: column;
@@ -119,10 +112,6 @@ body.light-theme .learn-more-ingredient-btn:focus {
 }
 
 @media screen and (min-width: 768px) {
-  .fav-ingredients-section-title {
-    font-size: 40px;
-  }
-
   .favorite-ingredients-list {
     flex-direction: row;
     flex-wrap: wrap;

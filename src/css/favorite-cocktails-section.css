@@ -3,14 +3,6 @@
   padding-bottom: 80px;
 }
 
-.fav-cocktails-section-title {
-  margin-bottom: 40px;
-
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 1.16;
-}
-
 .favorite-cocktails-section.is-empty .fav-cocktails-section-title {
   margin-bottom: 80px;
 }
@@ -55,13 +47,6 @@
     padding-bottom: 100px;
   }
 
-  .fav-cocktails-section-title {
-    margin-bottom: 32px;
-
-    font-size: 40px;
-    line-height: 1.2;
-  }
-
   .favorite-cocktails-section.is-empty .fav-cocktails-section-title {
     margin-bottom: 100px;
   }
@@ -90,10 +75,6 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .fav-cocktails-section-title {
-    margin-bottom: 44px;
-  }
-
   .empty-favorite-text {
     max-width: 372px;
   }

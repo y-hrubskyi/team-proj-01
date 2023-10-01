@@ -9,7 +9,7 @@ import {
 
 const randomCocktailsList = document.querySelector('.random-cocktails-list-js');
 
-function getDeviceType() {
+export function getDeviceType() {
   if (window.matchMedia('(min-width: 1280px)').matches) {
     return 'desktop';
   } else {
@@ -36,7 +36,7 @@ export async function fetchRandomCocktails() {
     const results = await Promise.allSettled(arrayOfPromises);
     results.forEach((result, index) => {
       if (!result.value.ok) {
-        data[index].drinkThumb = 'img/placeholders/placeholder.jpg';
+        data[index].drinkThumb = './img/placeholder.jpg';
       }
     });
 

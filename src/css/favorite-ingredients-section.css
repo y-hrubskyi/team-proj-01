@@ -3,13 +3,6 @@
   padding-bottom: 80px;
 }
 
-.fav-ingredients-section-title {
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 1.16;
-  margin-bottom: 40px;
-}
-
 .favorite-ingredients-list {
   display: flex;
   flex-direction: column;
@@ -19,7 +12,7 @@
 .favorite-ingredient-item {
   padding: 20px;
 
-  background-color: var(--primary-bg-color-light-theme);
+  background-color: var(--primary-bg-color);
   border-radius: 20px;
   box-shadow: 0px 4px 46px rgba(0, 0, 0, 0.05);
 }
@@ -40,6 +33,12 @@
   color: rgba(36, 36, 36, 0.5);
 }
 
+body.dark-theme {
+  .is-alcoholic-drink-title {
+    color: rgba(253, 253, 255, 0.5);
+  }
+}
+
 .fav-ingredient-description {
   margin-bottom: 20px;
   height: 54px;
@@ -48,6 +47,10 @@
   line-height: 1.28;
   word-wrap: break-word;
   overflow: hidden;
+}
+
+body.dark-theme .fav-ingredient-description {
+  color: rgba(253, 253, 255, 0.8);
 }
 
 .learn-more-ingredient-btn {
@@ -60,11 +63,24 @@
   line-height: 1.33;
   letter-spacing: 0.28px;
   white-space: nowrap;
-  color: var(--primary-text-color-light-theme);
+  color: var(--primary-text-color);
 
-  background-color: var(--primary-bg-color-light-theme);
+  background-color: var(--primary-bg-color);
   border: 1px solid var(--accent-color);
   border-radius: 12px;
+
+  transition: color var(--general-transition),
+    background-color var(--general-transition);
+}
+
+.learn-more-ingredient-btn:hover,
+.learn-more-ingredient-btn:focus {
+  background-color: var(--accent-color);
+}
+
+body.light-theme .learn-more-ingredient-btn:hover,
+body.light-theme .learn-more-ingredient-btn:focus {
+  color: var(--primary-bg-color);
 }
 
 .remove-ingredient-btn {
@@ -77,6 +93,20 @@
   background-color: var(--accent-color);
   border-radius: 12px;
   border: none;
+
+  transition: background-color var(--general-transition);
+}
+
+.remove-ingredient-btn:hover,
+.remove-ingredient-btn:focus {
+  background-color: var(--active-color);
+}
+
+.icon-trash {
+  stroke: var(--primary-svg-color);
+  fill: transparent;
+
+  transition: stroke var(--general-transition) fill var(--general-transition);
 }
 
 .ingredient-card-btns {
@@ -95,6 +125,11 @@
 
   .favorite-ingredient-item {
     flex-basis: calc((100% - 1 * 16px) / 2);
+  }
+
+  .icon-trash {
+    width: 24px;
+    height: 24px;
   }
 }
 

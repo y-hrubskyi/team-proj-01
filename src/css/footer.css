@@ -11,7 +11,14 @@
 }
 
 .footer .logo {
-  color: var(--primary-text-color-dark-theme);
+  color: var(--primary-svg-color);
+
+  transition: color var(--general-transition);
+}
+
+.footer .logo:hover,
+.footer .logo:focus {
+  color: var(--additional-color);
 }
 
 .footer .logo-icon {
@@ -25,7 +32,7 @@
   line-height: 18px;
   font-weight: 500;
   text-transform: uppercase;
-  color: var(--primary-text-color-dark-theme);
+  color: var(--primary-svg-color);
 }
 
 .footer-social-list {
@@ -52,7 +59,18 @@
 
 .footer-social-link:hover,
 .footer-social-link:focus {
-  background-color: var(--active-color);
+  background-color: var(--primary-svg-color);
+}
+
+.footer-social-icon {
+  fill: var(--primary-svg-color);
+
+  transition: fill var(--general-transition);
+}
+
+.footer-social-link:hover .footer-social-icon,
+.footer-social-link:focus .footer-social-icon {
+  fill: var(--active-color);
 }
 
 @media screen and (min-width: 768px) {

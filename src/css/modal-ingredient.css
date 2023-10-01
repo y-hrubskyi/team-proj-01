@@ -25,8 +25,7 @@
   height: 616px;
   padding: 40px 20px;
 
-  background-color: var(--primary-bg-color-light-theme);
-  border: 1px solid;
+  background-color: var(--primary-bg-color);
   border-radius: 15px;
 }
 
@@ -90,7 +89,7 @@
   width: 22px;
   height: 22px;
 
-  stroke: var(--primary-text-color-light-theme);
+  stroke: var(--primary-text-color);
   transition: stroke var(--general-transition);
 }
 
@@ -120,18 +119,25 @@
   border-bottom: 1px solid rgba(36, 36, 36, 0.1);
 }
 
+body.dark-theme .ingredient-type {
+  color: rgba(253, 253, 255, 0.5);
+}
+
 .ingredient-description {
   margin-bottom: 40px;
 
   font-size: 14px;
-  font-weight: 400;
   line-height: 1.4;
   color: rgba(36, 36, 36, 0.5);
 }
 
+body.dark-theme .ingredient-description {
+  color: rgba(253, 253, 255, 0.5);
+}
+
 .ingredient-description-name {
   font-weight: 600;
-  color: var(--primary-text-color-light-theme);
+  color: var(--primary-text-color);
 }
 
 .ingredient-properties-list {
@@ -148,6 +154,10 @@
   font-size: 14px;
   line-height: 1.2;
   color: rgba(36, 36, 36, 0.8);
+}
+
+body.dark-theme .ingredient-properties-item {
+  color: rgba(253, 253, 255, 0.8);
 }
 
 .ingredient-modal-btns {
@@ -170,7 +180,7 @@
   padding-top: 14px;
   padding-bottom: 14px;
 
-  color: var(--primary-bg-color-light-theme);
+  color: var(--primary-svg-color);
 
   border: none;
   border-radius: 12px;
@@ -188,7 +198,7 @@
   padding-top: 14px;
   padding-bottom: 14px;
 
-  color: var(--primary-text-color-light-theme);
+  color: var(--primary-text-color);
 
   background-color: rgba(36, 36, 36, 0.1);
   border-radius: 12px;
@@ -196,9 +206,18 @@
   transition: background-color var(--general-transition);
 }
 
+body.dark-theme .ingredient-modal-close-btn {
+  background-color: rgba(253, 253, 255, 0.1);
+}
+
 .ingredient-modal-close-btn:hover,
 .ingredient-modal-close-btn:focus {
   background-color: rgba(36, 36, 36, 0.2);
+}
+
+body.dark-theme .ingredient-modal-close-btn:hover,
+body.dark-theme .ingredient-modal-close-btn:focus {
+  background-color: rgba(253, 253, 255, 0.2);
 }
 
 @media screen and (min-width: 768px) {

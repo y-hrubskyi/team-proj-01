@@ -11,7 +11,7 @@
 }
 
 .footer .logo {
-  color: var(--primary-text-color-dark-theme);
+  color: var(--primary-svg-color);
 
   transition: color var(--general-transition);
 }
@@ -32,7 +32,7 @@
   line-height: 18px;
   font-weight: 500;
   text-transform: uppercase;
-  color: var(--primary-text-color-dark-theme);
+  color: var(--primary-svg-color);
 }
 
 .footer-social-list {
@@ -59,11 +59,11 @@
 
 .footer-social-link:hover,
 .footer-social-link:focus {
-  background-color: var(--primary-bg-color-light-theme);
+  background-color: var(--primary-svg-color);
 }
 
 .footer-social-icon {
-  fill: var(--primary-bg-color-light-theme);
+  fill: var(--primary-svg-color);
 
   transition: fill var(--general-transition);
 }

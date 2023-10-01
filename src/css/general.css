@@ -1,18 +1,13 @@
 :root {
-  --primary-text-color-light-theme: #242424;
-  --primary-bg-color-light-theme: #fdfdff;
-
-  --primary-text-color-dark-theme: #fdfdff;
-  --primary-bg-color-dark-theme: #232330;
-
   --accent-color: #7e8fdd;
   --active-color: #6e7fcf;
   --additional-color: #9cdfdf;
+  --primary-svg-color: #fdfdfd;
 
   --primary-font-family: 'Poppins', sans-serif;
   --secondary-font-family: 'Montserrat', sans-serif;
 
-  --general-transition: 250ms linear;
+  --general-transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -20,11 +15,15 @@ body {
 }
 
 body.light-theme {
-  color: var(--primary-text-color-light-theme);
+  --primary-text-color: #242424;
+  --primary-bg-color: #fdfdff;
+  color: var(--primary-text-color);
 }
 
 body.dark-theme {
-  color: var(--primary-text-color-dark-theme);
+  --primary-text-color: #fdfdff;
+  --primary-bg-color: #232330;
+  color: var(--primary-text-color);
 }
 
 /* Fonts */

@@ -62,11 +62,11 @@ body.dark-theme {
 }
 
 .arrow-header-modal {
-  stroke: var(--primary-bg-color);
+  stroke: var(--primary-svg-color);
 }
 
 .dark-icon {
-  stroke: var(--accent-color);
+  stroke: var(--additional-color);
 }
 
 .star-icon {
@@ -204,7 +204,7 @@ header .nav-link:focus {
   justify-content: center;
   align-items: center;
 
-  stroke: var(--primary-bg-color);
+  stroke: var(--primary-svg-color);
   transition: stroke var(--general-transition);
 }
 
@@ -223,7 +223,7 @@ header .nav-link:focus {
   line-height: 112.5%;
   letter-spacing: -0.16px;
   text-transform: uppercase;
-  color: var(--primary-bg-color);
+  color: var(--primary-svg-color);
 }
 
 .flex-container-icon {
@@ -239,14 +239,14 @@ header .nav-link:focus {
   font-size: 18px;
   line-height: 133.333%;
   letter-spacing: 0.36px;
-  color: var(--primary-bg-color);
+  color: var(--primary-svg-color);
 }
 
 .modal-nav-home {
   font-size: 18px;
   line-height: 133.333%;
   letter-spacing: 0.36px;
-  color: var(--primary-bg-color);
+  color: var(--primary-svg-color);
 }
 
 .header-modal-nav {
@@ -348,6 +348,10 @@ header .nav-link:focus {
     width: 64px;
     height: 32px;
   }
+  .dark-icon-modal {
+    width: 64px;
+    height: 32px;
+  }
 
   /* close */
   .close-svg-modal-header {
@@ -382,10 +386,6 @@ header .nav-link:focus {
 
 /* Desktop */
 @media screen and (min-width: 1280px) {
-  .dark-icon {
-    stroke: var(--additional-color);
-  }
-
   .burger {
     display: none;
   }
@@ -427,7 +427,6 @@ header .nav-link:focus {
     row-gap: 8px;
 
     z-index: 10;
-
 
     display: flex;
     flex-direction: column;

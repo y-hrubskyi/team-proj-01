@@ -1,4 +1,4 @@
-const buttonThemeEl = document.querySelector('.dark-light');
+const buttonThemeEl = document.querySelectorAll('.dark-light');
 const lightThemeEL = document.querySelector('.light-icon');
 const darkThemeEl = document.querySelector('.dark-icon');
 const bodyEl = document.body;
@@ -14,7 +14,9 @@ if (themeLocal === 'dark-theme') {
   bodyEl.classList.add(`${themeLocal}`);
 }
 
-buttonThemeEl.addEventListener('click', onButtonThemeElClick);
+buttonThemeEl.forEach(function (buttonThemeEl) {
+  buttonThemeEl.addEventListener('click', onButtonThemeElClick);
+});
 
 function onButtonThemeElClick() {
   if (bodyEl.classList.contains('light-theme') === true) {
@@ -33,3 +35,5 @@ function onButtonThemeElClick() {
     localStorage.setItem('theme', theme);
   }
 }
+
+console.log(buttonThemeEl);

@@ -39,6 +39,16 @@
   line-height: 1.28;
   color: rgba(36, 36, 36, 0.5);
 }
+body.light-theme {
+  .is-alcoholic-drink-title {
+    color: rgba(36, 36, 36, 0.5);
+  }
+}
+body.dark-theme {
+  .is-alcoholic-drink-title {
+    color: rgba(253, 253, 255, 0.5);
+  }
+}
 
 .fav-ingredient-description {
   margin-bottom: 20px;
@@ -87,7 +97,7 @@
 }
 
 .icon-trash {
-  stroke: var(--primary-bg-color-light-theme);
+  stroke: var(--primary-svg-color);
   fill: transparent;
 
   transition: stroke var(--general-transition) fill var(--general-transition);

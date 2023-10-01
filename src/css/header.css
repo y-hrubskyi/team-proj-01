@@ -7,6 +7,34 @@
   background-color: transparent;
 }
 
+body.light-theme {
+  .dark-icon {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .light-icon {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+body.dark-theme {
+  .light-icon {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .dark-icon {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
 /* Icon styles */
 .logo-icon {
   fill: var(--accent-color);

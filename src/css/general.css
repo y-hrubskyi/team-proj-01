@@ -16,11 +16,13 @@ body {
 body.light-theme {
   --primary-text-color: #242424;
   --primary-bg-color: #fdfdff;
+  color: var(--primary-text-color);
 }
 
 body.dark-theme {
   --primary-text-color: #fdfdff;
   --primary-bg-color: #232330;
+  color: var(--primary-text-color);
 }
 
 /* Fonts */

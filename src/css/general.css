@@ -6,12 +6,21 @@
   --primary-bg-color-dark-theme: #232330;
 
   --accent-color: #7e8fdd;
+  --active-color: #6e7fcf;
   --additional-color: #9cdfdf;
 
   --primary-font-family: 'Poppins', sans-serif;
   --secondary-font-family: 'Montserrat', sans-serif;
 
   --general-transition: 250ms linear;
+}
+
+.test-svg {
+  width: 32px;
+  height: 32px;
+
+  fill: var(--additional-color);
+  stroke: var(--accent-color);
 }
 
 body {

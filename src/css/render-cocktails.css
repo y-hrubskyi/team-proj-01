@@ -81,7 +81,7 @@
 }
 
 .cocktail-card-btns-wrapper .svg-icon-heart {
-  stroke: var(--primary-bg-color-light-theme);
+  stroke: var(--primary-svg-color);
   fill: transparent;
 }
 

@@ -1,4 +1,4 @@
-export function addToLocalStorage(card, key) {
+export function addToLocalStorage(card, svgIcon) {
   const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
   const isInFavorite = favorites.find(favCard => favCard._id === card._id);
   if (isInFavorite) {
@@ -7,10 +7,11 @@ export function addToLocalStorage(card, key) {
 
   favorites.push(card);
   localStorage.setItem('favorites', JSON.stringify(favorites));
+  svgIcon.classList.add('active-svg-heart');
   console.log('Карта в ЛОКАЛСТОРДЖ');
 }
 
-export function removeFromLocalStorage(card, key) {
+export function removeFromLocalStorage(card, svgIcon) {
   const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
   const index = favorites.findIndex(favCard => favCard._id === card._id);
   if (index === -1) {
@@ -19,5 +20,6 @@ export function removeFromLocalStorage(card, key) {
 
   favorites.splice(index, 1);
   localStorage.setItem('favorites', JSON.stringify(favorites));
+  svgIcon.classList.remove('active-svg-heart');
   console.log('Карта в удалена с ЛОКАЛСТОРДЖ');
 }

@@ -169,3 +169,7 @@ body.light-theme .learn-more-cocktail-btn:focus {
     margin-bottom: 24px;
   }
 }
+
+.active-svg-heart {
+  background-color: var(--primary-svg-color);
+}

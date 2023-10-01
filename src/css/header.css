@@ -7,32 +7,30 @@
   background-color: transparent;
 }
 
-body.light-theme {
-  .dark-icon {
-    display: none;
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
-  }
-  .light-icon {
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
-  }
+body.light-theme .dark-icon {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 
-body.dark-theme {
-  .light-icon {
-    display: none;
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
-  }
-  .dark-icon {
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
-  }
+body.light-theme .light-icon {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.dark-theme .light-icon {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.dark-theme .dark-icon {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* Icon styles */
@@ -274,9 +272,11 @@ header .nav-link:focus {
 .modal-nav-favorite:focus,
 .modal-nav-favorite:hover {
   color: var(--additional-color);
-  .arrow-header-modal {
-    stroke: var(--additional-color);
-  }
+}
+
+.modal-nav-favorite:focus .arrow-header-modal,
+.modal-nav-favorite:hover .arrow-header-modal {
+  stroke: var(--additional-color);
 }
 
 .modal-nav-home {

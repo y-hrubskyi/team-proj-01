@@ -46,6 +46,10 @@
   display: -webkit-box;
 }
 
+body.dark-theme .cocktail-description {
+  color: rgba(253, 253, 255, 0.8);
+}
+
 .cocktail-card-btns-wrapper {
   display: flex;
   gap: 15px;

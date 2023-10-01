@@ -49,6 +49,10 @@ body.dark-theme {
   overflow: hidden;
 }
 
+body.dark-theme .fav-ingredient-description {
+  color: rgba(253, 253, 255, 0.8);
+}
+
 .learn-more-ingredient-btn {
   width: 232px;
   padding: 14px 0px;

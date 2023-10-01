@@ -15,3 +15,9 @@ function onCloseMenuBtnClick() {
   mobileMenu.classList.remove('is-open');
   bodyEl.classList.remove('no-scrolling-body');
 }
+
+window.matchMedia('(min-width: 1280px)').addEventListener('change', e => {
+  if (!e.matches) return;
+  mobileMenu.classList.remove('is-open');
+  bodyEl.classList.remove('no-scrolling-body');
+});

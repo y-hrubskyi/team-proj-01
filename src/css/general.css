@@ -281,3 +281,9 @@ body.dark-theme .bg {
     }
   }
 }
+
+/* smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+/* smooth scrolling */

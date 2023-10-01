@@ -39,11 +39,7 @@
   line-height: 1.28;
   color: rgba(36, 36, 36, 0.5);
 }
-body.light-theme {
-  .is-alcoholic-drink-title {
-    color: rgba(36, 36, 36, 0.5);
-  }
-}
+
 body.dark-theme {
   .is-alcoholic-drink-title {
     color: rgba(253, 253, 255, 0.5);
@@ -75,6 +71,19 @@ body.dark-theme {
   background-color: var(--primary-bg-color);
   border: 1px solid var(--accent-color);
   border-radius: 12px;
+
+  transition: color var(--general-transition),
+    background-color var(--general-transition);
+}
+
+.learn-more-ingredient-btn:hover,
+.learn-more-ingredient-btn:focus {
+  background-color: var(--accent-color);
+}
+
+body.light-theme .learn-more-ingredient-btn:hover,
+body.light-theme .learn-more-ingredient-btn:focus {
+  color: var(--primary-bg-color);
 }
 
 .remove-ingredient-btn {
@@ -101,12 +110,6 @@ body.dark-theme {
   fill: transparent;
 
   transition: stroke var(--general-transition) fill var(--general-transition);
-}
-
-.remove-ingredient-btn:hover .icon-trash,
-.remove-ingredient-btn:focus .icon-trash {
-  /* stroke: var(--accent-color); */
-  /* fill: var(--primary-bg-color-light-theme); */
 }
 
 .ingredient-card-btns {

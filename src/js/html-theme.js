@@ -35,5 +35,3 @@ function onButtonThemeElClick() {
     localStorage.setItem('theme', theme);
   }
 }
-
-console.log(buttonThemeEl);

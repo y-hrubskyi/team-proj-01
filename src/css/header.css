@@ -46,10 +46,12 @@ body.dark-theme {
 
 .light-icon {
   stroke: var(--primary-text-color);
+  transition: stroke var(--general-transition);
 }
 
 .light-icon-modal {
   stroke: var(--primary-bg-color);
+  transition: stroke var(--general-transition);
 }
 
 .arrow-header,
@@ -67,6 +69,7 @@ body.dark-theme {
 
 .dark-icon {
   stroke: var(--additional-color);
+  transition: stroke var(--general-transition);
 }
 
 .star-icon {
@@ -74,6 +77,22 @@ body.dark-theme {
 }
 
 /* Header Styles */
+
+.dark-light:hover .light-icon-modal {
+  stroke: var(--additional-color);
+}
+
+.dark-light:hover .light-icon {
+  stroke: var(--additional-color);
+}
+
+.dark-light:hover .dark-icon-modal {
+  stroke: var(--primary-svg-color);
+}
+
+.dark-light:hover .dark-icon {
+  stroke: var(--primary-svg-color);
+}
 
 .no-scrolling-body {
   overflow-y: hidden;
@@ -255,6 +274,9 @@ header .nav-link:focus {
 .modal-nav-favorite:focus,
 .modal-nav-favorite:hover {
   color: var(--additional-color);
+  .arrow-header-modal {
+    stroke: var(--additional-color);
+  }
 }
 
 .modal-nav-home {
@@ -370,9 +392,11 @@ header .nav-link:focus {
     width: 64px;
     height: 32px;
   }
+
   .dark-icon-modal {
     width: 64px;
     height: 32px;
+    transition: stroke var(--general-transition);
   }
 
   /* close */

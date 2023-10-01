@@ -1,20 +1,39 @@
-const buttonThemeEl = document.querySelector('.dark-light');
+const buttonThemeEl = document.querySelectorAll('.dark-light');
 const lightThemeEL = document.querySelector('.light-icon');
 const darkThemeEl = document.querySelector('.dark-icon');
 const bodyEl = document.body;
 
-buttonThemeEl.addEventListener('click', onButtonThemeElClick);
+let theme = bodyEl.className;
+
+const themeLocal = localStorage.getItem('theme');
+
+if (themeLocal === 'dark-theme') {
+  bodyEl.classList.remove('light-theme');
+  bodyEl.classList.add(`${themeLocal}`);
+} else {
+  bodyEl.classList.add(`${themeLocal}`);
+}
+
+buttonThemeEl.forEach(function (buttonThemeEl) {
+  buttonThemeEl.addEventListener('click', onButtonThemeElClick);
+});
 
 function onButtonThemeElClick() {
   if (bodyEl.classList.contains('light-theme') === true) {
-    bodyEl.classList.add('dark-theme');
+    theme = 'dark-theme';
+
     bodyEl.classList.remove('light-theme');
-    lightThemeEL.classList.add('visually-hidden');
-    darkThemeEl.classList.remove('visually-hidden');
+    bodyEl.classList.add('dark-theme');
+
+    localStorage.setItem('theme', theme);
   } else {
-    lightThemeEL.classList.remove('visually-hidden');
-    darkThemeEl.classList.add('visually-hidden');
+    theme = 'light-theme';
+
     bodyEl.classList.add('light-theme');
     bodyEl.classList.remove('dark-theme');
+
+    localStorage.setItem('theme', theme);
   }
 }
+
+console.log(buttonThemeEl);

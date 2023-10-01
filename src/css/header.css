@@ -74,6 +74,7 @@ body.dark-theme {
 }
 
 /* Header Styles */
+
 .no-scrolling-body {
   overflow-y: hidden;
 }
@@ -226,6 +227,11 @@ header .nav-link:focus {
   color: var(--primary-svg-color);
 }
 
+.modal-logo:focus,
+.modal-logo:hover {
+  color: var(--additional-color);
+}
+
 .flex-container-icon {
   display: flex;
   align-items: center;
@@ -242,11 +248,21 @@ header .nav-link:focus {
   color: var(--primary-svg-color);
 }
 
+.modal-nav-favorite:focus,
+.modal-nav-favorite:hover {
+  color: var(--additional-color);
+}
+
 .modal-nav-home {
   font-size: 18px;
   line-height: 133.333%;
   letter-spacing: 0.36px;
   color: var(--primary-svg-color);
+}
+
+.modal-nav-home:focus,
+.modal-nav-home:hover {
+  color: var(--additional-color);
 }
 
 .header-modal-nav {

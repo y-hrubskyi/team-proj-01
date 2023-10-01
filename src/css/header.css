@@ -479,7 +479,7 @@ header .nav-link:focus {
 
   .header-link-nav:focus,
   .header-link-nav:hover {
-    color: var(--primary-bg-color);
+    color: var(--primary-svg-color);
   }
 
   .is-open-drop-down-menu {

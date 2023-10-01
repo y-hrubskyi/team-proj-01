@@ -30,7 +30,7 @@ export function renderFavoriteCocktails(arr, box) {
             <div>
               <button type="button" class="card-button">Learn More</button>
               <button type="button" class="remove-from-localstorage-btn" aria-label="remove from local storage">
-                <svg width="18px" height="18px" class="logo_svg__delete">
+                <svg width="18px" height="18px" class="icon-trash">
                   <use href="./img/sprite.svg#icon-trash"></use>
                 </svg>
               </button>
@@ -57,7 +57,7 @@ export function renderFavoriteIngredients(arr, box) {
         <div class="ingredient-card-btns">
           <button type="button" class="learn-more-ingredient-btn">learn more</button>
           <button type="button" class="remove-ingredient-btn remove-from-localstorage-btn" aria-label="remove from locale storage">
-            <svg width="18px" height="18px" class="logo_svg__delete">
+            <svg width="18px" height="18px" class="icon-trash">
               <use href="./img/sprite.svg#icon-trash"></use>
             </svg>
           </button>

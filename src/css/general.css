@@ -9,6 +9,14 @@
   --general-transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.test-svg {
+  width: 32px;
+  height: 32px;
+
+  fill: var(--additional-color);
+  stroke: var(--accent-color);
+}
+
 body {
   font-family: var(--primary-font-family);
 }

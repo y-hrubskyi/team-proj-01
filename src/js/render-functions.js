@@ -4,7 +4,7 @@ export function renderCocktails(arr, box) {
     .map(
       item =>
         `<li class="cocktail-card" data-id="${item._id}">
-            <img class="cocktail-card-img" src="${item.drinkThumb}" alt="${item.drink}" width ="316"/>
+            <img class="cocktail-card-img" src="${item.drinkThumb}" alt="${item.drink}" width="316"/>
             <div class="cocktail-info">
               <h3 class="cocktail-title">${item.drink}</h3>
               <p class="cocktail-description">${item.description}</p>

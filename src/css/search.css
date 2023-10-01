@@ -1,52 +1,57 @@
 .keyboard__list {
     display: none;
 
-    @media screen and (min-width: 768px) {
-        display: inline-block;
-    }
 
-    .keyboard__list {
-        @media screen and (min-width: 768px) {
-            display: inline-block;
-        }
+
+    @media screen and (min-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        padding-top: 100px;
+        margin-bottom: 50px;
     }
 
     .keyboard--item {
         @media screen and (min-width: 768px) {
-            width: 24px;
-            height: 25px;
 
-            font-weight: 700;
-            font-size: 14px;
-            line-height: 1.5;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: normal;
 
             align-items: center;
             text-align: center;
 
-            color: #5f6775;
+            color: #FDFDFF;
             cursor: pointer;
+
         }
 
-        @media screen and (min-width: 1280px) {
-            width: 40px;
-            height: 40px;
-
-            font-weight: 700;
-            font-size: 24px;
-        }
-
-        color: #5f6775;
     }
 
-    @media screen and (min-width: 1280px) {
-        font-weight: 700;
-        font-size: 24px;
-    }
+
 }
 
+.keyboard {
+    row-gap: 16px;
+}
+
+.leters-wrap {
+    cursor: pointer;
+    border-radius: 8px;
+    background: rgba(126, 143, 221, 0.40);
+
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column-reverse;
+
+
+}
+
+.leters-wrap:hover,
 .keyboard--item:hover,
 .keyboard--item:focus {
-    color: #fd5103;
+    background: #9CDFDF;
 }
 
 .keyboard--item---black {
@@ -60,8 +65,13 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
-    gap: 1px;
+    align-items: center;
+    text-align: center;
+    column-gap: 8px;
+
 }
+
+/* FAKE SELECT */
 
 details {
     position: relative;
@@ -72,6 +82,7 @@ details {
         display: none;
     }
 }
+
 
 .custom-select {
     margin-bottom: 20px;
@@ -85,9 +96,13 @@ details {
 
 }
 
+
+
 details[open] {
     z-index: 1;
 }
+
+
 
 summary {
     margin-right: auto;
@@ -153,7 +168,7 @@ details[open] summary:after {
     background-color: #fd52032f;
 }
 
-/* FAKE SELECT */
+
 
 summary.radios {
     counter-reset: radios;
@@ -229,7 +244,7 @@ label {
 .header__form {
     position: relative;
     width: 100%;
-    margin-bottom: 40px;
+
 }
 
 .form__input {

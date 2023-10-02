@@ -17,6 +17,9 @@
 }
 
 .cocktail-card-img {
+  width: 307px;
+  height: 257px;
+
   border-radius: 16px;
 }
 
@@ -124,6 +127,11 @@ body.light-theme .learn-more-cocktail-btn:focus {
   .cocktail-card {
     flex-basis: calc((100% - 16px) / 2);
     padding-bottom: 24px;
+  }
+
+  .cocktail-card-img {
+    width: 316px;
+    height: 289px;
   }
 
   .cocktail-info {

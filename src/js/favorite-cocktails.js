@@ -1,32 +1,39 @@
 //! demo version, not tested, will be change
 
 // import { LOCAL_STORAGE_KEYS } from './constants';
-// import { renderFavoriteCocktails } from './render-functions';
+import { renderFavoriteCocktails } from './render-functions';
+import { removeFromLocalStorage } from './local-storage';
 
-// const favoriteCocktailsList = document.querySelector(
-//   '.favorite-cocktails-list'
-// );
-// const placeholderEmptyFavoriteList = document.querySelector(
-//   '.placeholder-empty-favorite-list'
-// );
+const favoriteCocktailsList = document.querySelector(
+  '.favorite-cocktails-list'
+);
+const placeholderEmptyFavoriteList = document.querySelector(
+  '.placeholder-empty-favorite-list'
+);
 
-// const products = JSON.parse(localStorage.getItem('favorites')) || [];
+const products = JSON.parse(localStorage.getItem('favorites')) || [];
+console.log(products);
 
-// if (products.length) {
-//   renderFavoriteCocktails(products, favoriteCocktailsList);
-// }
+if (products.length) {
+  renderFavoriteCocktails(products, favoriteCocktailsList);
+  placeholderEmptyFavoriteList.classList.add('hidden');
+}
 
-// const clearBtn = document.querySelector('.remove-from-localstorage-btn');
-// placeholderEmptyFavoriteList.classList.add('visually-hidden');
-// favoriteCocktailsList.classList.remove('visually-hidden');
+const clearBtn = document.querySelector('.remove-from-localstorage-btn');
+favoriteCocktailsList.classList.remove('hidden');
 
-// function clearCart() {
-//   if (!favoriteCocktailsList.length) {
-//     placeholderEmptyFavoriteList.classList.remove('visually-hidden');
-//   } else {
-//     localStorage.clear();
-//     renderFavoriteCocktails(products, favoriteCocktailsList);
-//   }
-// }
+function clearCart() {
+  if (favoriteCocktailsList.length === 0) {
+    placeholderEmptyFavoriteList.classList.remove('hidden');
+  } else {
+    const products = JSON.parse(localStorage.getItem('favorites')) || [];
 
-// clearBtn.addEventListener('click', clearCart);
+    products.splice(product => product._id, 1);
+    localStorage.setItem('favorites', JSON.stringify(products));
+
+    window.location.href = '../favorite-cocktails.html';
+    renderFavoriteCocktails(products, favoriteCocktailsList);
+  }
+}
+
+clearBtn.addEventListener('click', clearCart);

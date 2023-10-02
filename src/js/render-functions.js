@@ -59,23 +59,23 @@ export function renderFavoriteIngredients(arr, box) {
   const markup = arr
     .map(
       item =>
-        `<li class="favorite-ingredient-item" data-id="${item._id}>
-        <h3 class="fav-ingredient-title">${item.title}</h3>
-        <h4 class="is-alcoholic-drink-title">${
-          item.alcolol === 'Yes' ? 'Alcoholic' : 'Non-Alcoholic'
-        }</h4>
-        <p class="fav-ingredient-description">
-          ${item.description}
-        </p>
-        <div class="ingredient-card-btns">
-          <button type="button" class="learn-more-ingredient-btn">learn more</button>
-          <button type="button" class="remove-ingredient-btn remove-from-localstorage-btn" aria-label="remove from locale storage">
-            <svg width="18px" height="18px" class="icon-trash">
-              <use href="${spriteUrl}#icon-trash"></use>
-            </svg>
-          </button>
-        </div>
-      </li>`
+        `<li class="favorite-ingredient-item" data-id="${item._id}">
+            <h3 class="fav-ingredient-title">${item.title}</h3>
+            <h4 class="is-alcoholic-drink-title">${
+              item.alcolol === 'Yes' ? 'Alcoholic' : 'Non-Alcoholic'
+            }</h4>
+            <p class="fav-ingredient-description">
+              ${item.description}
+            </p>
+            <div class="ingredient-card-btns">
+              <button type="button" class="learn-more-ingredient-btn">learn more</button>
+              <button type="button" class="remove-ingredient-btn remove-from-localstorage-btn" aria-label="remove from locale storage">
+                <svg width="18px" height="18px" class="icon-trash">
+                  <use href="${spriteUrl}#icon-trash"></use>
+                </svg>
+              </button>
+            </div>
+          </li>`
     )
     .join('');
   box.insertAdjacentHTML('beforeend', markup);

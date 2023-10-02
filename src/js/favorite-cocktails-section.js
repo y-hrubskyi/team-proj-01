@@ -1,5 +1,3 @@
-//! demo version, not tested, will be change
-
 import { LOCAL_STORAGE_KEYS } from './constants';
 import { renderFavoriteCocktails } from './render-functions';
 import { removeFromLocalStorage } from './local-storage';
@@ -17,17 +15,19 @@ console.log(products);
 
 if (products.length) {
   renderFavoriteCocktails(products, favoriteCocktailsList);
-  placeholderEmptyFavoriteList.classList.add('hidden');
+  placeholderEmptyFavoriteList.classList.add('visually-hidden');
+  placeholderEmptyFavoriteList
+    .closest('.favorite-section')
+    .classList.remove('is-empty');
+  favoriteCocktailsList.classList.remove('visually-hidden');
 }
-
-favoriteCocktailsList.classList.remove('hidden');
 
 //! удаление ещё нужно реализовать
 // const clearBtn = document.querySelector('.remove-from-localstorage-btn');
 
 // function clearCart() {
 //   if (favoriteCocktailsList.length === 0) {
-//     placeholderEmptyFavoriteList.classList.remove('hidden');
+//     placeholderEmptyFavoriteList.classList.remove('visually-hidden');
 //   } else {
 //     const products = JSON.parse(localStorage.getItem('favorites')) || [];
 

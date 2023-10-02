@@ -10,7 +10,7 @@ export function renderCocktails(arr, box) {
               <p class="cocktail-description">${item.description}</p>
               <div>
                 <div class="cocktail-card-btns-wrapper">
-                  <button type="button"   class="learn-more-cocktail-btn">Learn More</button>
+                  <button type="button" class="learn-more-cocktail-btn learn-more-btn" data-modal-open>Learn More</button>
                   <button type="button" class="add-to-localstorage-btn">
                     <svg width="18px" height="18px" class="svg-icon-heart">
                       <use href="./img/sprite.svg#icon-heart"></use>
@@ -137,12 +137,15 @@ export function renderModalIngredient(ingredient) {
   const backdrop = prepareForRenderModal();
 
   const emptyField = 'not specified';
-  const titleLength = ingredient.title.split(' ').length;
-  const description = ingredient.description
-    .split(' ')
-    .slice(titleLength)
-    .join(' ');
-  console.log(description);
+
+  let description = '';
+  if (ingredient.description) {
+    const titleLength = ingredient.title.split(' ').length;
+    description = ingredient.description
+      .split(' ')
+      .slice(titleLength)
+      .join(' ');
+  }
 
   let flavour = '';
   if (ingredient.flavour) {
@@ -168,7 +171,7 @@ export function renderModalIngredient(ingredient) {
                     <p class="ingredient-description">
                       <span class="ingredient-description-name">${
                         ingredient.title
-                      }</span> ${description}
+                      }</span> ${description || emptyField}
                     </p>
                     <ul class="ingredient-properties-list">
                       <li class="ingredient-properties-item">Type: ${
@@ -214,7 +217,7 @@ function prepareForRenderModal() {
 }
 
 function createIngredientItemMarkup(ingredient) {
-  return `<li class="per-cocktail-ingredient-item" id="${ingredient._id}">
-            <button type="button" class="per-cocktail-ingredient-btn">${ingredient.title}</button>
+  return `<li class="per-cocktail-ingredient-item">
+            <button type="button" class="per-cocktail-ingredient-btn" data-id="${ingredient.ingredientId}">${ingredient.title}</button>
           </li>`;
 }

@@ -118,6 +118,11 @@ body.dark-theme .cocktail-instruction {
     margin-bottom: 0;
   }
 
+  .per-cocktail-ingredients-list {
+    max-height: 170px;
+    overflow: auto;
+  }
+
   .cocktail-instruction-title {
     margin-bottom: 18px;
   }

@@ -10,7 +10,7 @@ export async function searchCocktailsByFillter({
   firstLetter,
   cocktailName,
 } = {}) {
-  const requestURL = new URL(`${BASE_URL}search/`);
+  const requestURL = new URL(`${BASE_URL}/cocktails/search/`);
   if (firstLetter) {
     requestURL.searchParams.append(`f`, firstLetter);
   }

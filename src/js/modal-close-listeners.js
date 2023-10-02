@@ -3,6 +3,9 @@ export function runModalCloseListeners() {
     .querySelector('.modal-close-btn')
     .addEventListener('click', onCloseModalBtnClick);
   document
+    .querySelector('.back-btn-cocktail')
+    .addEventListener('click', onCloseModalBtnClick);
+  document
     .querySelector('.backdrop')
     .addEventListener('click', onBackdropClick);
   document.addEventListener('keyup', onKeyUp);

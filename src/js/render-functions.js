@@ -127,7 +127,7 @@ export function renderModalCocktail(cocktail) {
                       </button>
 
                       <button
-                        class="back-modal-close-btn back-btn-cocktail"
+                        class="back-modal-close-btn"
                         type="button"
                         aria-label="close modal window"
                       >

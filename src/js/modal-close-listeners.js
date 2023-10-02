@@ -3,7 +3,7 @@ export function runModalCloseListeners() {
     .querySelector('.modal-close-btn')
     .addEventListener('click', onCloseModalBtnClick);
   document
-    .querySelector('.back-btn-cocktail')
+    .querySelector('.back-modal-close-btn')
     .addEventListener('click', onCloseModalBtnClick);
   document
     .querySelector('.backdrop')
@@ -40,6 +40,9 @@ function closeModal() {
 function removeListeners() {
   document
     .querySelector('.modal-close-btn')
+    .removeEventListener('click', onCloseModalBtnClick);
+  document
+    .querySelector('.back-modal-close-btn')
     .removeEventListener('click', onCloseModalBtnClick);
   document
     .querySelector('.backdrop')

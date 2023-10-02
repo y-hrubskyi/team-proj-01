@@ -1,5 +1,15 @@
 import throttle from 'lodash.throttle';
-const upBtn = document.querySelector('.up-button');
+export const body = document.querySelector('body');
+
+export function createBtn() {
+  body.insertAdjacentHTML(
+    'beforeend',
+    '<a href="#" class="up-button visually-hidden ">UP</a>'
+  );
+}
+createBtn();
+
+export const upBtn = document.querySelector('.up-button');
 
 let scroll = 1000;
 document.addEventListener(

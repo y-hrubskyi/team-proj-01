@@ -1,3 +1,5 @@
+import spriteUrl from '/img/sprite.svg';
+
 // renderCocktails
 export function renderCocktails(arr, box) {
   const markup = arr
@@ -13,7 +15,7 @@ export function renderCocktails(arr, box) {
                   <button type="button" class="learn-more-cocktail-btn">Learn More</button>
                   <button type="button" class="add-to-localstorage-btn">
                     <svg width="18px" height="18px" class="svg-icon-heart">
-                      <use href="./img/sprite.svg#icon-heart"></use>
+                      <use href="${spriteUrl}#icon-heart"></use>
                     </svg>
                   </button>
                 </div>
@@ -40,7 +42,7 @@ export function renderFavoriteCocktails(arr, box) {
                   <button type="button" class="learn-more-cocktail-btn">Learn More</button>
                   <button type="button" class="add-to-localstorage-btn remove-from-localstorage-btn">
                     <svg width="18px" height="18px" class="icon-trash">
-                      <use href="./img/sprite.svg#icon-trash"></use>
+                      <use href="${spriteUrl}#icon-trash"></use>
                     </svg>
                   </button>
                 </div>
@@ -69,7 +71,7 @@ export function renderFavoriteIngredients(arr, box) {
           <button type="button" class="learn-more-ingredient-btn">learn more</button>
           <button type="button" class="remove-ingredient-btn remove-from-localstorage-btn" aria-label="remove from locale storage">
             <svg width="18px" height="18px" class="icon-trash">
-              <use href="./img/sprite.svg#icon-trash"></use>
+              <use href="${spriteUrl}#icon-trash"></use>
             </svg>
           </button>
         </div>
@@ -89,7 +91,7 @@ export function renderModalCocktail(cocktail) {
   const markup = `<div class="modal cocktail-modal" data-id="${cocktail._id}">
                     <button type="button" class="modal-close-btn" aria-label="close modal window">
                       <svg class="modal-close-icon">
-                        <use href="/img/sprite.svg#icon-close-modal"></use>
+                        <use href="${spriteUrl}#icon-close-modal"></use>
                       </svg>
                     </button>
                     <div class="cocktail-about-wrapper">
@@ -164,7 +166,7 @@ export function renderModalIngredient(ingredient) {
                       aria-label="close modal window"
                     >
                       <svg class="modal-close-icon">
-                        <use href="/img/sprite.svg#icon-close-modal"></use>
+                        <use href="${spriteUrl}#icon-close-modal"></use>
                       </svg>
                     </button>
                     <h2 class="ingredient-title">${ingredient.title}</h2>

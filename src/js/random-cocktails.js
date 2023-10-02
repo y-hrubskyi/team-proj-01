@@ -1,4 +1,5 @@
 import axios from 'axios';
+import placeholder from '/img/placeholder.jpg';
 
 import { BASE_URL, LOCAL_STORAGE_KEYS } from './constants';
 import { renderCocktails } from './render-functions';
@@ -33,7 +34,7 @@ export async function fetchRandomCocktails() {
     const results = await Promise.allSettled(arrayOfPromises);
     results.forEach((result, index) => {
       if (!result.value.ok) {
-        data[index].drinkThumb = './img/placeholder.jpg';
+        data[index].drinkThumb = placeholder;
       }
     });
 

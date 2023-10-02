@@ -1,0 +1,1 @@
+import"./drop-down-modal-e7eb3325.js";import{L as o,r}from"./render-functions-3ee5152b.js";const t=document.querySelector(".favorite-cocktails-list"),s=document.querySelector(".placeholder-empty-favorite-list"),e=JSON.parse(localStorage.getItem(o.COCKTAILS))||[];console.log(e);e.length&&(r(e,t),s.classList.add("hidden"));t.classList.remove("hidden");

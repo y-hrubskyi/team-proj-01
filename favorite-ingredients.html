@@ -7,8 +7,9 @@
     <link rel="icon" type="image/svg+xml" href="/team-proj-01/favicon.svg" />
     <title>Favorite ingredients</title>
     
-    <script type="module" crossorigin src="/team-proj-01/assets/drop-down-modal-e7eb3325.js"></script>
-    <link rel="stylesheet" href="/team-proj-01/assets/drop-down-modal-47f980d5.css">
+    <script type="module" crossorigin src="/team-proj-01/assets/favorite-ingredients-d39d201a.js"></script>
+    <link rel="modulepreload" crossorigin href="/team-proj-01/assets/render-functions-4f53d2b6.js">
+    <link rel="stylesheet" href="/team-proj-01/assets/render-functions-f00c1f4e.css">
   </head>
   <body class="light-theme">
     <div class="bg">
@@ -150,13 +151,13 @@
 </header>
 
       <main>
-        <section class="favorite-ingredients-section">
+        <section class="favorite-ingredients-section favorite-section is-empty">
   <div class="container">
     <h2 class="section-title fav-ingredients-section-title">
       Favorite ingredients
     </h2>
     <ul class="favorite-ingredients-list">
-      <li class="favorite-ingredient-item">
+      <!-- <li class="favorite-ingredient-item">
         <h3 class="fav-ingredient-title">Campari</h3>
         <h4 class="is-alcoholic-drink-title">Alcoholic</h4>
         <p class="fav-ingredient-description">
@@ -167,7 +168,7 @@
           <button class="learn-more-ingredient-btn">learn more</button>
           <button class="remove-ingredient-btn">
             <svg width="18px" height="18px" class="icon-trash">
-              <use href="/team-proj-01/assets/sprite-0ecfa07c.svg#icon-trash"></use>
+              <use href="./img/sprite.svg#icon-trash"></use>
             </svg>
           </button>
         </div>
@@ -183,7 +184,7 @@
           <button class="learn-more-ingredient-btn">learn more</button>
           <button class="remove-ingredient-btn">
             <svg width="18px" height="18px" class="icon-trash">
-              <use href="/team-proj-01/assets/sprite-0ecfa07c.svg#icon-trash"></use>
+              <use href="./img/sprite.svg#icon-trash"></use>
             </svg>
           </button>
         </div>
@@ -199,7 +200,7 @@
           <button class="learn-more-ingredient-btn">learn more</button>
           <button class="remove-ingredient-btn">
             <svg width="18px" height="18px" class="icon-trash">
-              <use href="/team-proj-01/assets/sprite-0ecfa07c.svg#icon-trash"></use>
+              <use href="./img/sprite.svg#icon-trash"></use>
             </svg>
           </button>
         </div>
@@ -215,7 +216,7 @@
           <button class="learn-more-ingredient-btn">learn more</button>
           <button class="remove-ingredient-btn">
             <svg width="18px" height="18px" class="icon-trash">
-              <use href="/team-proj-01/assets/sprite-0ecfa07c.svg#icon-trash"></use>
+              <use href="./img/sprite.svg#icon-trash"></use>
             </svg>
           </button>
         </div>
@@ -231,7 +232,7 @@
           <button class="learn-more-ingredient-btn">learn more</button>
           <button class="remove-ingredient-btn">
             <svg width="18px" height="18px" class="icon-trash">
-              <use href="/team-proj-01/assets/sprite-0ecfa07c.svg#icon-trash"></use>
+              <use href="./img/sprite.svg#icon-trash"></use>
             </svg>
           </button>
         </div>
@@ -247,12 +248,21 @@
           <button class="learn-more-ingredient-btn">learn more</button>
           <button class="remove-ingredient-btn">
             <svg width="18px" height="18px" class="icon-trash">
-              <use href="/team-proj-01/assets/sprite-0ecfa07c.svg#icon-trash"></use>
+              <use href="./img/sprite.svg#icon-trash"></use>
             </svg>
           </button>
         </div>
-      </li>
+      </li> -->
     </ul>
+    <div class="placeholder-empty-favorite-list">
+      <svg class="empty-favorite-img">
+        <use href="/team-proj-01/assets/sprite-0ecfa07c.svg#icon-placeholder-empty-list"></use>
+      </svg>
+      <p class="empty-favorite-text">
+        You haven't added any
+        <span class="empty-favorite-text-span">favorite cocktails</span> yet
+      </p>
+    </div>
   </div>
 </section>
 

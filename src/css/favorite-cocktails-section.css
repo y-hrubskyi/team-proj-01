@@ -79,3 +79,7 @@
     max-width: 372px;
   }
 }
+
+.hidden {
+  display: none;
+}

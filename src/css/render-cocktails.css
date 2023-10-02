@@ -2,7 +2,7 @@
   padding-bottom: 80px;
 }
 
-.random-cocktails-list {
+.cocktails-list {
   display: flex;
   flex-direction: column;
   row-gap: 20px;
@@ -33,6 +33,14 @@
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
+
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
 }
 
 .cocktail-description {
@@ -119,7 +127,7 @@ body.light-theme .learn-more-cocktail-btn:focus {
     padding-bottom: 100px;
   }
 
-  .random-cocktails-list {
+  .cocktails-list {
     flex-direction: row;
     flex-wrap: wrap;
     column-gap: 16px;
@@ -166,7 +174,7 @@ body.light-theme .learn-more-cocktail-btn:focus {
 }
 
 @media screen and (min-width: 1280px) {
-  .random-cocktails-list {
+  .cocktails-list {
     column-gap: 24px;
     row-gap: 44px;
   }

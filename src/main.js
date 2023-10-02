@@ -6,3 +6,4 @@ import './js/html-theme';
 import './js/coctails-search';
 import './js/favorite-cocktails';
 import './js/page-scroll';
+import './js/render-functions';

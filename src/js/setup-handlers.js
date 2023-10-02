@@ -1,24 +1,19 @@
 import { addToLocalStorage, removeFromLocalStorage } from './local-storage';
 
-export function setupClickHandlerOnAddToLS(data, box) {
+export function setupClickHandlerOnWorkWithLocaleStorage(data, box, key) {
   box.addEventListener('click', function (e) {
-    if (e.target.classList.contains('add-to-localstorage-btn')) {
-      const cardId = e.target.closest('.cocktail-card').dataset.id;
-      const selectedCard = data.find(item => item._id === cardId);
-      if (selectedCard) {
-        addToLocalStorage(selectedCard);
-      }
-    }
-  });
-}
+    const button = e.target.closest('.add-to-localstorage-btn');
 
-export function setupClickHandlerOnRemoveFromLS(data, box) {
-  box.addEventListener('click', function (e) {
-    if (e.target.classList.contains('remove-from-localstorage-btn')) {
-      const cardId = e.target.closest('.cocktail-card').dataset.id;
+    if (button) {
+      const cardId = button.closest('.cocktail-card').dataset.id;
       const selectedCard = data.find(item => item._id === cardId);
       if (selectedCard) {
-        removeFromLocalStorage(selectedCard);
+        const svgIcon = button.querySelector('.svg-icon-heart');
+        if (svgIcon.classList.contains('is-active')) {
+          removeFromLocalStorage(selectedCard, svgIcon, key);
+        } else {
+          addToLocalStorage(selectedCard, svgIcon, key);
+        }
       }
     }
   });

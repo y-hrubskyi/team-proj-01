@@ -1,11 +1,8 @@
 import axios from 'axios';
 
-import { BASE_URL } from './constants';
+import { BASE_URL, LOCAL_STORAGE_KEYS } from './constants';
 import { renderCocktails } from './render-functions';
-import {
-  setupClickHandlerOnAddToLS,
-  setupClickHandlerOnRemoveFromLS,
-} from './setup-handlers';
+import { setupClickHandlerOnWorkWithLocaleStorage } from './setup-handlers';
 
 const randomCocktailsList = document.querySelector('.random-cocktails-list-js');
 
@@ -49,8 +46,11 @@ export async function fetchRandomCocktails() {
 async function responseProcessing(data) {
   try {
     renderCocktails(data, randomCocktailsList);
-    setupClickHandlerOnAddToLS(data, randomCocktailsList);
-    setupClickHandlerOnRemoveFromLS(data, randomCocktailsList);
+    setupClickHandlerOnWorkWithLocaleStorage(
+      data,
+      randomCocktailsList,
+      LOCAL_STORAGE_KEYS.COCKTAILS
+    );
   } catch (error) {
     console.log(error);
   }

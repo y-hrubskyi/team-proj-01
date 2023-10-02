@@ -1,6 +1,6 @@
 //! demo version, not tested, will be change
 
-// import { LOCAL_STORAGE_KEYS } from './constants';
+import { LOCAL_STORAGE_KEYS } from './constants';
 import { renderFavoriteCocktails } from './render-functions';
 import { removeFromLocalStorage } from './local-storage';
 
@@ -11,7 +11,8 @@ const placeholderEmptyFavoriteList = document.querySelector(
   '.placeholder-empty-favorite-list'
 );
 
-const products = JSON.parse(localStorage.getItem('favorites')) || [];
+const products =
+  JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.COCKTAILS)) || [];
 console.log(products);
 
 if (products.length) {
@@ -19,21 +20,23 @@ if (products.length) {
   placeholderEmptyFavoriteList.classList.add('hidden');
 }
 
-const clearBtn = document.querySelector('.remove-from-localstorage-btn');
 favoriteCocktailsList.classList.remove('hidden');
 
-function clearCart() {
-  if (favoriteCocktailsList.length === 0) {
-    placeholderEmptyFavoriteList.classList.remove('hidden');
-  } else {
-    const products = JSON.parse(localStorage.getItem('favorites')) || [];
+//! удаление ещё нужно реализовать
+// const clearBtn = document.querySelector('.remove-from-localstorage-btn');
 
-    products.splice(product => product._id, 1);
-    localStorage.setItem('favorites', JSON.stringify(products));
+// function clearCart() {
+//   if (favoriteCocktailsList.length === 0) {
+//     placeholderEmptyFavoriteList.classList.remove('hidden');
+//   } else {
+//     const products = JSON.parse(localStorage.getItem('favorites')) || [];
 
-    window.location.href = '../favorite-cocktails.html';
-    renderFavoriteCocktails(products, favoriteCocktailsList);
-  }
-}
+//     products.splice(product => product._id, 1);
+//     localStorage.setItem('favorites', JSON.stringify(products));
 
-clearBtn.addEventListener('click', clearCart);
+//     window.location.href = '../favorite-cocktails.html';
+//     renderFavoriteCocktails(products, favoriteCocktailsList);
+//   }
+// }
+
+// clearBtn.addEventListener('click', clearCart);

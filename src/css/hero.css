@@ -77,6 +77,12 @@
     background-repeat: no-repeat;
     background-size: contain;
   }
+  .dark-theme .hero-img-box {
+    background: url(/img/hero/Rectangle725.png)-5px 17px,
+      url(/img/hero/elements_dark_bg.svg) 0px 0px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
 
   .hero-icon-box-desc {
     margin-right: auto;
@@ -93,6 +99,11 @@
 
     background: url(/img/hero/Rectangle725_tablet.png) 368px 101px,
       url(/img/hero/elements_tablet.svg) 363px 70px;
+    background-repeat: no-repeat;
+  }
+  .dark-theme .hero-container {
+    background: url(/img/hero/Rectangle725_tablet.png) 368px 101px,
+      url(/img/hero/elements_tablet_dark_bg.svg) 363px 70px;
     background-repeat: no-repeat;
   }
 
@@ -149,6 +160,11 @@
     padding-top: 34px;
 
     background: url(/img/hero/elements_desktop.svg) 711px 34px,
+      url(/img/hero/Rectangle725_desktop.png) 725px 85px;
+    background-repeat: no-repeat;
+  }
+  .dark-theme .hero-container {
+    background: url(/img/hero/elements_desktop_dark_bg.svg) 711px 34px,
       url(/img/hero/Rectangle725_desktop.png) 725px 85px;
     background-repeat: no-repeat;
   }

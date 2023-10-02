@@ -27,7 +27,10 @@
 
   background-color: var(--primary-bg-color);
   border-radius: 15px;
-  overflow-y: auto;
+
+  overflow: auto;
+  /* scrollbar-width: thin;
+  scrollbar-color: hsl(0 0% 50%); */
 }
 
 @media screen and (max-width: 335px) {

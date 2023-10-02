@@ -1,4 +1,4 @@
-// demo renderCocktails
+// renderCocktails
 export function renderCocktails(arr, box) {
   const markup = arr
     .map(
@@ -76,5 +76,145 @@ export function renderFavoriteIngredients(arr, box) {
 }
 
 // renderModalCocktail
+export function renderModalCocktail(cocktail) {
+  const backdrop = prepareForRenderModal();
+  const ingredientsList = cocktail.ingredients
+    .map(createIngredientItemMarkup)
+    .join('');
+
+  const markup = `<div class="modal cocktail-modal" data-id="${cocktail._id}">
+                    <button type="button" class="modal-close-btn" aria-label="close modal window">
+                      <svg class="modal-close-icon">
+                        <use href="/img/sprite.svg#icon-close-modal"></use>
+                      </svg>
+                    </button>
+                    <div class="cocktail-about-wrapper">
+                      <img
+                        class="cocktail-img"
+                        src="${cocktail.drinkThumb}"
+                        alt="${cocktail.drink}"
+                        width="295"
+                        height="277"
+                      />
+                      <div class="cocktail-ingredients-container">
+                        <h3 class="cocktail-title">${cocktail.drink}</h3>
+                        <h4 class="cocktail-ingredients-title">Ingredients:</h4>
+                        <h5 class="cocktail-per-cocktail">Per cocktail</h5>
+                        <ul class="per-cocktail-ingredients-list">
+                          ${ingredientsList}
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="cocktail-instruction-wrapper">
+                      <h4 class="cocktail-instruction-title">Instructions:</h4>
+                      <p class="cocktail-instruction">
+                        ${cocktail.instructions}
+                      </p>
+                    </div>
+                    <div class="modal-btns">
+                      <button
+                        class="add-or-remove-btn"
+                        type="button"
+                        aria-label="add or remove cocktail"
+                      >
+                        add to favorite
+                      </button>
+
+                      <button
+                        class="back-modal-close-btn"
+                        type="button"
+                        aria-label="close modal window"
+                      >
+                        BACK
+                      </button>
+                    </div>
+                  </div>`;
+  backdrop.innerHTML = markup;
+}
 
 // renderModalIngredient
+export function renderModalIngredient(ingredient) {
+  const backdrop = prepareForRenderModal();
+
+  const emptyField = 'not specified';
+  const titleLength = ingredient.title.split(' ').length;
+  const description = ingredient.description
+    .split(' ')
+    .slice(titleLength)
+    .join(' ');
+  console.log(description);
+
+  let flavour = '';
+  if (ingredient.flavour) {
+    flavour = ingredient.flavour.split('');
+    flavour[0] = flavour[0].toUpperCase();
+    flavour = flavour.join('');
+  }
+
+  const markup = `<div class="modal ingredient-modal" data-id="${
+    ingredient._id
+  }">
+                    <button
+                      type="button"
+                      class="modal-close-btn"
+                      aria-label="close modal window"
+                    >
+                      <svg class="modal-close-icon">
+                        <use href="/img/sprite.svg#icon-close-modal"></use>
+                      </svg>
+                    </button>
+                    <h2 class="ingredient-title">${ingredient.title}</h2>
+                    <h3 class="ingredient-type">${ingredient.type}</h3>
+                    <p class="ingredient-description">
+                      <span class="ingredient-description-name">${
+                        ingredient.title
+                      }</span> ${description}
+                    </p>
+                    <ul class="ingredient-properties-list">
+                      <li class="ingredient-properties-item">Type: ${
+                        ingredient.type || emptyField
+                      }</li>
+                      <li class="ingredient-properties-item">Country of origin: ${
+                        ingredient.country || emptyField
+                      }</li>
+                      <li class="ingredient-properties-item">
+                        Alcohol by volume: ${ingredient.abv || emptyField}
+                      </li>
+                      <li class="ingredient-properties-item">
+                        Flavour: ${flavour || emptyField}
+                      </li>
+                    </ul>
+                    <div class="modal-btns">
+                      <button
+                        class="add-or-remove-btn"
+                        type="button"
+                        aria-label="add or remove ingredient"
+                      >
+                        add to favorite
+                      </button>
+                      <button
+                        class="back-modal-close-btn"
+                        type="button"
+                        aria-label="close modal window"
+                      >
+                        BACK
+                      </button>
+                    </div>
+                  </div>`;
+  backdrop.innerHTML = markup;
+}
+
+// helpers
+function prepareForRenderModal() {
+  document.body.classList.add('no-scrolling-body');
+  const backdrop = document.querySelector('[backdrop-modal]');
+  backdrop.classList.add('backdrop');
+
+  return backdrop;
+}
+
+function createIngredientItemMarkup(ingredient) {
+  return `<li class="per-cocktail-ingredient-item" id="${ingredient._id}">
+            <button type="button" class="per-cocktail-ingredient-btn">${ingredient.title}</button>
+          </li>`;
+}

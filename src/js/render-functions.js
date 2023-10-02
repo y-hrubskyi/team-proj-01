@@ -10,7 +10,7 @@ export function renderCocktails(arr, box) {
               <p class="cocktail-description">${item.description}</p>
               <div>
                 <div class="cocktail-card-btns-wrapper">
-                  <button type="button"   class="learn-more-cocktail-btn">Learn More</button>
+                  <button type="button" class="learn-more-cocktail-btn">Learn More</button>
                   <button type="button" class="add-to-localstorage-btn">
                     <svg width="18px" height="18px" class="svg-icon-heart">
                       <use href="./img/sprite.svg#icon-heart"></use>
@@ -31,16 +31,20 @@ export function renderFavoriteCocktails(arr, box) {
     .map(
       item =>
         `<li class="cocktail-card" data-id="${item._id}">
-            <img src="${item.drinkThumb}" alt"${item.drink}" width ="316"/>
-            <h3 class="cocktail-title">${item.drink}</h3>
-            <p class="cocktail-description">${item.description}</p>
-            <div>
-              <button type="button" class="card-button">Learn More</button>
-              <button type="button" class="remove-from-localstorage-btn" aria-label="remove from local storage">
-                <svg width="18px" height="18px" class="icon-trash">
-                  <use href="./img/sprite.svg#icon-trash"></use>
-                </svg>
-              </button>
+            <img class="cocktail-card-img" src="${item.drinkThumb}" alt="${item.drink}" width="307" height="257"/>
+            <div class="cocktail-info">
+              <h3 class="cocktail-title">${item.drink}</h3>
+              <p class="cocktail-description">${item.description}</p>
+              <div>
+                <div class="cocktail-card-btns-wrapper">
+                  <button type="button" class="learn-more-cocktail-btn">Learn More</button>
+                  <button type="button" class="add-to-localstorage-btn remove-from-localstorage-btn">
+                    <svg width="18px" height="18px" class="icon-trash">
+                      <use href="./img/sprite.svg#icon-trash"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </li>`
     )

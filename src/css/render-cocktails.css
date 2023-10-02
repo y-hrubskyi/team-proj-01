@@ -107,6 +107,8 @@ body.light-theme .learn-more-cocktail-btn:focus {
 .cocktail-card-btns-wrapper .svg-icon-heart {
   stroke: var(--primary-svg-color);
   fill: transparent;
+
+  transition: fill var(--general-transition);
 }
 
 @media screen and (min-width: 768px) {
@@ -170,6 +172,6 @@ body.light-theme .learn-more-cocktail-btn:focus {
   }
 }
 
-.active-svg-heart {
-  background-color: var(--primary-svg-color);
+.cocktail-card-btns-wrapper .svg-icon-heart.is-active {
+  fill: var(--primary-svg-color);
 }

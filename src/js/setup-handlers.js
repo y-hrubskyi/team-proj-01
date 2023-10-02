@@ -1,6 +1,6 @@
 import { addToLocalStorage, removeFromLocalStorage } from './local-storage';
 
-export function setupClickHandlerOnAddToLS(data, box) {
+export function setupClickHandlerOnWorkWithLocaleStorage(data, box, key) {
   box.addEventListener('click', function (e) {
     const button = e.target.closest('.add-to-localstorage-btn');
 
@@ -9,10 +9,10 @@ export function setupClickHandlerOnAddToLS(data, box) {
       const selectedCard = data.find(item => item._id === cardId);
       if (selectedCard) {
         const svgIcon = button.querySelector('.svg-icon-heart');
-        if (svgIcon.classList.contains('active-svg-heart')) {
-          removeFromLocalStorage(selectedCard, svgIcon);
+        if (svgIcon.classList.contains('is-active')) {
+          removeFromLocalStorage(selectedCard, svgIcon, key);
         } else {
-          addToLocalStorage(selectedCard, svgIcon);
+          addToLocalStorage(selectedCard, svgIcon, key);
         }
       }
     }

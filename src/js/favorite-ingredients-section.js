@@ -1,10 +1,11 @@
 import { LOCAL_STORAGE_KEYS } from './constants';
 import { getIngredientById } from './drinkify-api-service';
-import { runModalCloseListeners } from './modal-close-listeners';
+import { setupModalCloseListeners } from './modal-close-listeners';
 import {
   createFavoriteIngredientsMarkup,
   renderModalIngredient,
 } from './render-functions';
+import { setupClickHandlerOnModalOnWorkWithLocaleStorage } from './setup-handlers';
 
 const favoriteIngredietnsList = document.querySelector(
   '.favorite-ingredients-list'
@@ -44,7 +45,11 @@ async function onLearnMoreBtnCLick(button) {
   const ingredientId = button.closest('.favorite-ingredient-item').dataset.id;
   const ingredient = await getIngredientById(ingredientId);
   renderModalIngredient(...ingredient);
-  runModalCloseListeners();
+  setupModalCloseListeners();
+  setupClickHandlerOnModalOnWorkWithLocaleStorage(
+    ingredient,
+    LOCAL_STORAGE_KEYS.INGREDIENTS
+  );
 }
 
 function onRemoveBtnCLick(button) {

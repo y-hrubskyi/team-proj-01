@@ -3,9 +3,9 @@ import { isInLocaleStorage } from './local-storage';
 import { getRandomRating } from './sort-by-rating';
 import spriteUrl from '/img/sprite.svg';
 
-// renderCocktails
-export function renderCocktails(arr, box) {
-  const markup = arr
+// createCocktailsMarkup
+export function createCocktailsMarkup(arr) {
+  return arr
     .map(
       item =>
         `<li class="cocktail-card" data-id="${item._id}" >
@@ -31,7 +31,6 @@ export function renderCocktails(arr, box) {
           </li>`
     )
     .join('');
-  box.insertAdjacentHTML('beforeend', markup);
 }
 
 // demo createFavoriteCocktailsMarkup
@@ -65,7 +64,9 @@ export function createFavoriteIngredientsMarkup(arr) {
   return arr
     .map(
       item =>
-        `<li class="favorite-ingredient-item" data-id="${item._id}">
+        `<li class="favorite-ingredient-item ingredient-card" data-id="${
+          item._id
+        }">
             <h3 class="fav-ingredient-title">${item.title}</h3>
             <h4 class="is-alcoholic-drink-title">${
               item.alcolol === 'Yes' ? 'Alcoholic' : 'Non-Alcoholic'

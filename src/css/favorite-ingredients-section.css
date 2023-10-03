@@ -12,6 +12,12 @@
   box-shadow: 0px 4px 46px rgba(0, 0, 0, 0.05);
 }
 
+.ingredient-card {
+  box-shadow: 5px 5px 24px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 5px 5px 24px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 5px 5px 24px 0px rgba(0, 0, 0, 0.75);
+}
+
 .fav-ingredient-title {
   margin-bottom: 4px;
 

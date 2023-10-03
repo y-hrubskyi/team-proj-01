@@ -38,6 +38,11 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
   randomCocktailsList.innerHTML = '';
 
   renderCocktails(cocktailsToRender, randomCocktailsList);
+  setupClickHandlerOnWorkWithLocaleStorage(
+    searchResults,
+    randomCocktailsList,
+    LOCAL_STORAGE_KEYS.COCKTAILS
+  );
 }
 
 // renderSearchResults();

@@ -19,7 +19,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0.8);
 
   width: 335px;
   max-height: 90%;
@@ -33,7 +33,8 @@
   visibility: hidden;
   pointer-events: none;
 
-  transition: opacity 500ms linear, visibility 500ms linear;
+  transition: transform var(--general-transition),
+    opacity var(--general-transition), visibility var(--general-transition);
 
   /* scrollbar-width: thin;
   scrollbar-color: hsl(0 0% 50%); */
@@ -43,6 +44,7 @@
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 @media screen and (max-width: 335px) {

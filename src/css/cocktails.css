@@ -191,3 +191,32 @@ body.light-theme .learn-more-cocktail-btn:focus {
 .cocktail-card-btns-wrapper .svg-icon-heart.is-active {
   fill: var(--primary-svg-color);
 }
+
+.sort-by-rating {
+  margin-right: auto;
+  padding: 8px 10px 8px 10px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1.33;
+  letter-spacing: 0.28px;
+  white-space: nowrap;
+  color: var(--primary-text-color);
+
+  background-color: var(--primary-bg-color);
+  border: none;
+  border-radius: 5px;
+
+  transition: color var(--general-transition),
+    background-color var(--general-transition);
+}
+.sort-by-rating:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-bg-color);
+}
+
+.rating-cocktails {
+  margin-left: 10px;
+  color: var(--accent-color);
+}

@@ -1,5 +1,6 @@
 import { LOCAL_STORAGE_KEYS } from './constants';
 import { isInLocaleStorage } from './local-storage';
+import { getRandomRating } from './sort-by-rating';
 import spriteUrl from '/img/sprite.svg';
 
 // renderCocktails
@@ -7,10 +8,14 @@ export function renderCocktails(arr, box) {
   const markup = arr
     .map(
       item =>
-        `<li class="cocktail-card" data-id="${item._id}">
-            <img class="cocktail-card-img" src="${item.drinkThumb}" alt="${item.drink}" width="307" height="257"/>
+        `<li class="cocktail-card" data-id="${item._id}" >
+            <img class="cocktail-card-img" src="${item.drinkThumb}" alt="${
+          item.drink
+        }" width="307" height="257"/>
             <div class="cocktail-info">
-              <h3 class="cocktail-title">${item.drink}</h3>
+              <h3 class="cocktail-title">${
+                item.drink
+              }<span class="rating-cocktails hidden">${getRandomRating()}</span></h3>
               <p class="cocktail-description">${item.description}</p>
               <div>
                 <div class="cocktail-card-btns-wrapper">

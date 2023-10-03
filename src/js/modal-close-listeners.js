@@ -32,7 +32,7 @@ function onKeyUp(event) {
 
 function closeModal() {
   const backdrop = document.querySelector('.backdrop');
-  backdrop.innerHTML = '';
+  backdrop.querySelector('.modal').innerHTML = '';
   backdrop.classList.remove('backdrop');
   document.body.classList.remove('no-scrolling-body');
 }

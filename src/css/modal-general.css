@@ -29,8 +29,15 @@
   border-radius: 15px;
 
   overflow: auto;
+  opacity: 0;
+  transition: opacity 500ms linear;
+
   /* scrollbar-width: thin;
   scrollbar-color: hsl(0 0% 50%); */
+}
+
+.backdrop .modal {
+  opacity: 1;
 }
 
 @media screen and (max-width: 335px) {

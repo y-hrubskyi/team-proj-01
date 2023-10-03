@@ -1,6 +1,12 @@
 import { LOCAL_STORAGE_KEYS } from './constants';
-import { createFavoriteCocktailsMarkup } from './render-functions';
+import { paginateArray } from './pagination';
+import {
+  createFavoriteCocktailsMarkup,
+  renderCocktails,
+} from './render-functions';
 import { setupClickHandlerOnOpenModal } from './setup-handlers';
+
+let rows = 6;
 
 const favoriteCocktailsList = document.querySelector(
   '.favorite-cocktails-list'
@@ -12,6 +18,11 @@ const placeholderEmptyFavoriteList = document.querySelector(
 function renderFavoriteCocktails() {
   const products =
     JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.COCKTAILS)) || [];
+
+  if (products.length > rows) {
+    const paginationFn = paginateArray(products, rows);
+    renderCocktails(paginationFn, favoriteCocktailsList);
+  }
 
   if (products.length) {
     placeholderEmptyFavoriteList.classList.add('visually-hidden');

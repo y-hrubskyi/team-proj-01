@@ -24,17 +24,23 @@ export async function searchCocktailsByFillter({
   try {
     const response = await axios.get(requestURL);
     return response.data;
-  } catch (error) {
-    console.error(error);
+  } catch (error){
+     renderNoResultInfo()
   }
 }
 
 export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
-  if (!firstLetter && !cocktailName) return; //add function render card with informaton of no resuts
+  if (!firstLetter && !cocktailName) {
+    renderNoResultInfo()
+    return
+  }; //add function render card with informaton of no resuts
   const searchResults = await searchCocktailsByFillter({
     firstLetter,
     cocktailName,
-  }); //add function render card with informaton of no resuts
+  })
+  
+  if (!searchResults) return; 
+  
   const cocktailsToRender =
     getDeviceType() === 'desktop'
       ? searchResults.slice(0, 9)
@@ -42,6 +48,7 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
   randomCocktailsList.innerHTML = '';
 
   renderCocktails(cocktailsToRender, randomCocktailsList);
+  newTextAfterSearch();
   setupClickHandlerOnWorkWithLocaleStorage(
     searchResults,
     randomCocktailsList,
@@ -83,3 +90,35 @@ function onRadioButtonClick(e) {
 }
 
 radionbuttonsEL.addEventListener('click', onRadioButtonClick);
+
+
+// no result image
+
+function renderNoResultInfo() {
+  const noResultsContainerEl = document.querySelector(".cocktails-section")
+
+  noResultsContainerEl.innerHTML = "";
+  noResultsContainerEl.insertAdjacentHTML("beforeend",`<div class="placeholder-empty-favorite-list">
+    <svg class="empty-favorite-img">
+      <use href="./img/sprite.svg#icon-placeholder-empty-list"></use>
+    </svg>
+    <p class="empty-favorite-text">
+      Sorry, we
+      <span class="empty-favorite-text-span">didn’t find</span>
+      any cocktail for you
+    </p>
+  </div>);` );
+  
+ 
+} 
+
+
+// change coctails to Searching results
+
+const titleCocktailel = document.querySelector(".section-title");
+
+function newTextAfterSearch() {
+
+  titleCocktailel.textContent = "Searching results"
+  
+}

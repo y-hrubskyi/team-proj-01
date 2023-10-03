@@ -24,7 +24,7 @@ export function setupClickHandlerOnWorkWithLocaleStorage(data, box, key) {
 }
 
 export function setupClickHandlerOnModalOnWorkWithLocaleStorage(card, key) {
-  const modal = document.querySelector('.modal');
+  const modal = document.querySelector('.modal-container');
 
   modal.addEventListener('click', function (e) {
     const target = e.target;

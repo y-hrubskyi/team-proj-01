@@ -30,7 +30,10 @@
 
   overflow: auto;
   opacity: 0;
-  transition: opacity 500ms linear;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity 500ms linear, visibility 500ms linear;
 
   /* scrollbar-width: thin;
   scrollbar-color: hsl(0 0% 50%); */
@@ -38,6 +41,8 @@
 
 .backdrop .modal {
   opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 @media screen and (max-width: 335px) {

@@ -90,54 +90,53 @@ export function renderModalCocktail(cocktail) {
     .map(createIngredientItemMarkup)
     .join('');
 
-  const modal = backdrop.querySelector('.modal');
-  modal.dataset.id = cocktail._id;
-
-  const markup = `<button type="button" class="modal-close-btn" aria-label="close modal window">
-                    <svg class="modal-close-icon">
-                      <use href="${spriteUrl}#icon-close-modal"></use>
-                    </svg>
-                  </button>
-                  <div class="cocktail-about-wrapper">
-                    <img
-                      class="cocktail-img"
-                      src="${cocktail.drinkThumb}"
-                      alt="${cocktail.drink}"
-                      width="295"
-                      height="277"
-                    />
-                    <div class="cocktail-ingredients-container">
-                      <h3 class="cocktail-title">${cocktail.drink}</h3>
-                      <h4 class="cocktail-ingredients-title">Ingredients:</h4>
-                      <h5 class="cocktail-per-cocktail">Per cocktail</h5>
-                      <ul class="per-cocktail-ingredients-list">
-                        ${ingredientsList}
-                      </ul>
+  const markup = `<div class="modal-container" data-id=${cocktail._id}>
+                    <button type="button" class="modal-close-btn" aria-label="close modal window">
+                      <svg class="modal-close-icon">
+                        <use href="${spriteUrl}#icon-close-modal"></use>
+                      </svg>
+                    </button>
+                    <div class="cocktail-about-wrapper">
+                      <img
+                        class="cocktail-img"
+                        src="${cocktail.drinkThumb}"
+                        alt="${cocktail.drink}"
+                        width="295"
+                        height="277"
+                      />
+                      <div class="cocktail-ingredients-container">
+                        <h3 class="cocktail-title">${cocktail.drink}</h3>
+                        <h4 class="cocktail-ingredients-title">Ingredients:</h4>
+                        <h5 class="cocktail-per-cocktail">Per cocktail</h5>
+                        <ul class="per-cocktail-ingredients-list">
+                          ${ingredientsList}
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                  <div class="cocktail-instruction-wrapper">
-                    <h4 class="cocktail-instruction-title">Instructions:</h4>
-                    <p class="cocktail-instruction">
-                      ${cocktail.instructions}
-                    </p>
-                  </div>
-                  <div class="modal-btns">
-                    <button
-                      class="add-or-remove-btn ${params.actionClass} ${params.styleClass}"
-                      type="button"
-                      aria-label="${params.ariaLabel}"
-                    >
-                      ${params.textContent}
-                    </button>
-                    <button
-                      class="back-modal-close-btn"
-                      type="button"
-                      aria-label="close modal window"
-                    >
-                      BACK
-                    </button>
+                    <div class="cocktail-instruction-wrapper">
+                      <h4 class="cocktail-instruction-title">Instructions:</h4>
+                      <p class="cocktail-instruction">
+                        ${cocktail.instructions}
+                      </p>
+                    </div>
+                    <div class="modal-btns">
+                      <button
+                        class="add-or-remove-btn ${params.actionClass} ${params.styleClass}"
+                        type="button"
+                        aria-label="${params.ariaLabel}"
+                      >
+                        ${params.textContent}
+                      </button>
+                      <button
+                        class="back-modal-close-btn"
+                        type="button"
+                        aria-label="close modal window"
+                      >
+                        BACK
+                      </button>
+                    </div>
                   </div>`;
-  modal.innerHTML = markup;
+  backdrop.querySelector('.modal').innerHTML = markup;
 }
 
 // renderModalIngredient
@@ -166,58 +165,57 @@ export function renderModalIngredient(ingredient) {
     flavour = flavour.join('');
   }
 
-  const modal = backdrop.querySelector('.modal');
-  modal.dataset.id = ingredient._id;
-
-  const markup = `<button
-                    type="button"
-                    class="modal-close-btn"
-                    aria-label="close modal window"
-                  >
-                    <svg class="modal-close-icon">
-                      <use href="${spriteUrl}#icon-close-modal"></use>
-                    </svg>
-                  </button>
-                  <h2 class="ingredient-title">${ingredient.title}</h2>
-                  <h3 class="ingredient-type">${ingredient.type}</h3>
-                  <p class="ingredient-description">
-                    <span class="ingredient-description-name">${
-                      ingredient.title
-                    }</span> ${description || emptyField}
-                  </p>
-                  <ul class="ingredient-properties-list">
-                    <li class="ingredient-properties-item">Type: ${
-                      ingredient.type || emptyField
-                    }</li>
-                    <li class="ingredient-properties-item">Country of origin: ${
-                      ingredient.country || emptyField
-                    }</li>
-                    <li class="ingredient-properties-item">
-                      Alcohol by volume: ${ingredient.abv || emptyField}
-                    </li>
-                    <li class="ingredient-properties-item">
-                      Flavour: ${flavour || emptyField}
-                    </li>
-                  </ul>
-                  <div class="modal-btns">
+  const markup = `<div class="modal-container" data-id=${ingredient._id}>
                     <button
-                      class="add-or-remove-btn ${params.actionClass} ${
-    params.styleClass
-  }
                       type="button"
-                      aria-label="${params.ariaLabel}"
-                    >
-                      ${params.textContent}
-                    </button>
-                    <button
-                      class="back-modal-close-btn"
-                      type="button"
+                      class="modal-close-btn"
                       aria-label="close modal window"
                     >
-                      BACK
+                      <svg class="modal-close-icon">
+                        <use href="${spriteUrl}#icon-close-modal"></use>
+                      </svg>
                     </button>
+                    <h2 class="ingredient-title">${ingredient.title}</h2>
+                    <h3 class="ingredient-type">${ingredient.type}</h3>
+                    <p class="ingredient-description">
+                      <span class="ingredient-description-name">${
+                        ingredient.title
+                      }</span> ${description || emptyField}
+                    </p>
+                    <ul class="ingredient-properties-list">
+                      <li class="ingredient-properties-item">Type: ${
+                        ingredient.type || emptyField
+                      }</li>
+                      <li class="ingredient-properties-item">Country of origin: ${
+                        ingredient.country || emptyField
+                      }</li>
+                      <li class="ingredient-properties-item">
+                        Alcohol by volume: ${ingredient.abv || emptyField}
+                      </li>
+                      <li class="ingredient-properties-item">
+                        Flavour: ${flavour || emptyField}
+                      </li>
+                    </ul>
+                    <div class="modal-btns">
+                      <button
+                        class="add-or-remove-btn ${params.actionClass} ${
+    params.styleClass
+  } 
+                        type="button"
+                        aria-label="${params.ariaLabel}"
+                      >
+                        ${params.textContent}
+                      </button>
+                      <button
+                        class="back-modal-close-btn"
+                        type="button"
+                        aria-label="close modal window"
+                      >
+                        BACK
+                      </button>
+                    </div>
                   </div>`;
-  modal.innerHTML = markup;
+  backdrop.querySelector('.modal').innerHTML = markup;
 }
 
 // helpers

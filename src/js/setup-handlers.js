@@ -1,25 +1,55 @@
 import { addToLocalStorage, removeFromLocalStorage } from './local-storage';
+import { renderModalCocktail, renderModalIngredient } from './render-functions';
+import { runModalCloseListeners } from './modal-close-listeners';
+import { getCocktailById, getIngredientById } from './drinkify-api-service';
 
-export function setupClickHandlerOnAddToLS(data, box) {
+export function setupClickHandlerOnWorkWithLocaleStorage(data, box, key) {
   box.addEventListener('click', function (e) {
-    if (e.target.classList.contains('add-to-localstorage-btn')) {
-      const cardId = e.target.closest('.cocktail-card').dataset.id;
+    const button = e.target.closest('.add-to-localstorage-btn');
+
+    if (button) {
+      const cardId = button.closest('.cocktail-card').dataset.id;
       const selectedCard = data.find(item => item._id === cardId);
       if (selectedCard) {
-        addToLocalStorage(selectedCard);
+        const svgIcon = button.querySelector('.svg-icon-heart');
+        if (svgIcon.classList.contains('is-active')) {
+          removeFromLocalStorage(selectedCard, svgIcon, key);
+        } else {
+          addToLocalStorage(selectedCard, svgIcon, key);
+        }
       }
     }
   });
 }
 
-export function setupClickHandlerOnRemoveFromLS(data, box) {
-  box.addEventListener('click', function (e) {
-    if (e.target.classList.contains('remove-from-localstorage-btn')) {
-      const cardId = e.target.closest('.cocktail-card').dataset.id;
-      const selectedCard = data.find(item => item._id === cardId);
-      if (selectedCard) {
-        removeFromLocalStorage(selectedCard);
-      }
+export async function setupClickHandlerOnOpenModal(box) {
+  box.addEventListener('click', async function (e) {
+    const button = e.target.closest('.learn-more-btn');
+    if (!button) {
+      return;
+    }
+
+    const cocktailId = button.closest('.cocktail-card').dataset.id;
+    try {
+      const cocktail = await getCocktailById(cocktailId);
+      renderModalCocktail(...cocktail);
+      runModalCloseListeners();
+
+      const ingredientsList = document.querySelector(
+        '.per-cocktail-ingredients-list'
+      );
+      ingredientsList.addEventListener('click', async function (e) {
+        const button = e.target.closest('.per-cocktail-ingredient-btn');
+        if (!button) {
+          return;
+        }
+        const ingredientId = button.dataset.id;
+        const ingredient = await getIngredientById(ingredientId);
+        renderModalIngredient(...ingredient);
+        runModalCloseListeners();
+      });
+    } catch (error) {
+      console.log(error);
     }
   });
 }

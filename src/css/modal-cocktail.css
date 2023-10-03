@@ -1,0 +1,136 @@
+.cocktail-about-wrapper {
+  margin-bottom: 40px;
+}
+
+.cocktail-img {
+  width: 295px;
+  height: 277px;
+  margin-bottom: 40px;
+
+  border-radius: 16px;
+}
+
+.cocktail-title {
+  margin-bottom: 20px;
+
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.cocktail-ingredients-title {
+  margin-bottom: 8px;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.12;
+  text-transform: uppercase;
+}
+
+.cocktail-per-cocktail {
+  margin-bottom: 20px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+  color: rgba(36, 36, 36, 0.5);
+}
+
+body.dark-theme .cocktail-per-cocktail {
+  color: rgba(253, 253, 255, 0.5);
+}
+
+.per-cocktail-ingredients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.per-cocktail-ingredient-item::marker {
+  font-size: 12px;
+}
+
+.per-cocktail-ingredient-btn {
+  padding: 0;
+
+  font-size: 14px;
+  line-height: 1.28;
+  text-align: left;
+  color: rgba(36, 36, 36, 0.8);
+
+  border: none;
+  background-color: transparent;
+  transition: color var(--general-transition);
+}
+
+body.dark-theme .per-cocktail-ingredient-btn {
+  color: rgba(253, 253, 255, 0.99);
+}
+
+.per-cocktail-ingredient-btn:hover,
+.per-cocktail-ingredient-btn:focus,
+body.dark-theme .per-cocktail-ingredient-btn:hover,
+body.dark-theme .per-cocktail-ingredient-btn:focus {
+  color: var(--accent-color);
+}
+
+.cocktail-instruction-wrapper {
+  margin-bottom: 40px;
+}
+
+.cocktail-instruction-title {
+  margin-bottom: 14px;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.12;
+  text-transform: uppercase;
+}
+
+.cocktail-instruction {
+  max-height: 107px;
+
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(36, 36, 36, 0.5);
+
+  overflow: auto;
+  /* scrollbar-width: thin;
+  scrollbar-color: hsl(0 0% 50%); */
+}
+
+body.dark-theme .cocktail-instruction {
+  color: rgba(253, 253, 255, 0.5);
+}
+
+@media only screen and (min-width: 768px) {
+  .cocktail-about-wrapper {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .cocktail-img {
+    width: 288px;
+    margin-bottom: 0;
+  }
+
+  .per-cocktail-ingredients-list {
+    max-height: 170px;
+    overflow: auto;
+  }
+
+  .cocktail-instruction-title {
+    margin-bottom: 18px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .cocktail-img {
+    width: 316px;
+    height: 289px;
+  }
+}

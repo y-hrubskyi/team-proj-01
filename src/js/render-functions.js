@@ -3,8 +3,8 @@ import { isInLocaleStorage } from './local-storage';
 import spriteUrl from '/img/sprite.svg';
 
 // renderCocktails
-export function renderCocktails(arr, box) {
-  const markup = arr
+export function renderCocktails(arr) {
+  return arr
     .map(
       item =>
         `<li class="cocktail-card" data-id="${item._id}">

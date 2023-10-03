@@ -7,7 +7,8 @@ const isActivePagination = document.querySelector('.pagination-container');
 
 let current_page = 1;
 
-export function paginateArray(arrDatas, rowPerPage, box) {
+export function paginateArray(arrDatas, rowPerPage, box, renderFn) {
+  console.log(renderFn);
   if (arrDatas.length <= rowPerPage) {
     isActivePagination.classList.add('is-active-pagination');
     paginationList.innerHTML = '';
@@ -48,7 +49,7 @@ export function paginateArray(arrDatas, rowPerPage, box) {
       }
       current_page = parseInt(e.target.name);
       const paginatedData = displayList(arrDatas, rowPerPage, current_page);
-      renderCocktails(paginatedData, box);
+      box.innerHTML = renderFn(paginatedData);
       current_page = 1;
     }
 
@@ -64,7 +65,7 @@ export function paginateArray(arrDatas, rowPerPage, box) {
 
         leftButton.classList.add('arrow-active');
         const paginatedData = displayList(arrDatas, rowPerPage, current_page);
-        renderCocktails(paginatedData, box);
+        box.innerHTML = renderFn(paginatedData);
       }
     }
     function onRightButtonClick() {
@@ -76,7 +77,7 @@ export function paginateArray(arrDatas, rowPerPage, box) {
         current_page += 1;
         rightButton.classList.add('arrow-active');
         const paginatedData = displayList(arrDatas, rowPerPage, current_page);
-        renderCocktails(paginatedData, box);
+        box.innerHTML = renderFn(paginatedData);
       }
     }
 

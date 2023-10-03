@@ -44,7 +44,8 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
     const paginationFn = paginateArray(
       searchResults,
       cocktailsToRender,
-      randomCocktailsList
+      randomCocktailsList,
+      renderCocktails
     );
 
     renderCocktails(paginationFn, randomCocktailsList);

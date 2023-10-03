@@ -20,7 +20,12 @@ function renderFavoriteCocktails() {
     JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.COCKTAILS)) || [];
 
   if (products.length) {
-    const paginationFn = paginateArray(products, rows, favoriteCocktailsList);
+    const paginationFn = paginateArray(
+      products,
+      rows,
+      favoriteCocktailsList,
+      createFavoriteCocktailsMarkup
+    );
     renderCocktails(paginationFn, favoriteCocktailsList);
     placeholderEmptyFavoriteList.classList.add('visually-hidden');
     placeholderEmptyFavoriteList

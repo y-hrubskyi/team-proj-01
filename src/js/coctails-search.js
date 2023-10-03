@@ -36,9 +36,7 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
 
   const cocktailsToRender = getDeviceType() === 'desktop' ? 9 : 8;
   randomCocktailsList.innerHTML = '';
-
   const paginationFn = paginateArray(searchResults, cocktailsToRender);
-  console.log(paginationFn);
   renderCocktails(paginationFn, randomCocktailsList);
 }
 

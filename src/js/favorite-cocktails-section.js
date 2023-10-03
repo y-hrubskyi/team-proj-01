@@ -2,6 +2,8 @@ import { LOCAL_STORAGE_KEYS } from './constants';
 import { renderFavoriteCocktails } from './render-functions';
 import { removeFromLocalStorage } from './local-storage';
 
+let rows = 6;
+
 const favoriteCocktailsList = document.querySelector(
   '.favorite-cocktails-list'
 );
@@ -12,6 +14,11 @@ const placeholderEmptyFavoriteList = document.querySelector(
 const products =
   JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.COCKTAILS)) || [];
 console.log(products);
+
+if (products.length > rows) {
+  const paginationFn = paginateArray(products, rows);
+  renderCocktails(paginationFn, favoriteCocktailsList);
+}
 
 if (products.length) {
   renderFavoriteCocktails(products, favoriteCocktailsList);

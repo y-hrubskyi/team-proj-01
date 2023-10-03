@@ -60,7 +60,9 @@ export function createFavoriteIngredientsMarkup(arr) {
   return arr
     .map(
       item =>
-        `<li class="favorite-ingredient-item" data-id="${item._id}">
+        `<li class="favorite-ingredient-item ingredient-card" data-id="${
+          item._id
+        }">
             <h3 class="fav-ingredient-title">${item.title}</h3>
             <h4 class="is-alcoholic-drink-title">${
               item.alcolol === 'Yes' ? 'Alcoholic' : 'Non-Alcoholic'

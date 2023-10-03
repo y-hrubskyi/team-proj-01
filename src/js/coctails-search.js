@@ -3,6 +3,7 @@ import axios from 'axios';
 import { BASE_URL } from './constants';
 import { renderCocktails } from './render-functions';
 import { getDeviceType } from './random-cocktails';
+import { paginateArray } from './plagination';
 
 const randomCocktailsList = document.querySelector('.random-cocktails-list-js');
 
@@ -19,6 +20,7 @@ export async function searchCocktailsByFillter({
   }
   try {
     const response = await axios.get(requestURL);
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -31,13 +33,13 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
     firstLetter,
     cocktailName,
   }); //add function render card with informaton of no resuts
-  const cocktailsToRender =
-    getDeviceType() === 'desktop'
-      ? searchResults.slice(0, 9)
-      : searchResults.slice(0, 8);
+
+  const cocktailsToRender = getDeviceType() === 'desktop' ? 9 : 8;
   randomCocktailsList.innerHTML = '';
 
-  renderCocktails(cocktailsToRender, randomCocktailsList);
+  const paginationFn = paginateArray(searchResults, cocktailsToRender);
+  console.log(paginationFn);
+  renderCocktails(paginationFn, randomCocktailsList);
 }
 
 // renderSearchResults();

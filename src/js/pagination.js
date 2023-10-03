@@ -1,6 +1,6 @@
 import { renderCocktails } from './render-functions';
 
-const plaginationList = document.getElementById('plagination-list');
+const paginationList = document.getElementById('pagination-list');
 const leftButton = document.querySelector('.left-button');
 const rightButton = document.querySelector('.right-button');
 let current_page = 1;
@@ -25,10 +25,10 @@ export function paginateArray(arrDatas, rowPerPage) {
       marcap.push(cart);
     }
     console.log(marcap.join(''));
-    plaginationList.innerHTML = marcap.join('');
+    paginationList.innerHTML = marcap.join('');
   }
 
-  plaginationList.addEventListener('click', onButtonClick);
+  paginationList.addEventListener('click', onButtonClick);
   function onButtonClick(e) {
     const randomCocktailsList = document.querySelector(
       '.random-cocktails-list-js'

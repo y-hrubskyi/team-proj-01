@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BASE_URL, LOCAL_STORAGE_KEYS } from './constants';
 import { renderCocktails } from './render-functions';
 import { getDeviceType } from './random-cocktails';
-import { paginateArray } from './plagination';
+import { paginateArray } from './pagination';
 import {
   setupClickHandlerOnOpenModal,
   setupClickHandlerOnWorkWithLocaleStorage,

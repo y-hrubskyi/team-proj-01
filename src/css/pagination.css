@@ -1,3 +1,6 @@
+.is-active-pagination {
+  display: none;
+}
 .pagination-container {
   padding-bottom: 80px;
 }
@@ -27,6 +30,15 @@
 .right-arrow {
   stroke: rgba(36, 36, 36, 0.4);
   transform: rotate(-90deg);
+}
+body.dark-theme .right-arrow {
+  stroke: rgba(253, 253, 255, 0.4);
+}
+body.dark-theme .left-arrow {
+  stroke: rgba(253, 253, 255, 0.4);
+}
+.arrow-active {
+  stroke: rgba(126, 143, 221, 1);
 }
 
 .button-pagination {

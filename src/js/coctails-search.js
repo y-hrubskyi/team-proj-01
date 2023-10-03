@@ -24,7 +24,7 @@ export async function searchCocktailsByFillter({
   }
   try {
     const response = await axios.get(requestURL);
-    console.log(response.data);
+
     return response.data;
   } catch (error) {
     console.error(error);
@@ -40,7 +40,12 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
 
   const cocktailsToRender = getDeviceType() === 'desktop' ? 9 : 8;
   randomCocktailsList.innerHTML = '';
-  const paginationFn = paginateArray(searchResults, cocktailsToRender);
+  const paginationFn = paginateArray(
+    searchResults,
+    cocktailsToRender,
+    randomCocktailsList
+  );
+
   renderCocktails(paginationFn, randomCocktailsList);
 
   setupClickHandlerOnWorkWithLocaleStorage(

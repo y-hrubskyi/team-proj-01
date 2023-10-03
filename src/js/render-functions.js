@@ -2,9 +2,9 @@ import { LOCAL_STORAGE_KEYS } from './constants';
 import { isInLocaleStorage } from './local-storage';
 import spriteUrl from '/img/sprite.svg';
 
-// renderCocktails
-export function renderCocktails(arr, box) {
-  const markup = arr
+// createCocktailsMarkup
+export function createCocktailsMarkup(arr) {
+  return arr
     .map(
       item =>
         `<li class="cocktail-card" data-id="${item._id}">
@@ -26,7 +26,6 @@ export function renderCocktails(arr, box) {
           </li>`
     )
     .join('');
-  box.insertAdjacentHTML('beforeend', markup);
 }
 
 // demo createFavoriteCocktailsMarkup

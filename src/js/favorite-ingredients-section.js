@@ -22,7 +22,12 @@ function renderFavoriteIngredients() {
     JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.INGREDIENTS)) || [];
 
   if (!products.length) return;
-  const paginationFn = paginateArray(products, rows, favoriteIngredietnsList);
+  const paginationFn = paginateArray(
+    products,
+    rows,
+    favoriteIngredietnsList,
+    createFavoriteIngredientsMarkup
+  );
 
   placeholderEmptyFavoriteList.classList.add('visually-hidden');
   placeholderEmptyFavoriteList

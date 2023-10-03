@@ -2,7 +2,7 @@ import axios from 'axios';
 import spriteUrl from '/img/sprite.svg';
 
 import { BASE_URL, LOCAL_STORAGE_KEYS } from './constants';
-import { renderCocktails } from './render-functions';
+import { createCocktailsMarkup } from './render-functions';
 import { getDeviceType } from './random-cocktails';
 import { paginateArray } from './pagination';
 import {
@@ -44,10 +44,11 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
     const paginationFn = paginateArray(
       searchResults,
       cocktailsToRender,
-      randomCocktailsList
+      randomCocktailsList,
+      createCocktailsMarkup
     );
 
-    renderCocktails(paginationFn, randomCocktailsList);
+    randomCocktailsList.innerHTML = createCocktailsMarkup(paginationFn);
     setupClickHandlerOnWorkWithLocaleStorage(
       searchResults,
       randomCocktailsList,

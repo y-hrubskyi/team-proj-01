@@ -2,7 +2,7 @@ import { LOCAL_STORAGE_KEYS } from './constants';
 import { paginateArray } from './pagination';
 import {
   createFavoriteCocktailsMarkup,
-  renderCocktails,
+  createCocktailsMarkup,
 } from './render-functions';
 import { setupClickHandlerOnOpenModal } from './setup-handlers';
 
@@ -20,8 +20,13 @@ function renderFavoriteCocktails() {
     JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.COCKTAILS)) || [];
 
   if (products.length) {
-    const paginationFn = paginateArray(products, rows, favoriteCocktailsList);
-    renderCocktails(paginationFn, favoriteCocktailsList);
+    const paginationFn = paginateArray(
+      products,
+      rows,
+      favoriteCocktailsList,
+      createFavoriteCocktailsMarkup
+    );
+    favoriteCocktailsList.innerHTML = createCocktailsMarkup(paginationFn);
     placeholderEmptyFavoriteList.classList.add('visually-hidden');
     placeholderEmptyFavoriteList
       .closest('.favorite-section')

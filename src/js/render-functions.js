@@ -56,7 +56,7 @@ export function createFavoriteCocktailsMarkup(arr) {
 }
 
 // demo createFavoriteIngredientsMarkup
-export function createFavoriteIngredientsMarkup(arr, box) {
+export function createFavoriteIngredientsMarkup(arr) {
   return arr
     .map(
       item =>
@@ -91,8 +91,6 @@ export function renderModalCocktail(cocktail) {
     .join('');
 
   const modal = backdrop.querySelector('.modal');
-  modal.classList.remove('ingredient-modal');
-  modal.classList.add('cocktail-modal');
   modal.dataset.id = cocktail._id;
 
   const markup = `<button type="button" class="modal-close-btn" aria-label="close modal window">
@@ -169,8 +167,6 @@ export function renderModalIngredient(ingredient) {
   }
 
   const modal = backdrop.querySelector('.modal');
-  modal.classList.remove('cocktail-modal');
-  modal.classList.add('ingredient-modal');
   modal.dataset.id = ingredient._id;
 
   const markup = `<button
@@ -206,7 +202,7 @@ export function renderModalIngredient(ingredient) {
                   <div class="modal-btns">
                     <button
                       class="add-or-remove-btn ${params.actionClass} ${
-    params.styleClas
+    params.styleClass
   }
                       type="button"
                       aria-label="${params.ariaLabel}"
@@ -235,23 +231,24 @@ function prepareForRenderModal() {
 
 export function setupParamsForRender(obj, key) {
   const isAlreadyInLocaleStorage = isInLocaleStorage(obj, key);
+  const params = {};
 
   if (isAlreadyInLocaleStorage) {
-    obj.actionClass = 'remove-from-localstorage-btn';
-    obj.textContent = 'remove from favorite';
-    obj.styleClass = 'modal-remove-button';
-    obj.ariaLabel = 'remove from favorite';
+    params.actionClass = 'remove-from-localstorage-btn';
+    params.textContent = 'remove from favorite';
+    params.styleClass = 'modal-remove-button';
+    params.ariaLabel = 'remove from favorite';
     console.log('is in locale storage');
   } else {
-    obj.actionClass = 'add-to-localstorage-btn';
-    obj.textContent = 'add to favorite';
-    obj.styleClass = '';
-    obj.ariaLabel = 'add to favorite';
-    console.log(`isn't locale storage`);
+    params.actionClass = 'add-to-localstorage-btn';
+    params.textContent = 'add to favorite';
+    params.styleClass = '';
+    params.ariaLabel = 'add to favorite';
+    console.log(`isn't in locale storage`);
   }
-  console.log(obj);
+  console.log('PARAMS: ', params);
 
-  return obj;
+  return params;
 }
 
 function createIngredientItemMarkup(ingredient) {

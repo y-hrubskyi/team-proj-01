@@ -1,5 +1,6 @@
 import { LOCAL_STORAGE_KEYS } from './constants';
 import { createFavoriteCocktailsMarkup } from './render-functions';
+import { setupClickHandlerOnOpenModal } from './setup-handlers';
 
 const favoriteCocktailsList = document.querySelector(
   '.favorite-cocktails-list'
@@ -8,17 +9,21 @@ const placeholderEmptyFavoriteList = document.querySelector(
   '.placeholder-empty-favorite-list'
 );
 
-const products =
-  JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.COCKTAILS)) || [];
+function loadFavoriteCocktails() {
+  const products =
+    JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.COCKTAILS)) || [];
 
-if (products.length) {
-  placeholderEmptyFavoriteList.classList.add('visually-hidden');
-  placeholderEmptyFavoriteList
-    .closest('.favorite-section')
-    .classList.remove('is-empty');
+  if (products.length) {
+    placeholderEmptyFavoriteList.classList.add('visually-hidden');
+    placeholderEmptyFavoriteList
+      .closest('.favorite-section')
+      .classList.remove('is-empty');
 
-  favoriteCocktailsList.classList.remove('visually-hidden');
-  favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(products);
+    favoriteCocktailsList.classList.remove('visually-hidden');
+    favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(products);
+    favoriteCocktailsList.addEventListener('click', clickHandler);
+    setupClickHandlerOnOpenModal(favoriteCocktailsList);
+  }
 }
 
 function clickHandler(e) {
@@ -51,4 +56,4 @@ function clickHandler(e) {
   }
 }
 
-favoriteCocktailsList.addEventListener('click', clickHandler);
+loadFavoriteCocktails();

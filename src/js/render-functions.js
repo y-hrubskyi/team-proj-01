@@ -39,7 +39,7 @@ export function createFavoriteCocktailsMarkup(arr, box) {
               <p class="cocktail-description">${item.description}</p>
               <div>
                 <div class="cocktail-card-btns-wrapper">
-                  <button type="button" class="learn-more-cocktail-btn">Learn More</button>
+                  <button type="button" class="learn-more-cocktail-btn learn-more-btn">Learn More</button>
                   <button type="button" class="add-to-localstorage-btn remove-from-localstorage-btn">
                     <svg width="18px" height="18px" class="icon-trash">
                       <use href="${spriteUrl}#icon-trash"></use>

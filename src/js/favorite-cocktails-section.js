@@ -1,6 +1,5 @@
 import { LOCAL_STORAGE_KEYS } from './constants';
 import { renderFavoriteCocktails } from './render-functions';
-import { removeFromLocalStorage } from './local-storage';
 
 const favoriteCocktailsList = document.querySelector(
   '.favorite-cocktails-list'
@@ -23,20 +22,27 @@ if (products.length) {
 }
 
 //! удаление ещё нужно реализовать
-// const clearBtn = document.querySelector('.remove-from-localstorage-btn');
 
-// function clearCart() {
-//   if (favoriteCocktailsList.length === 0) {
-//     placeholderEmptyFavoriteList.classList.remove('visually-hidden');
-//   } else {
-//     const products = JSON.parse(localStorage.getItem('favorites')) || [];
+function clickHandler(e) {
+  const button = e.target.closest('.remove-from-localstorage-btn');
+  if (!button) return;
 
-//     products.splice(product => product._id, 1);
-//     localStorage.setItem('favorites', JSON.stringify(products));
+  const cardId = button.closest('.cocktail-card').dataset.id;
 
-//     window.location.href = '../favorite-cocktails.html';
-//     renderFavoriteCocktails(products, favoriteCocktailsList);
-//   }
-// }
+  let products =
+    JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.COCKTAILS)) || [];
+  const indexToRemove = products.findIndex(product => product._id === cardId);
 
-// clearBtn.addEventListener('click', clearCart);
+  if (indexToRemove !== -1) {
+    products.splice(indexToRemove, 1);
+    localStorage.setItem(
+      LOCAL_STORAGE_KEYS.COCKTAILS,
+      JSON.stringify(products)
+    );
+  }
+
+  window.location.href = '../favorite-cocktails.html';
+  renderFavoriteCocktails(products, favoriteCocktailsList);
+}
+
+favoriteCocktailsList.addEventListener('click', clickHandler);

@@ -27,9 +27,9 @@ export function renderCocktails(arr, box) {
   box.insertAdjacentHTML('beforeend', markup);
 }
 
-// demo renderFavoriteCocktails
-export function renderFavoriteCocktails(arr, box) {
-  const markup = arr
+// demo createFavoriteCocktailsMarkup
+export function createFavoriteCocktailsMarkup(arr, box) {
+  return arr
     .map(
       item =>
         `<li class="cocktail-card" data-id="${item._id}">
@@ -51,7 +51,6 @@ export function renderFavoriteCocktails(arr, box) {
           </li>`
     )
     .join('');
-  box.insertAdjacentHTML('beforeend', markup);
 }
 
 // demo renderFavoriteIngredients

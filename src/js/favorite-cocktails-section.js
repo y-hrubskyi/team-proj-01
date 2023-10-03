@@ -1,5 +1,5 @@
 import { LOCAL_STORAGE_KEYS } from './constants';
-import { renderFavoriteCocktails } from './render-functions';
+import { createFavoriteCocktailsMarkup } from './render-functions';
 
 const favoriteCocktailsList = document.querySelector(
   '.favorite-cocktails-list'
@@ -10,18 +10,16 @@ const placeholderEmptyFavoriteList = document.querySelector(
 
 const products =
   JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.COCKTAILS)) || [];
-console.log(products);
 
 if (products.length) {
-  renderFavoriteCocktails(products, favoriteCocktailsList);
   placeholderEmptyFavoriteList.classList.add('visually-hidden');
   placeholderEmptyFavoriteList
     .closest('.favorite-section')
     .classList.remove('is-empty');
-  favoriteCocktailsList.classList.remove('visually-hidden');
-}
 
-//! удаление ещё нужно реализовать
+  favoriteCocktailsList.classList.remove('visually-hidden');
+  favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(products);
+}
 
 function clickHandler(e) {
   const button = e.target.closest('.remove-from-localstorage-btn');
@@ -41,8 +39,16 @@ function clickHandler(e) {
     );
   }
 
-  location.reload();
-  renderFavoriteCocktails(products, favoriteCocktailsList);
+  if (!products.length) {
+    placeholderEmptyFavoriteList.classList.remove('visually-hidden');
+    placeholderEmptyFavoriteList
+      .closest('.favorite-section')
+      .classList.add('is-empty');
+
+    favoriteCocktailsList.classList.add('visually-hidden');
+  } else {
+    favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(products);
+  }
 }
 
 favoriteCocktailsList.addEventListener('click', clickHandler);

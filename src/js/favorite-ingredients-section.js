@@ -1,5 +1,5 @@
 import { LOCAL_STORAGE_KEYS } from './constants';
-import { renderFavoriteCocktails } from './render-functions';
+import { renderFavoriteIngredients } from './render-functions';
 import { removeFromLocalStorage } from './local-storage';
 
 const favoriteCocktailsList = document.querySelector(
@@ -14,7 +14,7 @@ const products =
 console.log(products);
 
 if (products.length) {
-  renderFavoriteCocktails(products, favoriteCocktailsList);
+  renderFavoriteIngredients(products, favoriteCocktailsList);
   placeholderEmptyFavoriteList.classList.add('visually-hidden');
   placeholderEmptyFavoriteList
     .closest('.favorite-section')

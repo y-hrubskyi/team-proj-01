@@ -2,8 +2,8 @@ import { LOCAL_STORAGE_KEYS } from './constants';
 import { isInLocaleStorage } from './local-storage';
 import spriteUrl from '/img/sprite.svg';
 
-// renderCocktails
-export function renderCocktails(arr) {
+// createCocktailsMarkup
+export function createCocktailsMarkup(arr) {
   return arr
     .map(
       item =>
@@ -26,7 +26,6 @@ export function renderCocktails(arr) {
           </li>`
     )
     .join('');
-  box.insertAdjacentHTML('beforeend', markup);
 }
 
 // demo createFavoriteCocktailsMarkup

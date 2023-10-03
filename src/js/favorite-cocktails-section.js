@@ -2,7 +2,7 @@ import { LOCAL_STORAGE_KEYS } from './constants';
 import { paginateArray } from './pagination';
 import {
   createFavoriteCocktailsMarkup,
-  renderCocktails,
+  createCocktailsMarkup,
 } from './render-functions';
 import { setupClickHandlerOnOpenModal } from './setup-handlers';
 
@@ -26,7 +26,7 @@ function renderFavoriteCocktails() {
       favoriteCocktailsList,
       createFavoriteCocktailsMarkup
     );
-    renderCocktails(paginationFn, favoriteCocktailsList);
+    favoriteCocktailsList.innerHTML = createCocktailsMarkup(paginationFn);
     placeholderEmptyFavoriteList.classList.add('visually-hidden');
     placeholderEmptyFavoriteList
       .closest('.favorite-section')

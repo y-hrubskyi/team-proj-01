@@ -2,7 +2,7 @@ import axios from 'axios';
 import placeholder from '/img/placeholder.jpg';
 
 import { BASE_URL, LOCAL_STORAGE_KEYS } from './constants';
-import { renderCocktails, renderModalCocktail } from './render-functions';
+import { createCocktailsMarkup, renderModalCocktail } from './render-functions';
 import {
   setupClickHandlerOnOpenModal,
   setupClickHandlerOnWorkWithLocaleStorage,
@@ -49,7 +49,7 @@ export async function fetchRandomCocktails() {
 
 async function responseProcessing(data) {
   try {
-    renderCocktails(data, randomCocktailsList);
+    randomCocktailsList.innerHTML = createCocktailsMarkup(data);
     setupClickHandlerOnWorkWithLocaleStorage(
       data,
       randomCocktailsList,

@@ -1,4 +1,4 @@
-import { renderCocktails } from './render-functions';
+import { createCocktailsMarkup } from './render-functions';
 
 const paginationList = document.getElementById('pagination-list');
 const leftButton = document.querySelector('.left-button');

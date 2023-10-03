@@ -27,8 +27,6 @@ document.addEventListener(
 
 function onScroll() {
   let top = window.scrollY;
-
-  // console.log(top);
   if (top < scroll) {
     upBtn.classList.add('visually-hidden');
   } else {

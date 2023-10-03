@@ -1,6 +1,7 @@
 import { LOCAL_STORAGE_KEYS } from './constants';
 import { getIngredientById } from './drinkify-api-service';
 import { setupModalCloseListeners } from './modal-close-listeners';
+import { paginateArray } from './pagination';
 import {
   createFavoriteIngredientsMarkup,
   renderModalIngredient,
@@ -14,11 +15,14 @@ const placeholderEmptyFavoriteList = document.querySelector(
   '.placeholder-empty-favorite-list'
 );
 
+let rows = 6;
+
 function renderFavoriteIngredients() {
   const products =
     JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.INGREDIENTS)) || [];
 
   if (!products.length) return;
+  const paginationFn = paginateArray(products, rows, favoriteIngredietnsList);
 
   placeholderEmptyFavoriteList.classList.add('visually-hidden');
   placeholderEmptyFavoriteList
@@ -26,7 +30,8 @@ function renderFavoriteIngredients() {
     .classList.remove('is-empty');
 
   favoriteIngredietnsList.classList.remove('visually-hidden');
-  favoriteIngredietnsList.innerHTML = createFavoriteIngredientsMarkup(products);
+  favoriteIngredietnsList.innerHTML =
+    createFavoriteIngredientsMarkup(paginationFn);
   favoriteIngredietnsList.addEventListener('click', clickHandler);
 }
 

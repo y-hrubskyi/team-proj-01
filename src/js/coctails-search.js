@@ -24,7 +24,7 @@ export async function searchCocktailsByFillter({
   }
   // try {
     const response = await axios.get(requestURL);
-    
+
     return response.data;
   // }
   //  catch (error){
@@ -44,13 +44,19 @@ console.log(firstLetter, cocktailName);
     firstLetter,
     cocktailName,
   }); //add function render card with informaton of no resuts
+
   const cocktailsToRender =
       getDeviceType() === 'desktop' ? 9 : 8;
     renderResultInfo();
     const randomCocktailsList = document.querySelector('.random-cocktails-list-js');
     newTextAfterSearch();
   // randomCocktailsList.innerHTML = '';
-  const paginationFn = paginateArray(searchResults, cocktailsToRender);
+  const paginationFn = paginateArray(
+    searchResults,
+    cocktailsToRender,
+    randomCocktailsList
+  );
+
   renderCocktails(paginationFn, randomCocktailsList);
 
   // renderCocktails(cocktailsToRender, randomCocktailsList);

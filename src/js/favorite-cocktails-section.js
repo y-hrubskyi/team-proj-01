@@ -19,21 +19,31 @@ function renderFavoriteCocktails() {
   const products =
     JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.COCKTAILS)) || [];
 
-  if (products.length > rows) {
-    const paginationFn = paginateArray(products, rows);
-    renderCocktails(paginationFn, favoriteCocktailsList);
-  }
-
   if (products.length) {
-    placeholderEmptyFavoriteList.classList.add('visually-hidden');
-    placeholderEmptyFavoriteList
-      .closest('.favorite-section')
-      .classList.remove('is-empty');
+    if (products.length > rows) {
+      const paginationFn = paginateArray(products, rows);
+      renderCocktails(paginationFn, favoriteCocktailsList);
+      placeholderEmptyFavoriteList.classList.add('visually-hidden');
+      placeholderEmptyFavoriteList
+        .closest('.favorite-section')
+        .classList.remove('is-empty');
 
-    favoriteCocktailsList.classList.remove('visually-hidden');
-    favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(products);
-    favoriteCocktailsList.addEventListener('click', clickHandler);
-    setupClickHandlerOnOpenModal(favoriteCocktailsList);
+      favoriteCocktailsList.classList.remove('visually-hidden');
+      favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(products);
+      favoriteCocktailsList.addEventListener('click', clickHandler);
+      setupClickHandlerOnOpenModal(favoriteCocktailsList);
+    } else {
+      renderCocktails(products, favoriteCocktailsList);
+      placeholderEmptyFavoriteList.classList.add('visually-hidden');
+      placeholderEmptyFavoriteList
+        .closest('.favorite-section')
+        .classList.remove('is-empty');
+
+      favoriteCocktailsList.classList.remove('visually-hidden');
+      favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(products);
+      favoriteCocktailsList.addEventListener('click', clickHandler);
+      setupClickHandlerOnOpenModal(favoriteCocktailsList);
+    }
   }
 }
 

@@ -5,13 +5,18 @@
 
 @media screen and (min-width: 768px) {
     .keyboard__list {
-        display: flex;
+        display: grid;
+        grid-template-rows: 60% 30%;
         flex-direction: column;
         padding-top: 100px;
+        justify-content: center;
+        row-gap: 16px;
+        align-items: center;
     }
 
-
 }
+
+
 
 @media screen and (min-width: 768px) {
     .keyboard--item {
@@ -27,10 +32,20 @@
     }
 }
 
+@media screen and (min-width: 1280px) {
+    .keyboard__list {
+        display: grid;
+        /* flex-wrap: wrap;
+        justify-content: center; */
+        /* grid-template-columns: 50% 50%; */
+        justify-items: center;
+        grid-row-gap: 16px;
+        grid-column-gap: 16px;
 
-.keyboard {
-    row-gap: 16px;
+
+    }
 }
+
 
 .leters-wrap {
     cursor: pointer;
@@ -54,17 +69,33 @@
     color: #202025;
 }
 
-.first--line,
-.second--line,
-.third--line {
-    display: block;
+.first__line,
+.second__line,
+.third__line {
+
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     text-align: center;
     column-gap: 8px;
+    row-gap: 16px;
+    max-width: 904px;
 }
+
+@media screen and (min-width: 1280px) {
+
+    .first--line,
+    .second--line,
+    .third--line {
+        display: flex;
+
+        min-width: 904px;
+
+    }
+
+}
+
 
 /* FAKE SELECT */
 

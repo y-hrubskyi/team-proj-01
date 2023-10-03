@@ -22,40 +22,50 @@ export async function searchCocktailsByFillter({
   if (cocktailName) {
     requestURL.searchParams.append(`s`, cocktailName);
   }
-  try {
+  // try {
     const response = await axios.get(requestURL);
-    console.log(response.data);
+    
     return response.data;
-  } catch (error){
-     renderNoResultInfo()
-  }
+  // }
+  //  catch (error){
+  //    renderNoResultInfo()
+  // }
 }
 
 export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
-  if (!firstLetter && !cocktailName) {
-    renderNoResultInfo()
-    return
-  }; //add function render card with informaton of no resuts
-  const searchResults = await searchCocktailsByFillter({
+   //add function render card with informaton of no resuts
+// if (!firstLetter && !cocktailName) {
+//     renderNoResultInfo()
+//     return
+//   };
+console.log(firstLetter, cocktailName);
+  try {
+    const searchResults = await searchCocktailsByFillter({
     firstLetter,
     cocktailName,
   }); //add function render card with informaton of no resuts
   const cocktailsToRender =
-    getDeviceType() === 'desktop'
-      ? searchResults.slice(0, 9)
-      : searchResults.slice(0, 8);
-  randomCocktailsList.innerHTML = '';
+      getDeviceType() === 'desktop' ? 9 : 8;
+    renderResultInfo();
+    const randomCocktailsList = document.querySelector('.random-cocktails-list-js');
+    newTextAfterSearch();
+  // randomCocktailsList.innerHTML = '';
   const paginationFn = paginateArray(searchResults, cocktailsToRender);
   renderCocktails(paginationFn, randomCocktailsList);
 
-  renderCocktails(cocktailsToRender, randomCocktailsList);
+  // renderCocktails(cocktailsToRender, randomCocktailsList);
   setupClickHandlerOnWorkWithLocaleStorage(
     searchResults,
     randomCocktailsList,
     LOCAL_STORAGE_KEYS.COCKTAILS
   );
   setupClickHandlerOnOpenModal(randomCocktailsList);
-}
+  } catch {
+    
+    renderNoResultInfo()
+  }
+ 
+};
 
 // renderSearchResults();
 // search input //
@@ -82,12 +92,15 @@ function onLetterClick(e) {
 
 radiosLetersEL.addEventListener('click', onLetterClick);
 
-const radionbuttonsEL = document.querySelector('.radios');
+const radionbuttonsEL = document.querySelector('.custom-select');
 
 function onRadioButtonClick(e) {
+  console.log(e.target);
   const letter = e.target.dataset.id;
   renderSearchResults({ firstLetter: letter });
 }
+
+
 
 radionbuttonsEL.addEventListener('click', onRadioButtonClick);
 
@@ -97,8 +110,7 @@ radionbuttonsEL.addEventListener('click', onRadioButtonClick);
 function renderNoResultInfo() {
   const noResultsContainerEl = document.querySelector(".cocktails-section")
 
-  noResultsContainerEl.innerHTML = "";
-  noResultsContainerEl.insertAdjacentHTML("beforeend",`<div class="placeholder-empty-favorite-list">
+  noResultsContainerEl.innerHTML =  `<div class="placeholder-empty-favorite-list">
     <svg class="empty-favorite-img">
       <use href="./img/sprite.svg#icon-placeholder-empty-list"></use>
     </svg>
@@ -107,7 +119,18 @@ function renderNoResultInfo() {
       <span class="empty-favorite-text-span">didn’t find</span>
       any cocktail for you
     </p>
-  </div>);` );
+  </div>`;
+
+  // noResultsContainerEl.insertAdjacentHTML("beforeend",`<div class="placeholder-empty-favorite-list">
+  //   <svg class="empty-favorite-img">
+  //     <use href="./img/sprite.svg#icon-placeholder-empty-list"></use>
+  //   </svg>
+  //   <p class="empty-favorite-text">
+  //     Sorry, we
+  //     <span class="empty-favorite-text-span">didn’t find</span>
+  //     any cocktail for you
+  //   </p>
+  // </div>`  );
   
  
 } 
@@ -115,10 +138,21 @@ function renderNoResultInfo() {
 
 // change coctails to Searching results
 
-const titleCocktailel = document.querySelector(".section-title");
+
 
 function newTextAfterSearch() {
-
+const titleCocktailel = document.querySelector(".section-title");
   titleCocktailel.textContent = "Searching results"
   
 }
+
+function renderResultInfo() {
+
+  const resultsContainerEl = document.querySelector(".cocktails-section ")
+
+  resultsContainerEl.innerHTML =   `<div class="container">
+    <h2 class="section-title">Cocktails</h2>
+    <ul
+      class="cocktails-list random-cocktails-list random-cocktails-list-js"
+    ></ul>
+  </div>`};

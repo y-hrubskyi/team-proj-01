@@ -1,8 +1,12 @@
 import axios from 'axios';
+import placeholder from '/img/placeholder.jpg';
 
 import { BASE_URL, LOCAL_STORAGE_KEYS } from './constants';
-import { renderCocktails } from './render-functions';
-import { setupClickHandlerOnWorkWithLocaleStorage } from './setup-handlers';
+import { renderCocktails, renderModalCocktail } from './render-functions';
+import {
+  setupClickHandlerOnOpenModal,
+  setupClickHandlerOnWorkWithLocaleStorage,
+} from './setup-handlers';
 
 const randomCocktailsList = document.querySelector('.random-cocktails-list-js');
 
@@ -23,7 +27,7 @@ export async function fetchRandomCocktails() {
   };
 
   try {
-    const response = await axios.get(BASE_URL, { params });
+    const response = await axios.get(`${BASE_URL}/cocktails/`, { params });
     const data = response.data;
 
     const imgArray = data.map(img => img.drinkThumb);
@@ -33,7 +37,7 @@ export async function fetchRandomCocktails() {
     const results = await Promise.allSettled(arrayOfPromises);
     results.forEach((result, index) => {
       if (!result.value.ok) {
-        data[index].drinkThumb = './img/placeholder.jpg';
+        data[index].drinkThumb = placeholder;
       }
     });
 
@@ -51,6 +55,7 @@ async function responseProcessing(data) {
       randomCocktailsList,
       LOCAL_STORAGE_KEYS.COCKTAILS
     );
+    setupClickHandlerOnOpenModal(randomCocktailsList, renderModalCocktail);
   } catch (error) {
     console.log(error);
   }

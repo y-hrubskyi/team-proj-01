@@ -1,8 +1,3 @@
-.favorite-ingredients-section {
-  padding-top: 80px;
-  padding-bottom: 80px;
-}
-
 .favorite-ingredients-list {
   display: flex;
   flex-direction: column;
@@ -45,6 +40,11 @@ body.dark-theme .is-alcoholic-drink-title {
   line-height: 1.28;
   word-wrap: break-word;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
 }
 
 body.dark-theme .fav-ingredient-description {

@@ -1,3 +1,5 @@
+import spriteUrl from '/img/sprite.svg';
+
 // renderCocktails
 export function renderCocktails(arr, box) {
   const markup = arr
@@ -10,10 +12,10 @@ export function renderCocktails(arr, box) {
               <p class="cocktail-description">${item.description}</p>
               <div>
                 <div class="cocktail-card-btns-wrapper">
-                  <button type="button" class="learn-more-cocktail-btn">Learn More</button>
+                  <button type="button" class="learn-more-cocktail-btn learn-more-btn" data-modal-open>Learn More</button>
                   <button type="button" class="add-to-localstorage-btn">
                     <svg width="18px" height="18px" class="svg-icon-heart">
-                      <use href="./img/sprite.svg#icon-heart"></use>
+                      <use href="${spriteUrl}#icon-heart"></use>
                     </svg>
                   </button>
                 </div>
@@ -40,7 +42,7 @@ export function renderFavoriteCocktails(arr, box) {
                   <button type="button" class="learn-more-cocktail-btn">Learn More</button>
                   <button type="button" class="add-to-localstorage-btn remove-from-localstorage-btn">
                     <svg width="18px" height="18px" class="icon-trash">
-                      <use href="./img/sprite.svg#icon-trash"></use>
+                      <use href="${spriteUrl}#icon-trash"></use>
                     </svg>
                   </button>
                 </div>
@@ -57,23 +59,23 @@ export function renderFavoriteIngredients(arr, box) {
   const markup = arr
     .map(
       item =>
-        `<li class="favorite-ingredient-item" data-id="${item._id}>
-        <h3 class="fav-ingredient-title">${item.title}</h3>
-        <h4 class="is-alcoholic-drink-title">${
-          item.alcolol === 'Yes' ? 'Alcoholic' : 'Non-Alcoholic'
-        }</h4>
-        <p class="fav-ingredient-description">
-          ${item.description}
-        </p>
-        <div class="ingredient-card-btns">
-          <button type="button" class="learn-more-ingredient-btn">learn more</button>
-          <button type="button" class="remove-ingredient-btn remove-from-localstorage-btn" aria-label="remove from locale storage">
-            <svg width="18px" height="18px" class="icon-trash">
-              <use href="./img/sprite.svg#icon-trash"></use>
-            </svg>
-          </button>
-        </div>
-      </li>`
+        `<li class="favorite-ingredient-item" data-id="${item._id}">
+            <h3 class="fav-ingredient-title">${item.title}</h3>
+            <h4 class="is-alcoholic-drink-title">${
+              item.alcolol === 'Yes' ? 'Alcoholic' : 'Non-Alcoholic'
+            }</h4>
+            <p class="fav-ingredient-description">
+              ${item.description}
+            </p>
+            <div class="ingredient-card-btns">
+              <button type="button" class="learn-more-ingredient-btn">learn more</button>
+              <button type="button" class="remove-ingredient-btn remove-from-localstorage-btn" aria-label="remove from locale storage">
+                <svg width="18px" height="18px" class="icon-trash">
+                  <use href="${spriteUrl}#icon-trash"></use>
+                </svg>
+              </button>
+            </div>
+          </li>`
     )
     .join('');
   box.insertAdjacentHTML('beforeend', markup);
@@ -89,7 +91,7 @@ export function renderModalCocktail(cocktail) {
   const markup = `<div class="modal cocktail-modal" data-id="${cocktail._id}">
                     <button type="button" class="modal-close-btn" aria-label="close modal window">
                       <svg class="modal-close-icon">
-                        <use href="/img/sprite.svg#icon-close-modal"></use>
+                        <use href="${spriteUrl}#icon-close-modal"></use>
                       </svg>
                     </button>
                     <div class="cocktail-about-wrapper">
@@ -141,12 +143,15 @@ export function renderModalIngredient(ingredient) {
   const backdrop = prepareForRenderModal();
 
   const emptyField = 'not specified';
-  const titleLength = ingredient.title.split(' ').length;
-  const description = ingredient.description
-    .split(' ')
-    .slice(titleLength)
-    .join(' ');
-  console.log(description);
+
+  let description = '';
+  if (ingredient.description) {
+    const titleLength = ingredient.title.split(' ').length;
+    description = ingredient.description
+      .split(' ')
+      .slice(titleLength)
+      .join(' ');
+  }
 
   let flavour = '';
   if (ingredient.flavour) {
@@ -164,7 +169,7 @@ export function renderModalIngredient(ingredient) {
                       aria-label="close modal window"
                     >
                       <svg class="modal-close-icon">
-                        <use href="/img/sprite.svg#icon-close-modal"></use>
+                        <use href="${spriteUrl}#icon-close-modal"></use>
                       </svg>
                     </button>
                     <h2 class="ingredient-title">${ingredient.title}</h2>
@@ -172,7 +177,7 @@ export function renderModalIngredient(ingredient) {
                     <p class="ingredient-description">
                       <span class="ingredient-description-name">${
                         ingredient.title
-                      }</span> ${description}
+                      }</span> ${description || emptyField}
                     </p>
                     <ul class="ingredient-properties-list">
                       <li class="ingredient-properties-item">Type: ${
@@ -218,7 +223,7 @@ function prepareForRenderModal() {
 }
 
 function createIngredientItemMarkup(ingredient) {
-  return `<li class="per-cocktail-ingredient-item" id="${ingredient._id}">
-            <button type="button" class="per-cocktail-ingredient-btn">${ingredient.title}</button>
+  return `<li class="per-cocktail-ingredient-item">
+            <button type="button" class="per-cocktail-ingredient-btn" data-id="${ingredient.ingredientId}">${ingredient.title}</button>
           </li>`;
 }

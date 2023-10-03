@@ -3,4 +3,4 @@ export const LOCAL_STORAGE_KEYS = {
   INGREDIENTS: 'favoriteIngredients',
 };
 
-export const BASE_URL = 'https://drinkify.b.goit.study/api/v1/cocktails/';
+export const BASE_URL = 'https://drinkify.b.goit.study/api/v1';

@@ -1,5 +1,3 @@
-//! demo version, not tested, will be change
-
 import { LOCAL_STORAGE_KEYS } from './constants';
 import { renderFavoriteCocktails } from './render-functions';
 
@@ -16,10 +14,12 @@ console.log(products);
 
 if (products.length) {
   renderFavoriteCocktails(products, favoriteCocktailsList);
-  placeholderEmptyFavoriteList.classList.add('hidden');
+  placeholderEmptyFavoriteList.classList.add('visually-hidden');
+  placeholderEmptyFavoriteList
+    .closest('.favorite-section')
+    .classList.remove('is-empty');
+  favoriteCocktailsList.classList.remove('visually-hidden');
 }
-
-favoriteCocktailsList.classList.remove('hidden');
 
 //! удаление ещё нужно реализовать
 

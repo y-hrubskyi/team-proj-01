@@ -28,7 +28,7 @@ export function renderCocktails(arr, box) {
 }
 
 // demo createFavoriteCocktailsMarkup
-export function createFavoriteCocktailsMarkup(arr, box) {
+export function createFavoriteCocktailsMarkup(arr) {
   return arr
     .map(
       item =>
@@ -53,9 +53,9 @@ export function createFavoriteCocktailsMarkup(arr, box) {
     .join('');
 }
 
-// demo renderFavoriteIngredients
-export function renderFavoriteIngredients(arr, box) {
-  const markup = arr
+// demo createFavoriteIngredientsMarkup
+export function createFavoriteIngredientsMarkup(arr, box) {
+  return arr
     .map(
       item =>
         `<li class="favorite-ingredient-item" data-id="${item._id}">
@@ -67,7 +67,7 @@ export function renderFavoriteIngredients(arr, box) {
               ${item.description}
             </p>
             <div class="ingredient-card-btns">
-              <button type="button" class="learn-more-ingredient-btn">learn more</button>
+              <button type="button" class="learn-more-ingredient-btn learn-more-btn">learn more</button>
               <button type="button" class="remove-ingredient-btn remove-from-localstorage-btn" aria-label="remove from locale storage">
                 <svg width="18px" height="18px" class="icon-trash">
                   <use href="${spriteUrl}#icon-trash"></use>
@@ -77,7 +77,6 @@ export function renderFavoriteIngredients(arr, box) {
           </li>`
     )
     .join('');
-  box.insertAdjacentHTML('beforeend', markup);
 }
 
 // renderModalCocktail

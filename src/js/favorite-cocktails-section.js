@@ -9,7 +9,7 @@ const placeholderEmptyFavoriteList = document.querySelector(
   '.placeholder-empty-favorite-list'
 );
 
-function loadFavoriteCocktails() {
+function renderFavoriteCocktails() {
   const products =
     JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.COCKTAILS)) || [];
 
@@ -56,4 +56,4 @@ function clickHandler(e) {
   }
 }
 
-loadFavoriteCocktails();
+renderFavoriteCocktails();

@@ -30,7 +30,7 @@
                 </div>
               </div>
             </div>
-          </li>`).join("")}function Kn(e){return e.map(t=>`<li class="favorite-ingredient-item" data-id="${t._id}">
+          </li>`).join("")}function Kn(e){return e.map(t=>`<li class="favorite-ingredient-item ingredient-card" data-id="${t._id}">
             <h3 class="fav-ingredient-title">${t.title}</h3>
             <h4 class="is-alcoholic-drink-title">${t.alcolol==="Yes"?"Alcoholic":"Non-Alcoholic"}</h4>
             <p class="fav-ingredient-description">

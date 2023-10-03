@@ -1,4 +1,3 @@
-import { off } from 'process';
 import { renderCocktails } from './render-functions';
 
 const plaginationList = document.getElementById('plagination-list');
@@ -30,7 +29,6 @@ export function paginateArray(arrDatas, rowPerPage) {
   }
 
   plaginationList.addEventListener('click', onButtonClick);
-  leftButton.addEventListener('click', onBackButtonClick);
   function onButtonClick(e) {
     const randomCocktailsList = document.querySelector(
       '.random-cocktails-list-js'
@@ -43,6 +41,7 @@ export function paginateArray(arrDatas, rowPerPage) {
     const paginatedData = displayList(arrDatas, rowPerPage, current_page);
     renderCocktails(paginatedData, randomCocktailsList);
     current_page = 1;
+    console.log(current_page);
   }
 
   const pageVal = Math.ceil(arrDatas.length / rowPerPage);

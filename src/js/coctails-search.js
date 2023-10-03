@@ -1,8 +1,12 @@
 import axios from 'axios';
 
-import { BASE_URL } from './constants';
+import { BASE_URL, LOCAL_STORAGE_KEYS } from './constants';
 import { renderCocktails } from './render-functions';
 import { getDeviceType } from './random-cocktails';
+import {
+  setupClickHandlerOnOpenModal,
+  setupClickHandlerOnWorkWithLocaleStorage,
+} from './setup-handlers';
 
 const randomCocktailsList = document.querySelector('.random-cocktails-list-js');
 
@@ -43,6 +47,7 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
     randomCocktailsList,
     LOCAL_STORAGE_KEYS.COCKTAILS
   );
+  setupClickHandlerOnOpenModal(randomCocktailsList);
 }
 
 // renderSearchResults();

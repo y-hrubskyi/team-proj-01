@@ -12,8 +12,6 @@
 
 body {
   font-family: var(--primary-font-family);
-
-  transition: color 1000ms linear, background-color 1000ms linear;
 }
 
 body.light-theme {

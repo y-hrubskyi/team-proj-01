@@ -1,0 +1,28 @@
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+  background-color: var(--primary-bg-color);
+  /* border-radius: 9em; */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border-radius: 9em;
+  box-shadow: inset 1px 1px 10px #f3faf7;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: var(--additional-color);
+}
+
+.modal ::-webkit-scrollbar {
+  width: 4px;
+}
+.modal ::-webkit-scrollbar-thumb:hover {
+  background-color: var(--additional-color);
+}

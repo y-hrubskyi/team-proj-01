@@ -56,7 +56,7 @@ export function createFavoriteCocktailsMarkup(arr) {
 }
 
 // demo createFavoriteIngredientsMarkup
-export function createFavoriteIngredientsMarkup(arr, box) {
+export function createFavoriteIngredientsMarkup(arr) {
   return arr
     .map(
       item =>
@@ -90,7 +90,7 @@ export function renderModalCocktail(cocktail) {
     .map(createIngredientItemMarkup)
     .join('');
 
-  const markup = `<div class="modal cocktail-modal" data-id="${cocktail._id}">
+  const markup = `<div class="modal-container" data-id=${cocktail._id}>
                     <button type="button" class="modal-close-btn" aria-label="close modal window">
                       <svg class="modal-close-icon">
                         <use href="${spriteUrl}#icon-close-modal"></use>
@@ -127,7 +127,6 @@ export function renderModalCocktail(cocktail) {
                       >
                         ${params.textContent}
                       </button>
-
                       <button
                         class="back-modal-close-btn"
                         type="button"
@@ -137,7 +136,7 @@ export function renderModalCocktail(cocktail) {
                       </button>
                     </div>
                   </div>`;
-  backdrop.innerHTML = markup;
+  backdrop.querySelector('.modal').innerHTML = markup;
 }
 
 // renderModalIngredient
@@ -166,9 +165,7 @@ export function renderModalIngredient(ingredient) {
     flavour = flavour.join('');
   }
 
-  const markup = `<div class="modal ingredient-modal" data-id="${
-    ingredient._id
-  }">
+  const markup = `<div class="modal-container" data-id=${ingredient._id}>
                     <button
                       type="button"
                       class="modal-close-btn"
@@ -203,7 +200,7 @@ export function renderModalIngredient(ingredient) {
                       <button
                         class="add-or-remove-btn ${params.actionClass} ${
     params.styleClass
-  }"
+  } 
                         type="button"
                         aria-label="${params.ariaLabel}"
                       >
@@ -218,7 +215,7 @@ export function renderModalIngredient(ingredient) {
                       </button>
                     </div>
                   </div>`;
-  backdrop.innerHTML = markup;
+  backdrop.querySelector('.modal').innerHTML = markup;
 }
 
 // helpers
@@ -232,23 +229,24 @@ function prepareForRenderModal() {
 
 export function setupParamsForRender(obj, key) {
   const isAlreadyInLocaleStorage = isInLocaleStorage(obj, key);
+  const params = {};
 
   if (isAlreadyInLocaleStorage) {
-    obj.actionClass = 'remove-from-localstorage-btn';
-    obj.textContent = 'remove from favorite';
-    obj.styleClass = 'modal-remove-button';
-    obj.ariaLabel = 'remove from favorite';
+    params.actionClass = 'remove-from-localstorage-btn';
+    params.textContent = 'remove from favorite';
+    params.styleClass = 'modal-remove-button';
+    params.ariaLabel = 'remove from favorite';
     console.log('is in locale storage');
   } else {
-    obj.actionClass = 'add-to-localstorage-btn';
-    obj.textContent = 'add to favorite';
-    obj.styleClass = '';
-    obj.ariaLabel = 'add to favorite';
-    console.log(`isn't locale storage`);
+    params.actionClass = 'add-to-localstorage-btn';
+    params.textContent = 'add to favorite';
+    params.styleClass = '';
+    params.ariaLabel = 'add to favorite';
+    console.log(`isn't in locale storage`);
   }
-  console.log(obj);
+  console.log('PARAMS: ', params);
 
-  return obj;
+  return params;
 }
 
 function createIngredientItemMarkup(ingredient) {

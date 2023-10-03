@@ -1,3 +1,5 @@
+import { LOCAL_STORAGE_KEYS } from './constants';
+import { isInLocaleStorage } from './local-storage';
 import spriteUrl from '/img/sprite.svg';
 
 // renderCocktails
@@ -27,9 +29,9 @@ export function renderCocktails(arr, box) {
   box.insertAdjacentHTML('beforeend', markup);
 }
 
-// demo renderFavoriteCocktails
-export function renderFavoriteCocktails(arr, box) {
-  const markup = arr
+// demo createFavoriteCocktailsMarkup
+export function createFavoriteCocktailsMarkup(arr) {
+  return arr
     .map(
       item =>
         `<li class="cocktail-card" data-id="${item._id}">
@@ -39,7 +41,7 @@ export function renderFavoriteCocktails(arr, box) {
               <p class="cocktail-description">${item.description}</p>
               <div>
                 <div class="cocktail-card-btns-wrapper">
-                  <button type="button" class="learn-more-cocktail-btn">Learn More</button>
+                  <button type="button" class="learn-more-cocktail-btn learn-more-btn">Learn More</button>
                   <button type="button" class="add-to-localstorage-btn remove-from-localstorage-btn">
                     <svg width="18px" height="18px" class="icon-trash">
                       <use href="${spriteUrl}#icon-trash"></use>
@@ -51,12 +53,11 @@ export function renderFavoriteCocktails(arr, box) {
           </li>`
     )
     .join('');
-  box.insertAdjacentHTML('beforeend', markup);
 }
 
-// demo renderFavoriteIngredients
-export function renderFavoriteIngredients(arr, box) {
-  const markup = arr
+// demo createFavoriteIngredientsMarkup
+export function createFavoriteIngredientsMarkup(arr, box) {
+  return arr
     .map(
       item =>
         `<li class="favorite-ingredient-item" data-id="${item._id}">
@@ -68,7 +69,7 @@ export function renderFavoriteIngredients(arr, box) {
               ${item.description}
             </p>
             <div class="ingredient-card-btns">
-              <button type="button" class="learn-more-ingredient-btn">learn more</button>
+              <button type="button" class="learn-more-ingredient-btn learn-more-btn">learn more</button>
               <button type="button" class="remove-ingredient-btn remove-from-localstorage-btn" aria-label="remove from locale storage">
                 <svg width="18px" height="18px" class="icon-trash">
                   <use href="${spriteUrl}#icon-trash"></use>
@@ -78,12 +79,13 @@ export function renderFavoriteIngredients(arr, box) {
           </li>`
     )
     .join('');
-  box.insertAdjacentHTML('beforeend', markup);
 }
 
 // renderModalCocktail
 export function renderModalCocktail(cocktail) {
   const backdrop = prepareForRenderModal();
+  const params = setupParamsForRender(cocktail, LOCAL_STORAGE_KEYS.COCKTAILS);
+
   const ingredientsList = cocktail.ingredients
     .map(createIngredientItemMarkup)
     .join('');
@@ -119,11 +121,11 @@ export function renderModalCocktail(cocktail) {
                     </div>
                     <div class="modal-btns">
                       <button
-                        class="add-or-remove-btn"
+                        class="add-or-remove-btn ${params.actionClass} ${params.styleClass}"
                         type="button"
-                        aria-label="add or remove cocktail"
+                        aria-label="${params.ariaLabel}"
                       >
-                        add to favorite
+                        ${params.textContent}
                       </button>
 
                       <button
@@ -141,6 +143,10 @@ export function renderModalCocktail(cocktail) {
 // renderModalIngredient
 export function renderModalIngredient(ingredient) {
   const backdrop = prepareForRenderModal();
+  const params = setupParamsForRender(
+    ingredient,
+    LOCAL_STORAGE_KEYS.INGREDIENTS
+  );
 
   const emptyField = 'not specified';
 
@@ -195,11 +201,13 @@ export function renderModalIngredient(ingredient) {
                     </ul>
                     <div class="modal-btns">
                       <button
-                        class="add-or-remove-btn"
+                        class="add-or-remove-btn ${params.actionClass} ${
+    params.styleClass
+  }"
                         type="button"
-                        aria-label="add or remove ingredient"
+                        aria-label="${params.ariaLabel}"
                       >
-                        add to favorite
+                        ${params.textContent}
                       </button>
                       <button
                         class="back-modal-close-btn"
@@ -220,6 +228,27 @@ function prepareForRenderModal() {
   backdrop.classList.add('backdrop');
 
   return backdrop;
+}
+
+export function setupParamsForRender(obj, key) {
+  const isAlreadyInLocaleStorage = isInLocaleStorage(obj, key);
+
+  if (isAlreadyInLocaleStorage) {
+    obj.actionClass = 'remove-from-localstorage-btn';
+    obj.textContent = 'remove from favorite';
+    obj.styleClass = 'modal-remove-button';
+    obj.ariaLabel = 'remove from favorite';
+    console.log('is in locale storage');
+  } else {
+    obj.actionClass = 'add-to-localstorage-btn';
+    obj.textContent = 'add to favorite';
+    obj.styleClass = '';
+    obj.ariaLabel = 'add to favorite';
+    console.log(`isn't locale storage`);
+  }
+  console.log(obj);
+
+  return obj;
 }
 
 function createIngredientItemMarkup(ingredient) {

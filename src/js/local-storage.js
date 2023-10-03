@@ -23,3 +23,10 @@ export function removeFromLocalStorage(card, svgIcon, key) {
   svgIcon.classList.remove('is-active');
   console.log('Карта в удалена с ЛОКАЛСТОРДЖ');
 }
+
+export function isInLocaleStorage({ _id: id }, key) {
+  const favorites = JSON.parse(localStorage.getItem(key)) || [];
+  if (!favorites.length) return false;
+
+  return favorites.some(item => item._id === id);
+}

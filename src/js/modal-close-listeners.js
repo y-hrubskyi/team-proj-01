@@ -1,4 +1,4 @@
-export function runModalCloseListeners() {
+export function setupModalCloseListeners() {
   document
     .querySelector('.modal-close-btn')
     .addEventListener('click', onCloseModalBtnClick);

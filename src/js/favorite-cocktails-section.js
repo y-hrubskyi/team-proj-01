@@ -1,4 +1,5 @@
 import { LOCAL_STORAGE_KEYS } from './constants';
+import { paginateArray } from './pagination';
 import { createFavoriteCocktailsMarkup } from './render-functions';
 import { setupClickHandlerOnOpenModal } from './setup-handlers';
 

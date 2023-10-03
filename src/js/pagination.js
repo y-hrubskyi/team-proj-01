@@ -4,6 +4,7 @@ const paginationList = document.getElementById('pagination-list');
 const leftButton = document.querySelector('.left-button');
 const rightButton = document.querySelector('.right-button');
 let current_page = 1;
+
 export function paginateArray(arrDatas, rowPerPage) {
   function displayList(arrDatas, rowPerPage, page) {
     page--;

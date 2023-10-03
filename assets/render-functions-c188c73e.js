@@ -21,7 +21,7 @@
               <p class="cocktail-description">${o.description}</p>
               <div>
                 <div class="cocktail-card-btns-wrapper">
-                  <button type="button" class="learn-more-cocktail-btn">Learn More</button>
+                  <button type="button" class="learn-more-cocktail-btn learn-more-btn">Learn More</button>
                   <button type="button" class="add-to-localstorage-btn remove-from-localstorage-btn">
                     <svg width="18px" height="18px" class="icon-trash">
                       <use href="${r}#icon-trash"></use>
@@ -133,4 +133,4 @@
                     </div>
                   </div>`;n.innerHTML=i}function f(){document.body.classList.add("no-scrolling-body");const t=document.querySelector("[backdrop-modal]");return t.classList.add("backdrop"),t}function q(t){return`<li class="per-cocktail-ingredient-item">
             <button type="button" class="per-cocktail-ingredient-btn" data-id="${t.ingredientId}">${t.title}</button>
-          </li>`}export{A as B,B as L,D as a,O as b,j as c,T as d,x as r};
+          </li>`}export{A as B,B as L,O as a,x as b,j as c,T as d,D as r};

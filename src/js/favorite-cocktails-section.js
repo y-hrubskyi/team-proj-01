@@ -1,6 +1,9 @@
 import { LOCAL_STORAGE_KEYS } from './constants';
 import { paginateArray } from './pagination';
-import { createFavoriteCocktailsMarkup } from './render-functions';
+import {
+  createFavoriteCocktailsMarkup,
+  renderCocktails,
+} from './render-functions';
 import { setupClickHandlerOnOpenModal } from './setup-handlers';
 
 let rows = 6;

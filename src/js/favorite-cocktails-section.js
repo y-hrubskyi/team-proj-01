@@ -41,7 +41,7 @@ function clickHandler(e) {
     );
   }
 
-  window.location.href = '../favorite-cocktails.html';
+  location.reload();
   renderFavoriteCocktails(products, favoriteCocktailsList);
 }
 

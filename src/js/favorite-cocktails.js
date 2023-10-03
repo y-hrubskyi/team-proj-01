@@ -23,8 +23,6 @@ favoriteCocktailsList.classList.remove('hidden');
 
 //! удаление ещё нужно реализовать
 
-const clearBtn = document.querySelector('.remove-from-localstorage-btn');
-
 function clickHandler(e) {
   const button = e.target.closest('.remove-from-localstorage-btn');
   if (!button) return;
@@ -47,4 +45,4 @@ function clickHandler(e) {
   renderFavoriteCocktails(products, favoriteCocktailsList);
 }
 
-clearBtn.addEventListener('click', clickHandler);
+favoriteCocktailsList.addEventListener('click', clickHandler);

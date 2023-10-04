@@ -93,17 +93,28 @@ function renderFavoriteListWithOpenModal(data, renderFunction) {
     '.favorite-section .favorite-list'
   );
   if (!favoriteList) return;
+
+  const placeholderEmptyFavoriteList = document.querySelector(
+    '.placeholder-empty-favorite-list'
+  );
+
+  if (!data.length) {
+    favoriteList.classList.add('visually-hidden');
+    placeholderEmptyFavoriteList.classList.remove('visually-hidden');
+    placeholderEmptyFavoriteList
+      .closest('.favorite-section')
+      .classList.add('is-empty');
+    return;
+  }
+
+  placeholderEmptyFavoriteList.classList.add('visually-hidden');
+  placeholderEmptyFavoriteList
+    .closest('.favorite-section')
+    .classList.remove('is-empty');
+
+  favoriteList.classList.remove('visually-hidden');
   favoriteList.innerHTML = renderFunction(data);
 }
-
-// function renderCocktailsListWithOpenModal(data, renderFunction) {
-//   const favoriteList = document.querySelector(
-//     '.favorite-section .favorite-list'
-//   );
-//   console.log(favoriteList);
-//   if (!favoriteList) return;
-//   favoriteList.innerHTML = renderFunction(data);
-// }
 
 export async function setupClickHandlerOnOpenModal(box, renderFunction) {
   box.addEventListener('click', async function (e) {

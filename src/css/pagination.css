@@ -21,6 +21,11 @@
   border: 1px solid var(--accent-color);
   background-color: transparent;
   color: var(--accent-color);
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .left-arrow {
@@ -54,7 +59,11 @@ body.dark-theme .left-arrow {
   justify-content: center;
 }
 
-.active-page {
+.button-list-pagination.active {
   color: rgba(253, 253, 253, 1);
-  background: var(--turquoise, var(--additional-color));
+  background-color: var(--turquoise, var(--additional-color));
+  border: transparent;
+}
+.button-list-pagination.no-active {
+  display: none;
 }

@@ -35,7 +35,7 @@ function renderFavoriteCocktails() {
     createFavoriteCocktailsMarkup
   );
 
-  favoriteCocktailsList.innerHTML = createCocktailsMarkup(paginationFn);
+  // favoriteCocktailsList.innerHTML = createCocktailsMarkup(paginationFn);
   placeholderEmptyFavoriteList.classList.add('visually-hidden');
   placeholderEmptyFavoriteList
     .closest('.favorite-section')
@@ -75,7 +75,14 @@ function clickHandler(e) {
       .closest('.favorite-section')
       .classList.add('is-empty');
   } else {
-    favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(products);
+    const paginationFn = paginateArray(
+      products,
+      rows,
+      favoriteCocktailsList,
+      createFavoriteCocktailsMarkup
+    );
+    favoriteCocktailsList.innerHTML =
+      createFavoriteCocktailsMarkup(paginationFn);
   }
 }
 

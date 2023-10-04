@@ -28,6 +28,7 @@ export function paginateArray(arrDatas, rowPerPage, box, renderFn) {
     }
 
     let marcap = [];
+    let marcapPagination = [];
     function createButton(paginatedPages) {
       for (let i = 0; i < paginatedPages; i++) {
         const cart = `<li><button type="button" class="button-list-pagination" name="${
@@ -35,7 +36,25 @@ export function paginateArray(arrDatas, rowPerPage, box, renderFn) {
         }">${i + 1}</button></li>`;
         marcap.push(cart);
       }
-      paginationList.innerHTML = marcap.join('');
+
+      if (marcap.length < 7) {
+        paginationList.innerHTML = marcap.join('');
+        return;
+      }
+
+      let start = 0;
+      let startEnd = 3;
+      let end = marcap.length;
+      let endStart = end - 3;
+
+      console.log(start);
+      console.log(startEnd);
+      const marcapStart = marcap.slice(start, startEnd);
+      const marcapEnd = marcap.slice(endStart, end);
+
+      marcapPagination.push(marcapStart.join(''), marcapEnd.join(''));
+
+      paginationList.innerHTML = marcapPagination.join('');
     }
 
     paginationList.addEventListener('click', onButtonClick);
@@ -54,25 +73,22 @@ export function paginateArray(arrDatas, rowPerPage, box, renderFn) {
     rightButton.addEventListener('click', onRightButtonClick);
     function onLeftButtonClick() {
       if (current_page === 1) {
-        leftButton.classList.remove('arrow-active');
         return;
       } else {
         box.innerHTML = '';
         current_page -= 1;
 
-        leftButton.classList.add('arrow-active');
         const paginatedData = displayList(arrDatas, rowPerPage, current_page);
         box.innerHTML = renderFn(paginatedData);
       }
     }
     function onRightButtonClick() {
       if (current_page === pageVal) {
-        rightButton.classList.remove('arrow-active');
         return;
       } else {
         box.innerHTML = '';
         current_page += 1;
-        rightButton.classList.add('arrow-active');
+
         const paginatedData = displayList(arrDatas, rowPerPage, current_page);
         box.innerHTML = renderFn(paginatedData);
       }

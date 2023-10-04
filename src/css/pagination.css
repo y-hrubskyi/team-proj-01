@@ -37,9 +37,6 @@ body.dark-theme .right-arrow {
 body.dark-theme .left-arrow {
   stroke: rgba(253, 253, 255, 0.4);
 }
-.arrow-active {
-  stroke: rgba(126, 143, 221, 1);
-}
 
 .button-pagination {
   display: flex;
@@ -48,11 +45,16 @@ body.dark-theme .left-arrow {
   padding: 8px 18px;
   background-color: transparent;
   border-radius: 4px;
-  border: 1px solid #7e8fdd;
+  border: 1px solid var(--accent-color);
 }
 
 .wrap-pagination {
   display: flex;
   text-align: center;
   justify-content: center;
+}
+
+.active-page {
+  color: rgba(253, 253, 253, 1);
+  background: var(--turquoise, var(--additional-color));
 }

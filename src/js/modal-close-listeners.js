@@ -1,19 +1,44 @@
-export function setupModalCloseListeners() {
+import { LOCAL_STORAGE_KEYS } from './constants';
+import { openModal } from './setup-handlers';
+
+export function setupModalCloseListeners(renderFunctionAfterChangeSmth) {
   document
     .querySelector('.modal-close-btn')
-    .addEventListener('click', onCloseModalBtnClick);
+    .addEventListener('click', onModalCloseBtnClick);
   document
     .querySelector('.back-modal-close-btn')
-    .addEventListener('click', onCloseModalBtnClick);
+    .addEventListener('click', event => {
+      onBackModalCloseBtnClick(event, renderFunctionAfterChangeSmth);
+    });
   document
     .querySelector('.backdrop')
     .addEventListener('click', onBackdropClick);
   document.addEventListener('keyup', onKeyUp);
 }
 
-function onCloseModalBtnClick() {
+function onModalCloseBtnClick() {
   removeListeners();
   closeModal();
+}
+
+async function onBackModalCloseBtnClick(event, renderFunctionAfterChangeSmth) {
+  removeListeners();
+
+  if (!event.target.closest('.modal-container').dataset.cocktailId) {
+    closeModal();
+    return;
+  }
+  console.log(event.target.closest('.modal-container').dataset.cocktailId);
+
+  try {
+    const prevModalData =
+      JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.PREV_MODAL_DATA)) ||
+      {};
+    console.log(prevModalData);
+    openModal(prevModalData, renderFunctionAfterChangeSmth);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function onBackdropClick(event) {
@@ -40,10 +65,10 @@ function closeModal() {
 function removeListeners() {
   document
     .querySelector('.modal-close-btn')
-    .removeEventListener('click', onCloseModalBtnClick);
+    .removeEventListener('click', onModalCloseBtnClick);
   document
     .querySelector('.back-modal-close-btn')
-    .removeEventListener('click', onCloseModalBtnClick);
+    .removeEventListener('click', onBackModalCloseBtnClick);
   document
     .querySelector('.backdrop')
     .removeEventListener('click', onBackdropClick);

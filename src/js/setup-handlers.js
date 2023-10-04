@@ -28,7 +28,7 @@ export function setupClickHandlerOnWorkWithLocaleStorage(data, box, key) {
 export function setupClickHandlerOnModalOnWorkWithLocaleStorage(
   card,
   key,
-  renderFunction
+  renderFunctionAfterChangeSmth
 ) {
   const modal = document.querySelector('.modal-container');
 
@@ -54,7 +54,7 @@ export function setupClickHandlerOnModalOnWorkWithLocaleStorage(
       target.ariaLabel = 'remove from favorite';
 
       //render favorite list if we are on favorite section
-      renderFavoriteListWithOpenModal(favorites, renderFunction);
+      renderFavoriteListWithOpenModal(favorites, renderFunctionAfterChangeSmth);
       //render svg-icon if we are on main section
       document
         .querySelector(`[data-id="${id}"] .svg-icon-heart`)
@@ -79,7 +79,7 @@ export function setupClickHandlerOnModalOnWorkWithLocaleStorage(
       target.ariaLabel = 'add to favorite';
 
       //render favorite list if we are on favorite section
-      renderFavoriteListWithOpenModal(favorites, renderFunction);
+      renderFavoriteListWithOpenModal(favorites, renderFunctionAfterChangeSmth);
       //render svg-icon if we are on main section
       document
         .querySelector(`[data-id="${id}"] .svg-icon-heart`)
@@ -88,7 +88,7 @@ export function setupClickHandlerOnModalOnWorkWithLocaleStorage(
   });
 }
 
-function renderFavoriteListWithOpenModal(data, renderFunction) {
+function renderFavoriteListWithOpenModal(data, renderFunctionAfterChangeSmth) {
   const favoriteList = document.querySelector(
     '.favorite-section .favorite-list'
   );
@@ -113,10 +113,16 @@ function renderFavoriteListWithOpenModal(data, renderFunction) {
     .classList.remove('is-empty');
 
   favoriteList.classList.remove('visually-hidden');
-  favoriteList.innerHTML = renderFunction(data);
+
+  try {
+    favoriteList.innerHTML = renderFunctionAfterChangeSmth(data);
+  } catch (error) {}
 }
 
-export async function setupClickHandlerOnOpenModal(box, renderFunction) {
+export async function setupClickHandlerOnOpenModal(
+  box,
+  renderFunctionAfterChangeSmth
+) {
   box.addEventListener('click', async function (e) {
     const button = e.target.closest('.learn-more-btn');
     if (!button) {
@@ -126,33 +132,46 @@ export async function setupClickHandlerOnOpenModal(box, renderFunction) {
     const cocktailId = button.closest('.cocktail-card').dataset.id;
     try {
       const cocktail = await getCocktailById(cocktailId);
-      renderModalCocktail(...cocktail);
-      setupModalCloseListeners();
-      setupClickHandlerOnModalOnWorkWithLocaleStorage(
-        cocktail,
-        LOCAL_STORAGE_KEYS.COCKTAILS,
-        renderFunction
-      );
-
-      const ingredientsList = document.querySelector(
-        '.per-cocktail-ingredients-list'
-      );
-      ingredientsList.addEventListener('click', async function (e) {
-        const button = e.target.closest('.per-cocktail-ingredient-btn');
-        if (!button) {
-          return;
-        }
-        const ingredientId = button.dataset.id;
-        const ingredient = await getIngredientById(ingredientId);
-        renderModalIngredient(...ingredient);
-        setupModalCloseListeners();
-        setupClickHandlerOnModalOnWorkWithLocaleStorage(
-          ingredient,
-          LOCAL_STORAGE_KEYS.INGREDIENTS
-        );
-      });
+      openModal(cocktail, renderFunctionAfterChangeSmth);
     } catch (error) {
       console.log(error);
     }
+  });
+}
+
+export async function openModal(cocktail, renderFunctionAfterChangeSmth) {
+  renderModalCocktail(...cocktail);
+  setupModalCloseListeners();
+  setupClickHandlerOnModalOnWorkWithLocaleStorage(
+    cocktail,
+    LOCAL_STORAGE_KEYS.COCKTAILS,
+    renderFunctionAfterChangeSmth
+  );
+
+  const ingredientsList = document.querySelector(
+    '.per-cocktail-ingredients-list'
+  );
+
+  ingredientsList.addEventListener('click', async function (e) {
+    const button = e.target.closest('.per-cocktail-ingredient-btn');
+    if (!button) {
+      return;
+    }
+    const ingredientId = button.dataset.id;
+    const ingredient = await getIngredientById(ingredientId);
+    renderModalIngredient(...ingredient);
+    //!
+
+    setupModalCloseListeners(renderFunctionAfterChangeSmth);
+    setupClickHandlerOnModalOnWorkWithLocaleStorage(
+      ingredient,
+      LOCAL_STORAGE_KEYS.INGREDIENTS
+    );
+    document.querySelector('.modal-container').dataset.cocktailId =
+      cocktail[0]._id;
+    localStorage.setItem(
+      LOCAL_STORAGE_KEYS.PREV_MODAL_DATA,
+      JSON.stringify(cocktail)
+    );
   });
 }

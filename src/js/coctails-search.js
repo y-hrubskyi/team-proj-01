@@ -11,6 +11,7 @@ import {
 } from './setup-handlers';
 
 const randomCocktailsList = document.querySelector('.random-cocktails-list-js');
+const isActivePagination = document.querySelector('.pagination-container');
 
 export async function searchCocktailsByFillter({
   firstLetter,
@@ -57,6 +58,7 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
     setupClickHandlerOnOpenModal(randomCocktailsList);
   } catch {
     renderNoResultInfo();
+    isActivePagination.classList.add('is-active-pagination');
   }
 }
 

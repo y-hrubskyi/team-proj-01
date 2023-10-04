@@ -1,3 +1,17 @@
+/* add flexibility for page */
+html,
+body {
+  height: 100%;
+}
+
+.bg {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+}
+/* add flexibility for page */
+
 .favorite-section {
   padding-top: 80px;
   padding-bottom: 80px;
@@ -16,7 +30,7 @@
 }
 
 @media screen and (max-width: 767px) and (min-height: 696px) {
-  .placeholder-empty-favorite-list {
+  .favorite-section.is-empty .placeholder-empty-favorite-list {
     height: calc(100vh - (696px - 190px));
   }
 }
@@ -56,7 +70,7 @@
   }
 
   @media screen and (min-height: 899px) {
-    .placeholder-empty-favorite-list {
+    .favorite-section.is-empty .placeholder-empty-favorite-list {
       height: calc(100vh - (899px - 297px));
     }
   }

@@ -7,6 +7,7 @@ import {
   setupClickHandlerOnOpenModal,
   setupClickHandlerOnWorkWithLocaleStorage,
 } from './setup-handlers';
+import { sortByRating } from './sort-by-rating';
 
 const randomCocktailsList = document.querySelector('.random-cocktails-list-js');
 
@@ -56,6 +57,7 @@ async function responseProcessing(data) {
       LOCAL_STORAGE_KEYS.COCKTAILS
     );
     setupClickHandlerOnOpenModal(randomCocktailsList, renderModalCocktail);
+    sortByRating(randomCocktailsList);
   } catch (error) {
     console.log(error);
   }

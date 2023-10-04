@@ -20,8 +20,8 @@ export function createCocktailsMarkup(arr) {
               <div>
                 <div class="cocktail-card-btns-wrapper">
                   <button type="button" class="learn-more-cocktail-btn learn-more-btn" data-modal-open>Learn More</button>
-                  <button type="button" class="add-to-localstorage-btn">
-                    <svg width="18px" height="18px" class="svg-icon-heart">
+                  <button type="button" class="add-or-remove-from-ls-btn">
+                    <svg width="18px" height="18px" class="svg-icon-heart" aria-label="add or remove to/from favorite">
                       <use href="${spriteUrl}#icon-heart"></use>
                     </svg>
                   </button>
@@ -46,7 +46,7 @@ export function createFavoriteCocktailsMarkup(arr) {
               <div>
                 <div class="cocktail-card-btns-wrapper">
                   <button type="button" class="learn-more-cocktail-btn learn-more-btn">Learn More</button>
-                  <button type="button" class="add-to-localstorage-btn remove-from-localstorage-btn">
+                  <button type="button" class="add-or-remove-from-ls-btn remove-from-localstorage-btn" aria-label="remove from favorite">
                     <svg width="18px" height="18px" class="icon-trash">
                       <use href="${spriteUrl}#icon-trash"></use>
                     </svg>
@@ -76,7 +76,7 @@ export function createFavoriteIngredientsMarkup(arr) {
             </p>
             <div class="ingredient-card-btns">
               <button type="button" class="learn-more-ingredient-btn learn-more-btn">learn more</button>
-              <button type="button" class="remove-ingredient-btn remove-from-localstorage-btn" aria-label="remove from locale storage">
+              <button type="button" class="remove-ingredient-btn remove-from-localstorage-btn" aria-label="remove from favorite">
                 <svg width="18px" height="18px" class="icon-trash">
                   <use href="${spriteUrl}#icon-trash"></use>
                 </svg>
@@ -127,7 +127,7 @@ export function renderModalCocktail(cocktail) {
                     </div>
                     <div class="modal-btns">
                       <button
-                        class="add-or-remove-btn ${params.actionClass} ${params.styleClass}"
+                        class="add-or-remove-from-ls-modal-btn ${params.actionClass} ${params.styleClass}"
                         type="button"
                         aria-label="${params.ariaLabel}"
                       >
@@ -204,9 +204,9 @@ export function renderModalIngredient(ingredient) {
                     </ul>
                     <div class="modal-btns">
                       <button
-                        class="add-or-remove-btn ${params.actionClass} ${
-    params.styleClass
-  } 
+                        class="add-or-remove-from-ls-modal-btn ${
+                          params.actionClass
+                        } ${params.styleClass}"
                         type="button"
                         aria-label="${params.ariaLabel}"
                       >
@@ -227,7 +227,7 @@ export function renderModalIngredient(ingredient) {
 // helpers
 function prepareForRenderModal() {
   document.body.classList.add('no-scrolling-body');
-  const backdrop = document.querySelector('[backdrop-modal]');
+  const backdrop = document.querySelector('[data-backdrop]');
   backdrop.classList.add('backdrop');
 
   return backdrop;
@@ -250,7 +250,7 @@ export function setupParamsForRender(obj, key) {
     params.ariaLabel = 'add to favorite';
     console.log(`isn't in locale storage`);
   }
-  console.log('PARAMS: ', params);
+  // console.log('PARAMS: ', params);
 
   return params;
 }

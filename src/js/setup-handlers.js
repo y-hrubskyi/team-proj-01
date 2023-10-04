@@ -6,7 +6,7 @@ import { LOCAL_STORAGE_KEYS } from './constants';
 
 export function setupClickHandlerOnWorkWithLocaleStorage(data, box, key) {
   box.addEventListener('click', function (e) {
-    const button = e.target.closest('.add-to-localstorage-btn');
+    const button = e.target.closest('.add-or-remove-from-ls-btn');
 
     if (button) {
       const cardId = button.closest('.cocktail-card').dataset.id;
@@ -15,8 +15,10 @@ export function setupClickHandlerOnWorkWithLocaleStorage(data, box, key) {
         const svgIcon = button.querySelector('.svg-icon-heart');
         if (svgIcon.classList.contains('is-active')) {
           removeFromLocalStorage(selectedCard, svgIcon, key);
+          button.ariaLabel = 'add to favorite';
         } else {
           addToLocalStorage(selectedCard, svgIcon, key);
+          button.ariaLabel = 'remove from favorite';
         }
       }
     }
@@ -29,8 +31,6 @@ export function setupClickHandlerOnModalOnWorkWithLocaleStorage(card, key) {
   modal.addEventListener('click', function (e) {
     const target = e.target;
     const id = modal.dataset.id;
-
-    console.log(target, id);
 
     if (target.closest('.add-to-localstorage-btn')) {
       const favorites = JSON.parse(localStorage.getItem(key)) || [];
@@ -49,7 +49,7 @@ export function setupClickHandlerOnModalOnWorkWithLocaleStorage(card, key) {
       target.classList.add('modal-remove-button');
       target.ariaLabel = 'remove from favorite';
     } else if (target.closest('.remove-from-localstorage-btn')) {
-      console.log('repeated click?');
+      // console.log('repeated click?');
       const favorites = JSON.parse(localStorage.getItem(key)) || [];
 
       const index = favorites.findIndex(favCard => favCard._id === id);
@@ -59,7 +59,7 @@ export function setupClickHandlerOnModalOnWorkWithLocaleStorage(card, key) {
 
       favorites.splice(index, 1);
       localStorage.setItem(key, JSON.stringify(favorites));
-      console.log('Карта в удалена с ЛОКАЛСТОРДЖ');
+      console.log('Карта удалена с ЛОКАЛСТОРДЖ');
 
       target.classList.remove('remove-from-localstorage-btn');
       target.classList.add('add-to-localstorage-btn');

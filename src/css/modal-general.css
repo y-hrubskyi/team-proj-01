@@ -96,7 +96,7 @@
   letter-spacing: 0.28px;
 }
 
-.add-or-remove-btn {
+.add-or-remove-from-ls-modal-btn {
   width: 100%;
   padding-top: 14px;
   padding-bottom: 14px;
@@ -109,8 +109,8 @@
   transition: background-color var(--general-transition);
 }
 
-.add-or-remove-btn:hover,
-.add-or-remove-btn:focus {
+.add-or-remove-from-ls-modal-btn:hover,
+.add-or-remove-from-ls-modal-btn:focus {
   background-color: rgba(110, 127, 207, 1);
 }
 
@@ -162,7 +162,7 @@ body.dark-theme .back-modal-close-btn:focus {
     gap: 18px;
   }
 
-  .add-or-remove-btn {
+  .add-or-remove-from-ls-modal-btn {
     width: 251px;
     padding-top: 16px;
     padding-bottom: 16px;

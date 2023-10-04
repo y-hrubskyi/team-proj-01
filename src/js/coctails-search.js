@@ -95,7 +95,7 @@ radiosLetersEL.addEventListener('click', onLetterClick);
 const radionbuttonsEL = document.querySelector('.custom-select');
 
 function onRadioButtonClick(e) {
-  console.log(e.target);
+  // console.log(e.target);
   const letter = e.target.dataset.id;
   renderSearchResults({ firstLetter: letter });
 }

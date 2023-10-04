@@ -6,7 +6,6 @@ const isActivePagination = document.querySelector('.pagination-container');
 let current_page = 1;
 
 export function paginateArray(arrDatas, rowPerPage, box, renderFn) {
-  console.log(renderFn);
   if (arrDatas.length <= rowPerPage) {
     isActivePagination.classList.add('is-active-pagination');
     paginationList.innerHTML = '';

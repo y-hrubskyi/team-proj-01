@@ -1,5 +1,3 @@
-import { createCocktailsMarkup } from './render-functions';
-
 const paginationList = document.getElementById('pagination-list');
 const leftButton = document.querySelector('.left-button');
 const rightButton = document.querySelector('.right-button');

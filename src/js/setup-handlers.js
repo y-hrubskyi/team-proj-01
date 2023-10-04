@@ -6,7 +6,7 @@ import { LOCAL_STORAGE_KEYS } from './constants';
 
 export function setupClickHandlerOnWorkWithLocaleStorage(data, box, key) {
   box.addEventListener('click', function (e) {
-    const button = e.target.closest('.add-to-localstorage-btn');
+    const button = e.target.closest('.add-or-remove-from-ls-btn');
 
     if (button) {
       const cardId = button.closest('.cocktail-card').dataset.id;
@@ -15,25 +15,29 @@ export function setupClickHandlerOnWorkWithLocaleStorage(data, box, key) {
         const svgIcon = button.querySelector('.svg-icon-heart');
         if (svgIcon.classList.contains('is-active')) {
           removeFromLocalStorage(selectedCard, svgIcon, key);
+          button.ariaLabel = 'add to favorite';
         } else {
           addToLocalStorage(selectedCard, svgIcon, key);
+          button.ariaLabel = 'remove from favorite';
         }
       }
     }
   });
 }
 
-export function setupClickHandlerOnModalOnWorkWithLocaleStorage(card, key) {
+export function setupClickHandlerOnModalOnWorkWithLocaleStorage(
+  card,
+  key,
+  renderFunctionAfterChangeSmth
+) {
   const modal = document.querySelector('.modal-container');
 
   modal.addEventListener('click', function (e) {
     const target = e.target;
     const id = modal.dataset.id;
-
-    console.log(target, id);
+    const favorites = JSON.parse(localStorage.getItem(key)) || [];
 
     if (target.closest('.add-to-localstorage-btn')) {
-      const favorites = JSON.parse(localStorage.getItem(key)) || [];
       const isInFavorite = favorites.find(favCard => favCard._id === id);
       if (isInFavorite) {
         return;
@@ -48,8 +52,15 @@ export function setupClickHandlerOnModalOnWorkWithLocaleStorage(card, key) {
       target.textContent = 'remove from favorite';
       target.classList.add('modal-remove-button');
       target.ariaLabel = 'remove from favorite';
+
+      //render favorite list if we are on favorite section
+      renderFavoriteListWithOpenModal(favorites, renderFunctionAfterChangeSmth);
+      //render svg-icon if we are on main section
+      document
+        .querySelector(`[data-id="${id}"] .svg-icon-heart`)
+        ?.classList?.add('is-active');
     } else if (target.closest('.remove-from-localstorage-btn')) {
-      console.log('repeated click?');
+      // console.log('repeated click?');
       const favorites = JSON.parse(localStorage.getItem(key)) || [];
 
       const index = favorites.findIndex(favCard => favCard._id === id);
@@ -59,18 +70,59 @@ export function setupClickHandlerOnModalOnWorkWithLocaleStorage(card, key) {
 
       favorites.splice(index, 1);
       localStorage.setItem(key, JSON.stringify(favorites));
-      console.log('Карта в удалена с ЛОКАЛСТОРДЖ');
+      console.log('Карта удалена с ЛОКАЛСТОРДЖ');
 
       target.classList.remove('remove-from-localstorage-btn');
       target.classList.add('add-to-localstorage-btn');
       target.textContent = 'add to favorite';
       target.classList.remove('modal-remove-button');
       target.ariaLabel = 'add to favorite';
+
+      //render favorite list if we are on favorite section
+      renderFavoriteListWithOpenModal(favorites, renderFunctionAfterChangeSmth);
+      //render svg-icon if we are on main section
+      document
+        .querySelector(`[data-id="${id}"] .svg-icon-heart`)
+        ?.classList?.remove('is-active');
     }
   });
 }
 
-export async function setupClickHandlerOnOpenModal(box) {
+function renderFavoriteListWithOpenModal(data, renderFunctionAfterChangeSmth) {
+  const favoriteList = document.querySelector(
+    '.favorite-section .favorite-list'
+  );
+  if (!favoriteList) return;
+
+  const placeholderEmptyFavoriteList = document.querySelector(
+    '.placeholder-empty-favorite-list'
+  );
+
+  if (!data.length) {
+    favoriteList.classList.add('visually-hidden');
+    placeholderEmptyFavoriteList.classList.remove('visually-hidden');
+    placeholderEmptyFavoriteList
+      .closest('.favorite-section')
+      .classList.add('is-empty');
+    return;
+  }
+
+  placeholderEmptyFavoriteList.classList.add('visually-hidden');
+  placeholderEmptyFavoriteList
+    .closest('.favorite-section')
+    .classList.remove('is-empty');
+
+  favoriteList.classList.remove('visually-hidden');
+
+  try {
+    favoriteList.innerHTML = renderFunctionAfterChangeSmth(data);
+  } catch (error) {}
+}
+
+export async function setupClickHandlerOnOpenModal(
+  box,
+  renderFunctionAfterChangeSmth
+) {
   box.addEventListener('click', async function (e) {
     const button = e.target.closest('.learn-more-btn');
     if (!button) {
@@ -80,32 +132,46 @@ export async function setupClickHandlerOnOpenModal(box) {
     const cocktailId = button.closest('.cocktail-card').dataset.id;
     try {
       const cocktail = await getCocktailById(cocktailId);
-      renderModalCocktail(...cocktail);
-      setupModalCloseListeners();
-      setupClickHandlerOnModalOnWorkWithLocaleStorage(
-        cocktail,
-        LOCAL_STORAGE_KEYS.COCKTAILS
-      );
-
-      const ingredientsList = document.querySelector(
-        '.per-cocktail-ingredients-list'
-      );
-      ingredientsList.addEventListener('click', async function (e) {
-        const button = e.target.closest('.per-cocktail-ingredient-btn');
-        if (!button) {
-          return;
-        }
-        const ingredientId = button.dataset.id;
-        const ingredient = await getIngredientById(ingredientId);
-        renderModalIngredient(...ingredient);
-        setupModalCloseListeners();
-        setupClickHandlerOnModalOnWorkWithLocaleStorage(
-          ingredient,
-          LOCAL_STORAGE_KEYS.INGREDIENTS
-        );
-      });
+      openModal(cocktail, renderFunctionAfterChangeSmth);
     } catch (error) {
       console.log(error);
     }
+  });
+}
+
+export async function openModal(cocktail, renderFunctionAfterChangeSmth) {
+  renderModalCocktail(...cocktail);
+  setupModalCloseListeners();
+  setupClickHandlerOnModalOnWorkWithLocaleStorage(
+    cocktail,
+    LOCAL_STORAGE_KEYS.COCKTAILS,
+    renderFunctionAfterChangeSmth
+  );
+
+  const ingredientsList = document.querySelector(
+    '.per-cocktail-ingredients-list'
+  );
+
+  ingredientsList.addEventListener('click', async function (e) {
+    const button = e.target.closest('.per-cocktail-ingredient-btn');
+    if (!button) {
+      return;
+    }
+    const ingredientId = button.dataset.id;
+    const ingredient = await getIngredientById(ingredientId);
+    renderModalIngredient(...ingredient);
+    //!
+
+    setupModalCloseListeners(renderFunctionAfterChangeSmth);
+    setupClickHandlerOnModalOnWorkWithLocaleStorage(
+      ingredient,
+      LOCAL_STORAGE_KEYS.INGREDIENTS
+    );
+    document.querySelector('.modal-container').dataset.cocktailId =
+      cocktail[0]._id;
+    localStorage.setItem(
+      LOCAL_STORAGE_KEYS.PREV_MODAL_DATA,
+      JSON.stringify(cocktail)
+    );
   });
 }

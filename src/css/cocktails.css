@@ -100,7 +100,7 @@ body.light-theme .learn-more-cocktail-btn:focus {
   color: var(--primary-bg-color);
 }
 
-.add-to-localstorage-btn {
+.add-or-remove-from-ls-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,8 +114,8 @@ body.light-theme .learn-more-cocktail-btn:focus {
   transition: background-color var(--general-transition);
 }
 
-.add-to-localstorage-btn:hover,
-.add-to-localstorage-btn:focus {
+.add-or-remove-from-ls-btn:hover,
+.add-or-remove-from-ls-btn:focus {
   background-color: var(--active-color);
 }
 
@@ -166,7 +166,7 @@ body.light-theme .learn-more-cocktail-btn:focus {
     letter-spacing: 0.36px;
   }
 
-  .add-to-localstorage-btn {
+  .add-or-remove-from-ls-btn {
     width: 56px;
     height: 56px;
   }
@@ -194,4 +194,33 @@ body.light-theme .learn-more-cocktail-btn:focus {
 
 .cocktail-card-btns-wrapper .svg-icon-heart.is-active {
   fill: var(--primary-svg-color);
+}
+
+.sort-by-rating {
+  margin-right: auto;
+  padding: 8px 10px 8px 10px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1.33;
+  letter-spacing: 0.28px;
+  white-space: nowrap;
+  color: var(--primary-text-color);
+
+  background-color: var(--primary-bg-color);
+  border: none;
+  border-radius: 5px;
+
+  transition: color var(--general-transition),
+    background-color var(--general-transition);
+}
+.sort-by-rating:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-bg-color);
+}
+
+.rating-cocktails {
+  margin-left: 10px;
+  color: var(--accent-color);
 }

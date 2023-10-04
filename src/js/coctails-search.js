@@ -9,9 +9,9 @@ import {
   setupClickHandlerOnOpenModal,
   setupClickHandlerOnWorkWithLocaleStorage,
 } from './setup-handlers';
+import { sortByRating } from './sort-by-rating';
 
-const randomCocktailsList = document.querySelector('.random-cocktails-list-js');
-const isActivePagination = document.querySelector('.pagination-container');
+const searchCocktailsList = document.querySelector('.random-cocktails-list-js');
 
 export async function searchCocktailsByFillter({
   firstLetter,
@@ -38,27 +38,32 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
 
     const cocktailsToRender = getDeviceType() === 'desktop' ? 9 : 8;
     renderResultInfo();
-    const randomCocktailsList = document.querySelector(
+    const searchCocktailsList = document.querySelector(
       '.random-cocktails-list-js'
     );
     newTextAfterSearch();
     const paginationFn = paginateArray(
       searchResults,
       cocktailsToRender,
-      randomCocktailsList,
+      searchCocktailsList,
       createCocktailsMarkup
     );
 
-    randomCocktailsList.innerHTML = createCocktailsMarkup(paginationFn);
+    searchCocktailsList.innerHTML = createCocktailsMarkup(paginationFn);
+    sortByRating(searchCocktailsList);
     setupClickHandlerOnWorkWithLocaleStorage(
       searchResults,
-      randomCocktailsList,
+      searchCocktailsList,
       LOCAL_STORAGE_KEYS.COCKTAILS
     );
-    setupClickHandlerOnOpenModal(randomCocktailsList);
+    setupClickHandlerOnOpenModal(searchCocktailsList);
   } catch {
-    renderNoResultInfo();
+    const paginationList = document.getElementById('pagination-list');
+    const isActivePagination = document.querySelector('.pagination-container');
+    paginationList.innerHTML = '';
     isActivePagination.classList.add('is-active-pagination');
+
+    renderNoResultInfo();
   }
 }
 
@@ -90,7 +95,7 @@ radiosLetersEL.addEventListener('click', onLetterClick);
 const radionbuttonsEL = document.querySelector('.custom-select');
 
 function onRadioButtonClick(e) {
-  console.log(e.target);
+  // console.log(e.target);
   const letter = e.target.dataset.id;
   renderSearchResults({ firstLetter: letter });
 }
@@ -100,7 +105,9 @@ radionbuttonsEL.addEventListener('click', onRadioButtonClick);
 // no result image
 
 function renderNoResultInfo() {
-  const noResultsContainerEl = document.querySelector('.cocktails-section');
+  const noResultsContainerEl = document.querySelector(
+    '.cocktails-section .container'
+  );
 
   noResultsContainerEl.innerHTML = `<div class="placeholder-empty-favorite-list">
     <svg class="empty-favorite-img">
@@ -122,12 +129,14 @@ function newTextAfterSearch() {
 }
 
 function renderResultInfo() {
-  const resultsContainerEl = document.querySelector('.cocktails-section ');
+  const resultsContainerEl = document.querySelector(
+    '.cocktails-section .container'
+  );
 
-  resultsContainerEl.innerHTML = `<div class="container">
+  resultsContainerEl.innerHTML = `
     <h2 class="section-title">Cocktails</h2>
+    <button type="button" class="sort-by-rating hidden">best rating</button>
     <ul
       class="cocktails-list random-cocktails-list random-cocktails-list-js"
-    ></ul>
-  </div>`;
+    ></ul>`;
 }

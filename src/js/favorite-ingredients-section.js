@@ -8,7 +8,7 @@ import {
 } from './render-functions';
 import { setupClickHandlerOnModalOnWorkWithLocaleStorage } from './setup-handlers';
 
-const favoriteIngredietnsList = document.querySelector(
+const favoriteIngredientsList = document.querySelector(
   '.favorite-ingredients-list'
 );
 const placeholderEmptyFavoriteList = document.querySelector(
@@ -21,11 +21,19 @@ function renderFavoriteIngredients() {
   const products =
     JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.INGREDIENTS)) || [];
 
-  if (!products.length) return;
+  if (!products.length) {
+    favoriteIngredientsList.classList.add('visually-hidden');
+    placeholderEmptyFavoriteList.classList.remove('visually-hidden');
+    placeholderEmptyFavoriteList
+      .closest('.favorite-section')
+      .classList.add('is-empty');
+    return;
+  }
+
   const paginationFn = paginateArray(
     products,
     rows,
-    favoriteIngredietnsList,
+    favoriteIngredientsList,
     createFavoriteIngredientsMarkup
   );
 
@@ -34,10 +42,10 @@ function renderFavoriteIngredients() {
     .closest('.favorite-section')
     .classList.remove('is-empty');
 
-  favoriteIngredietnsList.classList.remove('visually-hidden');
-  favoriteIngredietnsList.innerHTML =
+  favoriteIngredientsList.classList.remove('visually-hidden');
+  favoriteIngredientsList.innerHTML =
     createFavoriteIngredientsMarkup(paginationFn);
-  favoriteIngredietnsList.addEventListener('click', clickHandler);
+  favoriteIngredientsList.addEventListener('click', clickHandler);
 }
 
 function clickHandler(e) {
@@ -58,7 +66,8 @@ async function onLearnMoreBtnCLick(button) {
   setupModalCloseListeners();
   setupClickHandlerOnModalOnWorkWithLocaleStorage(
     ingredient,
-    LOCAL_STORAGE_KEYS.INGREDIENTS
+    LOCAL_STORAGE_KEYS.INGREDIENTS,
+    createFavoriteIngredientsMarkup
   );
 }
 
@@ -78,14 +87,13 @@ function onRemoveBtnCLick(button) {
   }
 
   if (!products.length) {
+    favoriteIngredientsList.classList.add('visually-hidden');
     placeholderEmptyFavoriteList.classList.remove('visually-hidden');
     placeholderEmptyFavoriteList
       .closest('.favorite-section')
       .classList.add('is-empty');
-
-    favoriteIngredietnsList.classList.add('visually-hidden');
   } else {
-    favoriteIngredietnsList.innerHTML =
+    favoriteIngredientsList.innerHTML =
       createFavoriteIngredientsMarkup(products);
   }
 }

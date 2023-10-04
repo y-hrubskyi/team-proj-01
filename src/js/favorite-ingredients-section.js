@@ -58,7 +58,8 @@ async function onLearnMoreBtnCLick(button) {
   setupModalCloseListeners();
   setupClickHandlerOnModalOnWorkWithLocaleStorage(
     ingredient,
-    LOCAL_STORAGE_KEYS.INGREDIENTS
+    LOCAL_STORAGE_KEYS.INGREDIENTS,
+    createFavoriteIngredientsMarkup
   );
 }
 
@@ -78,12 +79,11 @@ function onRemoveBtnCLick(button) {
   }
 
   if (!products.length) {
+    favoriteIngredietnsList.classList.add('visually-hidden');
     placeholderEmptyFavoriteList.classList.remove('visually-hidden');
     placeholderEmptyFavoriteList
       .closest('.favorite-section')
       .classList.add('is-empty');
-
-    favoriteIngredietnsList.classList.add('visually-hidden');
   } else {
     favoriteIngredietnsList.innerHTML =
       createFavoriteIngredientsMarkup(products);

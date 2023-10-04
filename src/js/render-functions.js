@@ -21,7 +21,11 @@ export function createCocktailsMarkup(arr) {
                 <div class="cocktail-card-btns-wrapper">
                   <button type="button" class="learn-more-cocktail-btn learn-more-btn" data-modal-open>Learn More</button>
                   <button type="button" class="add-or-remove-from-ls-btn">
-                    <svg width="18px" height="18px" class="svg-icon-heart" aria-label="add or remove to/from favorite">
+                    <svg width="18px" height="18px" class="svg-icon-heart ${
+                      isInLocaleStorage(item, LOCAL_STORAGE_KEYS.COCKTAILS)
+                        ? 'is-active'
+                        : ''
+                    }" aria-label="add or remove to/from favorite">
                       <use href="${spriteUrl}#icon-heart"></use>
                     </svg>
                   </button>

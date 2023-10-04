@@ -36,7 +36,10 @@ function renderFavoriteCocktails() {
     favoriteCocktailsList.innerHTML =
       createFavoriteCocktailsMarkup(paginationFn);
     favoriteCocktailsList.addEventListener('click', clickHandler);
-    setupClickHandlerOnOpenModal(favoriteCocktailsList);
+    setupClickHandlerOnOpenModal(
+      favoriteCocktailsList,
+      createFavoriteCocktailsMarkup
+    );
   }
 }
 
@@ -59,12 +62,11 @@ function clickHandler(e) {
   }
 
   if (!products.length) {
+    favoriteCocktailsList.classList.add('visually-hidden');
     placeholderEmptyFavoriteList.classList.remove('visually-hidden');
     placeholderEmptyFavoriteList
       .closest('.favorite-section')
       .classList.add('is-empty');
-
-    favoriteCocktailsList.classList.add('visually-hidden');
   } else {
     favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(products);
   }

@@ -25,15 +25,19 @@ export function setupClickHandlerOnWorkWithLocaleStorage(data, box, key) {
   });
 }
 
-export function setupClickHandlerOnModalOnWorkWithLocaleStorage(card, key) {
+export function setupClickHandlerOnModalOnWorkWithLocaleStorage(
+  card,
+  key,
+  renderFunction
+) {
   const modal = document.querySelector('.modal-container');
 
   modal.addEventListener('click', function (e) {
     const target = e.target;
     const id = modal.dataset.id;
+    const favorites = JSON.parse(localStorage.getItem(key)) || [];
 
     if (target.closest('.add-to-localstorage-btn')) {
-      const favorites = JSON.parse(localStorage.getItem(key)) || [];
       const isInFavorite = favorites.find(favCard => favCard._id === id);
       if (isInFavorite) {
         return;
@@ -48,6 +52,13 @@ export function setupClickHandlerOnModalOnWorkWithLocaleStorage(card, key) {
       target.textContent = 'remove from favorite';
       target.classList.add('modal-remove-button');
       target.ariaLabel = 'remove from favorite';
+
+      //render favorite list if we are on favorite section
+      renderFavoriteListWithOpenModal(favorites, renderFunction);
+      //render svg-icon if we are on main section
+      document
+        .querySelector(`[data-id="${id}"] .svg-icon-heart`)
+        ?.classList?.add('is-active');
     } else if (target.closest('.remove-from-localstorage-btn')) {
       // console.log('repeated click?');
       const favorites = JSON.parse(localStorage.getItem(key)) || [];
@@ -66,11 +77,35 @@ export function setupClickHandlerOnModalOnWorkWithLocaleStorage(card, key) {
       target.textContent = 'add to favorite';
       target.classList.remove('modal-remove-button');
       target.ariaLabel = 'add to favorite';
+
+      //render favorite list if we are on favorite section
+      renderFavoriteListWithOpenModal(favorites, renderFunction);
+      //render svg-icon if we are on main section
+      document
+        .querySelector(`[data-id="${id}"] .svg-icon-heart`)
+        ?.classList?.remove('is-active');
     }
   });
 }
 
-export async function setupClickHandlerOnOpenModal(box) {
+function renderFavoriteListWithOpenModal(data, renderFunction) {
+  const favoriteList = document.querySelector(
+    '.favorite-section .favorite-list'
+  );
+  if (!favoriteList) return;
+  favoriteList.innerHTML = renderFunction(data);
+}
+
+// function renderCocktailsListWithOpenModal(data, renderFunction) {
+//   const favoriteList = document.querySelector(
+//     '.favorite-section .favorite-list'
+//   );
+//   console.log(favoriteList);
+//   if (!favoriteList) return;
+//   favoriteList.innerHTML = renderFunction(data);
+// }
+
+export async function setupClickHandlerOnOpenModal(box, renderFunction) {
   box.addEventListener('click', async function (e) {
     const button = e.target.closest('.learn-more-btn');
     if (!button) {
@@ -84,7 +119,8 @@ export async function setupClickHandlerOnOpenModal(box) {
       setupModalCloseListeners();
       setupClickHandlerOnModalOnWorkWithLocaleStorage(
         cocktail,
-        LOCAL_STORAGE_KEYS.COCKTAILS
+        LOCAL_STORAGE_KEYS.COCKTAILS,
+        renderFunction
       );
 
       const ingredientsList = document.querySelector(

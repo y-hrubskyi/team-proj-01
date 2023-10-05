@@ -54,7 +54,8 @@ body.dark-theme .left-arrow {
   justify-content: center;
 }
 
-.active-page {
+.button-list-pagination.active {
   color: rgba(253, 253, 253, 1);
   background: var(--turquoise, var(--additional-color));
+  border: transparent;
 }

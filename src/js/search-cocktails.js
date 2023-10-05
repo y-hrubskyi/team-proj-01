@@ -71,20 +71,26 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
       createCocktailsMarkup
     );
 
-    searchCocktailsList.innerHTML = createCocktailsMarkup(paginationFn);
-    sortByRating(searchCocktailsList);
-    setupClickHandlerOnWorkWithLocaleStorage(
-      searchResults,
-      searchCocktailsList,
-      LOCAL_STORAGE_KEYS.COCKTAILS
-    );
+    const { paginatedData, current_page, arrDatas } = paginationFn;
+
+    if (current_page > 1) {
+      current_page = 1;
+      console.log(current_page);
+    } else {
+      searchCocktailsList.innerHTML = createCocktailsMarkup(paginatedData);
+      sortByRating(searchCocktailsList);
+      setupClickHandlerOnWorkWithLocaleStorage(
+        searchResults,
+        searchCocktailsList,
+        LOCAL_STORAGE_KEYS.COCKTAILS
+      );
+    }
     setupClickHandlerOnOpenModal(searchCocktailsList);
   } catch {
     const paginationList = document.getElementById('pagination-list');
     const isActivePagination = document.querySelector('.pagination-container');
     paginationList.innerHTML = '';
     isActivePagination.classList.add('is-active-pagination');
-
     renderNoResultInfo();
   }
 }

@@ -55,197 +55,59 @@
     background: #9cdfdf;
   }
 }
-/* keyboard for tablet + */
 
 /* select for mobile */
-details {
-  position: relative;
-  width: 300px;
-  margin-right: 1rem;
+.select-letters {
+  width: 90px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+
+  display: flex;
+  justify-content: center;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.28;
+  color: #fdfdff;
+
+  border: none;
+  border-radius: 8px;
+  background-color: rgba(126, 143, 221, 0.4);
+}
+
+.select-letters:hover,
+.select-letters:focus {
+  background-color: var(--additional-color);
+}
+
+.ss-main .ss-arrow {
+  width: 18px;
+  height: 18px;
+}
+.ss-main .ss-arrow path {
+  stroke: #fdfdff;
+}
+.ss-main.ss-open-below {
+  border-radius: 8px;
+}
+.ss-content {
+  max-height: 90px;
+
+  border-radius: 4px;
+  border: 1px solid #9cdfdf;
+  overflow: scroll;
+}
+.ss-content .ss-list .ss-option {
+  color: var(--primary-text-color);
+  background-color: var(--primary-bg-color);
 }
 
 @media screen and (min-width: 768px) {
-  details {
+  .select-letters {
     display: none;
   }
 }
-
-.custom-select {
-  margin-bottom: 40px;
-
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@media screen and (min-width: 768px) {
-  .custom-select {
-    margin-left: 0;
-  }
-}
-
-details[open] {
-  z-index: 1;
-}
-
-summary {
-  margin-right: auto;
-  margin-left: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #fdfdff;
-
-  text-align: center;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 18px;
-  width: 93px;
-  height: 34px;
-  padding: 0;
-  cursor: pointer;
-  border: none;
-
-  border-radius: 8px;
-  background: rgba(126, 143, 221, 0.4);
-  list-style: none;
-}
-
-summary::-webkit-details-marker {
-  display: none;
-}
-
-details[open] summary {
-  background: rgba(156, 223, 223, 1);
-}
-
-details[open] summary:before {
-  content: '';
-  display: block;
-  width: 100vw;
-  height: 100vh;
-  background: transparent;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-summary:after {
-  content: '';
-  display: block;
-  width: 12px;
-  height: 12px;
-  border-bottom: 2px solid #fdfdff;
-  border-left: 2px solid #fdfdff;
-  border-bottom-left-radius: 2px;
-  transform: rotate(135deg) translate(50%, 0%);
-  /*  here */
-  transition: transform ease-in-out 100ms;
-  margin-top: 2px;
-  margin-bottom: 8px;
-  margin-right: 8px;
-  margin-left: 6px;
-}
-
-summary:focus {
-  outline: none;
-}
-
-details[open] summary:after {
-  transform: rotate(-45deg) translate(0%, 0%);
-}
-
-.select-item {
-  margin: 0;
-  padding: 10px;
-}
-
-.select-item:hover {
-  background-color: rgba(156, 223, 223, 1);
-}
-
-summary.radios {
-  counter-reset: radios;
-}
-
-summary.radios:before {
-  content: normal;
-}
-
-input[type='radio'] {
-  counter-increment: radios;
-  appearance: none;
-  display: none;
-}
-
-input[type='radio']:checked {
-  display: inline;
-  --display: block;
-}
-
-input[type='radio']:after {
-  content: attr(title);
-  padding-left: 14px;
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 18px;
-  color: #fdfdff;
-}
-
-.select-list {
-  color: #242424;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 10px;
-  border-radius: 4px;
-  border: 1px solid rgba(156, 223, 223, 0.8);
-  background: #fdfdff;
-
-  counter-reset: labels;
-  width: 90px;
-  height: 84px;
-  flex-shrink: 0;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%);
-  padding: 0;
-  margin: 0;
-
-  max-height: 200px;
-  overflow-y: auto;
-  list-style: none;
-}
-
-/* label {
-    width: 100%;
-    display: flex;
-    cursor: pointer;
-    justify-content: space-between;
-    font-size: 10px;
-    color: #5f6775;
-} */
-
-.select-list::-webkit-scrollbar {
-  width: 4px;
-}
-
-.select-list::-webkit-scrollbar-thumb {
-  width: 3px;
-  height: 34px;
-  flex-shrink: 0;
-  border-radius: 4px;
-  background-color: rgba(156, 223, 223, 0.8);
-}
-
-.select-list::-webkit-scrollbar-thumb:hover {
-  background: rgba(156, 223, 223, 0.8);
-}
-/* select for mobile */
 
 /* form */
 .search-form {
@@ -290,7 +152,7 @@ body.dark-theme .search-form-input::placeholder {
   color: rgba(253, 253, 255, 0.2);
 }
 
-.form__btn {
+.search-form-btn {
   position: absolute;
   top: 4px;
   left: 1px;
@@ -313,4 +175,3 @@ body.dark-theme .search-form-input::placeholder {
 .icon-search:hover {
   fill: var(--accent-color);
 }
-/* form */

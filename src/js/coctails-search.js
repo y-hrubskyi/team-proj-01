@@ -1,7 +1,7 @@
 import axios from 'axios';
 import spriteUrl from '/img/sprite.svg';
 
-import { BASE_URL, LOCAL_STORAGE_KEYS } from './constants';
+import { LOCAL_STORAGE_KEYS } from './constants';
 import { createCocktailsMarkup } from './render-functions';
 import { getDeviceType } from './random-cocktails';
 import { paginateArray } from './pagination';
@@ -10,24 +10,7 @@ import {
   setupClickHandlerOnWorkWithLocaleStorage,
 } from './setup-handlers';
 import { sortByRating } from './sort-by-rating';
-
-const searchCocktailsList = document.querySelector('.random-cocktails-list-js');
-
-export async function searchCocktailsByFillter({
-  firstLetter,
-  cocktailName,
-} = {}) {
-  const requestURL = new URL(`${BASE_URL}/cocktails/search/`);
-  if (firstLetter) {
-    requestURL.searchParams.append(`f`, firstLetter);
-  }
-  if (cocktailName) {
-    requestURL.searchParams.append(`s`, cocktailName);
-  }
-
-  const response = await axios.get(requestURL);
-  return response.data;
-}
+import { searchCocktailsByFillter } from './drinkify-api-service';
 
 export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
   try {
@@ -67,40 +50,39 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
   }
 }
 
-// renderSearchResults();
-// search input //
+// search by input //
 
-const formEL = document.querySelector('.header__form');
-const inputEL = document.querySelector('.form__input');
+const formEL = document.querySelector('.search-form');
+formEL.addEventListener('submit', onSearchSubmit);
 
 function onSearchSubmit(e) {
   e.preventDefault();
-  const searchQuery = inputEL.value.trim();
+
+  const searchQuery = e.currentTarget.elements.search.value.trim();
   renderSearchResults({ cocktailName: searchQuery });
 }
-
-formEL.addEventListener('submit', onSearchSubmit);
 
 // search by leters
 
 const radiosLetersEL = document.querySelector('[data-action="keyboard"]');
+radiosLetersEL.addEventListener('click', onLetterClick);
 
 function onLetterClick(e) {
+  if (!e.target.classList.contains('keyboard-btn')) {
+    return;
+  }
+
   const letter = e.target.textContent;
   renderSearchResults({ firstLetter: letter });
 }
 
-radiosLetersEL.addEventListener('click', onLetterClick);
-
 const radionbuttonsEL = document.querySelector('.custom-select');
+radionbuttonsEL.addEventListener('click', onRadioButtonClick);
 
 function onRadioButtonClick(e) {
-  // console.log(e.target);
   const letter = e.target.dataset.id;
   renderSearchResults({ firstLetter: letter });
 }
-
-radionbuttonsEL.addEventListener('click', onRadioButtonClick);
 
 // no result image
 

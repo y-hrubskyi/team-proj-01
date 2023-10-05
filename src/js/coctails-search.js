@@ -1,7 +1,7 @@
-import axios from 'axios';
+import SlimSelect from 'slim-select';
 import spriteUrl from '/img/sprite.svg';
 
-import { BASE_URL, LOCAL_STORAGE_KEYS } from './constants';
+import { LOCAL_STORAGE_KEYS } from './constants';
 import { createCocktailsMarkup } from './render-functions';
 import { getDeviceType } from './random-cocktails';
 import { paginateArray } from './pagination';
@@ -10,24 +10,46 @@ import {
   setupClickHandlerOnWorkWithLocaleStorage,
 } from './setup-handlers';
 import { sortByRating } from './sort-by-rating';
+import { searchCocktailsByFillter } from './drinkify-api-service';
 
-const searchCocktailsList = document.querySelector('.random-cocktails-list-js');
-
-export async function searchCocktailsByFillter({
-  firstLetter,
-  cocktailName,
-} = {}) {
-  const requestURL = new URL(`${BASE_URL}/cocktails/search/`);
-  if (firstLetter) {
-    requestURL.searchParams.append(`f`, firstLetter);
-  }
-  if (cocktailName) {
-    requestURL.searchParams.append(`s`, cocktailName);
-  }
-
-  const response = await axios.get(requestURL);
-  return response.data;
-}
+const keysList = [
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
+  'G',
+  'H',
+  'I',
+  'J',
+  'K',
+  'L',
+  'M',
+  'N',
+  'O',
+  'P',
+  'Q',
+  'R',
+  'S',
+  'T',
+  'U',
+  'V',
+  'W',
+  'X',
+  'Y',
+  'Z',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '0',
+];
 
 export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
   try {
@@ -67,43 +89,30 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
   }
 }
 
-// renderSearchResults();
-// search input //
-
-const formEL = document.querySelector('.header__form');
-const inputEL = document.querySelector('.form__input');
-
+// search by input //
 function onSearchSubmit(e) {
   e.preventDefault();
-  const searchQuery = inputEL.value.trim();
+
+  const searchQuery = e.currentTarget.elements.search.value.trim();
   renderSearchResults({ cocktailName: searchQuery });
 }
 
-formEL.addEventListener('submit', onSearchSubmit);
+// search by letters
+function onKeyboardLettersElClick(e) {
+  if (!e.target.classList.contains('keyboard-btn')) {
+    return;
+  }
 
-// search by leters
-
-const radiosLetersEL = document.querySelector('[data-action="keyboard"]');
-
-function onLetterClick(e) {
-  const letter = e.target.textContent;
+  const letter = e.target.value;
   renderSearchResults({ firstLetter: letter });
 }
 
-radiosLetersEL.addEventListener('click', onLetterClick);
-
-const radionbuttonsEL = document.querySelector('.custom-select');
-
-function onRadioButtonClick(e) {
-  // console.log(e.target);
-  const letter = e.target.dataset.id;
+function onSelectLettersElChange(e) {
+  const letter = e.target.value;
   renderSearchResults({ firstLetter: letter });
 }
-
-radionbuttonsEL.addEventListener('click', onRadioButtonClick);
 
 // no result image
-
 function renderNoResultInfo() {
   const noResultsContainerEl = document.querySelector(
     '.cocktails-section .container'
@@ -121,8 +130,7 @@ function renderNoResultInfo() {
   </div>`;
 }
 
-// change coctails to Searching results
-
+// change cocktails to Searching results
 function newTextAfterSearch() {
   const titleCocktailel = document.querySelector('.section-title');
   titleCocktailel.textContent = 'Searching results';
@@ -140,3 +148,35 @@ function renderResultInfo() {
       class="cocktails-list random-cocktails-list random-cocktails-list-js"
     ></ul>`;
 }
+
+// helpers
+function createSelectLettersMarkup(arr) {
+  return arr
+    .map(key => `<option class="key-option" value="${key}">${key}</option>`)
+    .join('');
+}
+
+function createKeybordLettersMarkup(arr) {
+  return arr
+    .map(
+      key => `<li class="keyboard-item">
+                <button class="keyboard-btn" type="button">${key}</button>
+              </li>`
+    )
+    .join('');
+}
+
+// keyboard (tablet +)
+const keyboardLettersEl = document.querySelector('[data-action="keyboard"]');
+keyboardLettersEl.innerHTML = createKeybordLettersMarkup(keysList);
+keyboardLettersEl.addEventListener('click', onKeyboardLettersElClick);
+
+// select (mobile)
+const selectLettersEl = document.querySelector('.select-letters');
+selectLettersEl.innerHTML = createSelectLettersMarkup(keysList);
+new SlimSelect({ select: selectLettersEl, settings: { showSearch: false } });
+selectLettersEl.addEventListener('change', onSelectLettersElChange);
+
+// form
+const formEL = document.querySelector('.search-form');
+formEL.addEventListener('submit', onSearchSubmit);

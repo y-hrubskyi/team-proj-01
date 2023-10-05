@@ -5,7 +5,7 @@ import { searchCocktailsByFillter } from './services/drinkify-api-service';
 import { LOCAL_STORAGE_KEYS } from './services/local-storage-service';
 import { createCocktailsMarkup } from './render-functions';
 import { getDeviceType } from './random-cocktails';
-import { paginateArray } from './pagination';
+//? import { paginateArray } from './pagination';
 import {
   setupClickHandlerOnOpenModal,
   setupClickHandlerOnWorkWithLocaleStorage,
@@ -58,20 +58,26 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
       cocktailName,
     }); //add function render card with informaton of no resuts
 
-    const cocktailsToRender = getDeviceType() === 'desktop' ? 9 : 8;
+    //? const cocktailsToRender = getDeviceType() === 'desktop' ? 9 : 8;
+    const cocktailsToRender =
+      getDeviceType() === 'desktop'
+        ? searchResults.slice(0, 9)
+        : searchResults.slice(0, 8);
+
     renderResultInfo();
     const searchCocktailsList = document.querySelector(
       '.random-cocktails-list-js'
     );
     newTextAfterSearch();
-    const paginationFn = paginateArray(
-      searchResults,
-      cocktailsToRender,
-      searchCocktailsList,
-      createCocktailsMarkup
-    );
+    //? const paginationFn = paginateArray(
+    //?   searchResults,
+    //?   cocktailsToRender,
+    //?   searchCocktailsList,
+    //?   createCocktailsMarkup
+    //? );
 
-    searchCocktailsList.innerHTML = createCocktailsMarkup(paginationFn);
+    //? searchCocktailsList.innerHTML = createCocktailsMarkup(paginationFn);
+    searchCocktailsList.innerHTML = createCocktailsMarkup(cocktailsToRender);
     sortByRating(searchCocktailsList);
     setupClickHandlerOnWorkWithLocaleStorage(
       searchResults,
@@ -80,10 +86,10 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
     );
     setupClickHandlerOnOpenModal(searchCocktailsList);
   } catch {
-    const paginationList = document.getElementById('pagination-list');
-    const isActivePagination = document.querySelector('.pagination-container');
-    paginationList.innerHTML = '';
-    isActivePagination.classList.add('is-active-pagination');
+    //? const paginationList = document.getElementById('pagination-list');
+    //? const isActivePagination = document.querySelector('.pagination-container');
+    //? paginationList.innerHTML = '';
+    //? isActivePagination.classList.add('is-active-pagination');
 
     renderNoResultInfo();
   }

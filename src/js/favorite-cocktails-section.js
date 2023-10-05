@@ -1,5 +1,5 @@
 import { LOCAL_STORAGE_KEYS } from './services/local-storage-service';
-import { paginateArray } from './pagination';
+//? import { paginateArray } from './pagination';
 import {
   createFavoriteCocktailsMarkup,
   createCocktailsMarkup,
@@ -28,21 +28,21 @@ function renderFavoriteCocktails() {
     return;
   }
 
-  const paginationFn = paginateArray(
-    products,
-    rows,
-    favoriteCocktailsList,
-    createFavoriteCocktailsMarkup
-  );
+  //? const paginationFn = paginateArray(
+  //?   products,
+  //?   rows,
+  //?   favoriteCocktailsList,
+  //?   createFavoriteCocktailsMarkup
+  //? );
 
-  favoriteCocktailsList.innerHTML = createCocktailsMarkup(paginationFn);
+  //? favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(paginationFn);
   placeholderEmptyFavoriteList.classList.add('visually-hidden');
   placeholderEmptyFavoriteList
     .closest('.favorite-section')
     .classList.remove('is-empty');
 
   favoriteCocktailsList.classList.remove('visually-hidden');
-  favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(paginationFn);
+  favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(products);
   favoriteCocktailsList.addEventListener('click', clickHandler);
   setupClickHandlerOnOpenModal(
     favoriteCocktailsList,

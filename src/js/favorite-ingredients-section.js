@@ -1,7 +1,7 @@
 import { LOCAL_STORAGE_KEYS } from './services/local-storage-service';
 import { getIngredientById } from './services/drinkify-api-service';
 import { setupModalCloseListeners } from './modal-close-listeners';
-import { paginateArray } from './pagination';
+//? import { paginateArray } from './pagination';
 import {
   createFavoriteIngredientsMarkup,
   renderModalIngredient,
@@ -30,12 +30,12 @@ function renderFavoriteIngredients() {
     return;
   }
 
-  const paginationFn = paginateArray(
-    products,
-    rows,
-    favoriteIngredientsList,
-    createFavoriteIngredientsMarkup
-  );
+  //? const paginationFn = paginateArray(
+  //?   products,
+  //?   rows,
+  //?   favoriteIngredientsList,
+  //?   createFavoriteIngredientsMarkup
+  //? );
 
   placeholderEmptyFavoriteList.classList.add('visually-hidden');
   placeholderEmptyFavoriteList
@@ -43,8 +43,9 @@ function renderFavoriteIngredients() {
     .classList.remove('is-empty');
 
   favoriteIngredientsList.classList.remove('visually-hidden');
-  favoriteIngredientsList.innerHTML =
-    createFavoriteIngredientsMarkup(paginationFn);
+  //? favoriteIngredientsList.innerHTML =
+  //?   createFavoriteIngredientsMarkup(paginationFn);
+  favoriteIngredientsList.innerHTML = createFavoriteIngredientsMarkup(products);
   favoriteIngredientsList.addEventListener('click', clickHandler);
 }
 

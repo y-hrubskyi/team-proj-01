@@ -6,5 +6,5 @@ import './js/coctails-search';
 import './js/random-cocktails';
 import './js/page-scroll';
 import './js/coctails-search';
-import './js/pagination';
+// import './js/pagination';
 import './js/feedback';

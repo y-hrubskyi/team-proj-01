@@ -1,5 +1,5 @@
 import { LOCAL_STORAGE_KEYS } from './constants';
-import { paginateArray } from './pagination';
+// import { paginateArray } from './pagination';
 import {
   createFavoriteCocktailsMarkup,
   createCocktailsMarkup,
@@ -28,12 +28,12 @@ function renderFavoriteCocktails() {
     return;
   }
 
-  const paginationFn = paginateArray(
-    products,
-    rows,
-    favoriteCocktailsList,
-    createFavoriteCocktailsMarkup
-  );
+  // const paginationFn = paginateArray(
+  //   products,
+  //   rows,
+  //   favoriteCocktailsList,
+  //   createFavoriteCocktailsMarkup
+  // );
 
   // favoriteCocktailsList.innerHTML = createCocktailsMarkup(paginationFn);
   placeholderEmptyFavoriteList.classList.add('visually-hidden');
@@ -42,7 +42,8 @@ function renderFavoriteCocktails() {
     .classList.remove('is-empty');
 
   favoriteCocktailsList.classList.remove('visually-hidden');
-  favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(paginationFn);
+  // favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(paginationFn);
+  favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(products);
   favoriteCocktailsList.addEventListener('click', clickHandler);
   setupClickHandlerOnOpenModal(
     favoriteCocktailsList,
@@ -75,14 +76,15 @@ function clickHandler(e) {
       .closest('.favorite-section')
       .classList.add('is-empty');
   } else {
-    const paginationFn = paginateArray(
-      products,
-      rows,
-      favoriteCocktailsList,
-      createFavoriteCocktailsMarkup
-    );
-    favoriteCocktailsList.innerHTML =
-      createFavoriteCocktailsMarkup(paginationFn);
+    // const paginationFn = paginateArray(
+    //   products,
+    //   rows,
+    //   favoriteCocktailsList,
+    //   createFavoriteCocktailsMarkup
+    // );
+    // favoriteCocktailsList.innerHTML =
+    //   createFavoriteCocktailsMarkup(paginationFn);
+    favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(products);
   }
 }
 

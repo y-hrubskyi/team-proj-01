@@ -71,20 +71,14 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
       createCocktailsMarkup
     );
 
-    const { paginatedData, current_page, arrDatas } = paginationFn;
+    searchCocktailsList.innerHTML = createCocktailsMarkup(paginationFn);
+    sortByRating(searchCocktailsList);
+    setupClickHandlerOnWorkWithLocaleStorage(
+      searchResults,
+      searchCocktailsList,
+      LOCAL_STORAGE_KEYS.COCKTAILS
+    );
 
-    if (current_page > 1) {
-      current_page = 1;
-      console.log(current_page);
-    } else {
-      searchCocktailsList.innerHTML = createCocktailsMarkup(paginatedData);
-      sortByRating(searchCocktailsList);
-      setupClickHandlerOnWorkWithLocaleStorage(
-        searchResults,
-        searchCocktailsList,
-        LOCAL_STORAGE_KEYS.COCKTAILS
-      );
-    }
     setupClickHandlerOnOpenModal(searchCocktailsList);
   } catch {
     const paginationList = document.getElementById('pagination-list');

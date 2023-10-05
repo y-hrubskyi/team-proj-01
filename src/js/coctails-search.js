@@ -103,7 +103,7 @@ function onKeyboardLettersElClick(e) {
     return;
   }
 
-  const letter = e.target.value;
+  const letter = e.target.textContent;
   renderSearchResults({ firstLetter: letter });
 }
 

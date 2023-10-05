@@ -1,8 +1,14 @@
-import { addToLocalStorage, removeFromLocalStorage } from './local-storage';
+import {
+  LOCAL_STORAGE_KEYS,
+  addToLocalStorage,
+  removeFromLocalStorage,
+} from './services/local-storage-service';
 import { renderModalCocktail, renderModalIngredient } from './render-functions';
 import { setupModalCloseListeners } from './modal-close-listeners';
-import { getCocktailById, getIngredientById } from './drinkify-api-service';
-import { LOCAL_STORAGE_KEYS } from './constants';
+import {
+  getCocktailById,
+  getIngredientById,
+} from './services/drinkify-api-service';
 
 export function setupClickHandlerOnWorkWithLocaleStorage(data, box, key) {
   box.addEventListener('click', function (e) {
@@ -160,7 +166,6 @@ export async function openModal(cocktail, renderFunctionAfterChangeSmth) {
     const ingredientId = button.dataset.id;
     const ingredient = await getIngredientById(ingredientId);
     renderModalIngredient(...ingredient);
-    //!
 
     setupModalCloseListeners(renderFunctionAfterChangeSmth);
     setupClickHandlerOnModalOnWorkWithLocaleStorage(

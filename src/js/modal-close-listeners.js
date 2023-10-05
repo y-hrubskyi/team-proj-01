@@ -1,4 +1,4 @@
-import { LOCAL_STORAGE_KEYS } from './constants';
+import { LOCAL_STORAGE_KEYS } from './services/local-storage-service';
 import { openModal } from './setup-handlers';
 
 export function setupModalCloseListeners(renderFunctionAfterChangeSmth) {

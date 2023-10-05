@@ -1,40 +1,48 @@
 .feedback-box {
-  padding-left: 20px;
-  display: flex;
   position: fixed;
   left: 0px;
   bottom: 15px;
+
+  display: flex;
   gap: 10px;
   width: 600px;
   height: 100px;
+  padding-left: 20px;
 }
 
 .feedback-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 36px;
   height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+  background-color: transparent;
   border: 1px solid rgb(253, 253, 255, 50%);
   border-radius: 6px;
-  background-color: transparent;
   fill: var(--primary-svg-color);
+
   transition: background-color var(--general-transition);
 }
+
 .feedback-btn:hover,
 .feedback-btn:focus {
   background-color: var(--primary-bg-color);
   fill: var(--accent-color);
+
   transition: background-color var(--general-transition);
 }
+
 .like-btn {
   margin-top: auto;
 }
+
 .dislike-btn {
   position: absolute;
   left: 80px;
   bottom: 0px;
 }
+
 @media screen and (max-width: 1279.9px) {
   .feedback-box {
     display: none;

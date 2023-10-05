@@ -1,10 +1,9 @@
-import './js/html-theme';
-import './js/mobile-menu';
-import './js/drop-down';
-import './js/drop-down-modal';
-import './js/coctails-search';
+import './js/header/html-theme';
+import './js/header/mobile-menu';
+import './js/header/drop-down';
+import './js/header/drop-down-modal';
+import './js/search-cocktails';
 import './js/random-cocktails';
-import './js/page-scroll';
-import './js/coctails-search';
 import './js/pagination';
-import './js/feedback';
+import './js/features/page-scroll';
+import './js/features/feedback';

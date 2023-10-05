@@ -1,4 +1,4 @@
-.search-section {
+.search-cocktails-section {
   padding-top: 40px;
   padding-bottom: 80px;
 }
@@ -9,7 +9,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .search-section {
+  .search-cocktails-section {
     padding-top: 100px;
     padding-bottom: 100px;
   }
@@ -95,12 +95,18 @@
   max-height: 90px;
 
   border-radius: 4px;
-  border: 1px solid #9cdfdf;
+  border: 1px solid var(--additional-color);
   overflow: scroll;
 }
 .ss-content .ss-list .ss-option {
   color: var(--primary-text-color);
   background-color: var(--primary-bg-color);
+}
+.ss-content .ss-list .ss-option:hover,
+.ss-content .ss-list .ss-option.ss-highlighted,
+.ss-content .ss-list .ss-option:not(.ss-disabled).ss-selected {
+  color: #fdfdff;
+  background-color: var(--accent-color);
 }
 
 @media screen and (min-width: 768px) {

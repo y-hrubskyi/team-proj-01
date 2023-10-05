@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { BASE_URL } from './constants';
+
+export const BASE_URL = 'https://drinkify.b.goit.study/api/v1';
 
 export async function getCocktailById(id) {
   const response = await axios.get(`${BASE_URL}/cocktails/lookup/?id=${id}`);
@@ -8,6 +9,11 @@ export async function getCocktailById(id) {
 
 export async function getIngredientById(id) {
   const response = await axios.get(`${BASE_URL}/ingredients/${id}`);
+  return response.data;
+}
+
+export async function getRandomCocktails(params) {
+  const response = await axios.get(`${BASE_URL}/cocktails/`, { params });
   return response.data;
 }
 

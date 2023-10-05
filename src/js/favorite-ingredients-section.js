@@ -1,5 +1,5 @@
-import { LOCAL_STORAGE_KEYS } from './constants';
-import { getIngredientById } from './drinkify-api-service';
+import { LOCAL_STORAGE_KEYS } from './services/local-storage-service';
+import { getIngredientById } from './services/drinkify-api-service';
 import { setupModalCloseListeners } from './modal-close-listeners';
 import { paginateArray } from './pagination';
 import {

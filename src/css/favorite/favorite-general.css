@@ -1,4 +1,4 @@
-/* add flexibility for page */
+/* add flexibility for pages */
 html,
 body {
   height: 100%;
@@ -10,7 +10,7 @@ body {
   justify-content: space-between;
   min-height: 100%;
 }
-/* add flexibility for page */
+/* add flexibility for pages */
 
 .favorite-section {
   padding-top: 80px;

@@ -1,6 +1,8 @@
-import { LOCAL_STORAGE_KEYS } from './constants';
-import { isInLocaleStorage } from './local-storage';
-import { getRandomRating } from './sort-by-rating';
+import {
+  LOCAL_STORAGE_KEYS,
+  isInLocaleStorage,
+} from './services/local-storage-service';
+import { getRandomRating } from './features/sort-by-rating';
 import spriteUrl from '/img/sprite.svg';
 
 // createCocktailsMarkup

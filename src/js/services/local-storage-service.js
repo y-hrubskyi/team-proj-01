@@ -1,3 +1,9 @@
+export const LOCAL_STORAGE_KEYS = {
+  COCKTAILS: 'favoriteCocktails',
+  INGREDIENTS: 'favoriteIngredients',
+  PREV_MODAL_DATA: 'prevModalData',
+};
+
 export function addToLocalStorage(card, svgIcon, key) {
   const favorites = JSON.parse(localStorage.getItem(key)) || [];
   const isInFavorite = favorites.find(favCard => favCard._id === card._id);

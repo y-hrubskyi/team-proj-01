@@ -1,4 +1,4 @@
-import { LOCAL_STORAGE_KEYS } from './constants';
+import { LOCAL_STORAGE_KEYS } from './services/local-storage-service';
 import { paginateArray } from './pagination';
 import {
   createFavoriteCocktailsMarkup,

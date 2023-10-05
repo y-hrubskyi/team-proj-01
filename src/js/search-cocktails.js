@@ -1,7 +1,8 @@
 import SlimSelect from 'slim-select';
 import spriteUrl from '/img/sprite.svg';
 
-import { LOCAL_STORAGE_KEYS } from './constants';
+import { searchCocktailsByFillter } from './services/drinkify-api-service';
+import { LOCAL_STORAGE_KEYS } from './services/local-storage-service';
 import { createCocktailsMarkup } from './render-functions';
 import { getDeviceType } from './random-cocktails';
 import { paginateArray } from './pagination';
@@ -9,8 +10,7 @@ import {
   setupClickHandlerOnOpenModal,
   setupClickHandlerOnWorkWithLocaleStorage,
 } from './setup-handlers';
-import { sortByRating } from './sort-by-rating';
-import { searchCocktailsByFillter } from './drinkify-api-service';
+import { sortByRating } from './features/sort-by-rating';
 
 const keysList = [
   'A',

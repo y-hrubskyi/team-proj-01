@@ -1,13 +1,13 @@
-import axios from 'axios';
-import placeholder from '/img/placeholder.jpg';
+// import placeholder from '/img/placeholder.jpg';
 
-import { BASE_URL, LOCAL_STORAGE_KEYS } from './constants';
-import { createCocktailsMarkup, renderModalCocktail } from './render-functions';
+import { LOCAL_STORAGE_KEYS } from './services/local-storage-service';
+import { getRandomCocktails } from './services/drinkify-api-service';
+import { createCocktailsMarkup } from './render-functions';
 import {
   setupClickHandlerOnOpenModal,
   setupClickHandlerOnWorkWithLocaleStorage,
 } from './setup-handlers';
-import { sortByRating } from './sort-by-rating';
+import { sortByRating } from './features/sort-by-rating';
 
 const randomCocktailsList = document.querySelector('.random-cocktails-list-js');
 
@@ -28,19 +28,22 @@ export async function fetchRandomCocktails() {
   };
 
   try {
-    const response = await axios.get(`${BASE_URL}/cocktails/`, { params });
-    const data = response.data;
+    const data = await getRandomCocktails(params);
 
-    const imgArray = data.map(img => img.drinkThumb);
-    const arrayOfPromises = imgArray.map(img =>
-      fetch(img).then(response.json).catch()
-    );
-    const results = await Promise.allSettled(arrayOfPromises);
-    results.forEach((result, index) => {
-      if (!result.value.ok) {
-        data[index].drinkThumb = placeholder;
-      }
-    });
+    // demo check on available img
+    // const imgArray = data.map(img => img.drinkThumb);
+    // console.log(imgArray);
+    // const arrayOfPromises = imgArray.map(img =>
+    //   fetch(img).then(response.json).catch()
+    // );
+    // console.log(arrayOfPromises);
+    // const results = await Promise.allSettled(arrayOfPromises);
+    // console.log(results);
+    // results.forEach((result, index) => {
+    //   if (!result.value.ok) {
+    //     data[index].drinkThumb = placeholder;
+    //   }
+    // });
 
     responseProcessing(data);
   } catch (error) {

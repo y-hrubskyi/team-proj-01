@@ -65,7 +65,7 @@ export function paginateArray(arrDatas, rowPerPage, box, renderFn) {
         if (current_page <= 4) {
           markup = markup.slice(0, 3).concat(dotsPagination, markup.slice(-1));
         } else if (current_page >= paginatedPages - 3) {
-          markup = markup.slice(0, 3).concat(dotsPagination, markup.slice(-3));
+          markup = markup.slice(0, 1).concat(dotsPagination, markup.slice(-3));
         } else {
           markup = markup
             .slice(0, 1)

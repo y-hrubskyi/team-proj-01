@@ -16,8 +16,6 @@ const placeholderEmptyFavoriteList = document.querySelector(
   '.placeholder-empty-favorite-list'
 );
 
-let rows = 6;
-
 function renderFavoriteIngredients() {
   const products =
     JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.INGREDIENTS)) || [];
@@ -72,11 +70,11 @@ function clickHandler(e, instance) {
     onRemoveBtnCLick(target, instance);
   }
   if (target.closest('.learn-more-btn')) {
-    onLearnMoreBtnCLick(target);
+    onLearnMoreBtnCLick(target, instance);
   }
 }
 
-async function onLearnMoreBtnCLick(button) {
+async function onLearnMoreBtnCLick(button, instance) {
   const ingredientId = button.closest('.favorite-ingredient-item').dataset.id;
   const ingredient = await getIngredientById(ingredientId);
   renderModalIngredient(...ingredient);
@@ -84,7 +82,8 @@ async function onLearnMoreBtnCLick(button) {
   setupClickHandlerOnModalOnWorkWithLocaleStorage(
     ingredient,
     LOCAL_STORAGE_KEYS.INGREDIENTS,
-    createFavoriteIngredientsMarkup
+    createFavoriteIngredientsMarkup,
+    instance
   );
 }
 
@@ -122,6 +121,7 @@ function onRemoveBtnCLick(button, instance) {
     //   createFavoriteIngredientsMarkup
     // );
 
+    //! lib remove
     console.log(instance);
     const currentPage = instance.getCurrentPage();
     console.log('curPage: ', currentPage);
@@ -145,80 +145,5 @@ function onRemoveBtnCLick(button, instance) {
     console.log('products: ', products);
   }
 }
-
-// import Pagination from 'tui-pagination';
-// prepareForRender();
-
-// function prepareForRender() {
-//   const data = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.INGREDIENTS));
-//   const options = {
-//     totalItems: data.length,
-//     itemsPerPage: 3,
-//     visiblePages: 5,
-//     usageStatistics: false,
-//     // firstItemClassName: 'smth',
-//     // lastItemClassName: 'smth',
-//     // template: {
-//     //   page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-//     //   currentPage:
-//     //     '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-//     //   moveButton:
-//     //     '<a href="#" class="tui-page-btn tui-{{type}}">' +
-//     //     '<span class="tui-ico-{{type}}">{{type}}</span>' +
-//     //     '</a>',
-//     //   disabledMoveButton:
-//     //     '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-//     //     '<span class="tui-ico-{{type}}">{{type}}</span>' +
-//     //     '</span>',
-//     //   moreButton:
-//     //     '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-//     //     '<span class="tui-ico-ellip">...</span>' +
-//     //     '</a>',
-//     // },
-//   };
-
-//   const container = document.querySelector('#tui-pagination-container');
-//   const instance = new Pagination(container, options);
-//   // console.log(instance);
-
-//   instance.on('beforeMove', function (eventData) {
-//     console.log('EVENT DATA BEFORE MOVE ');
-//     console.log(eventData);
-//     onPaginateClick(eventData);
-//   });
-
-//   // instance.on('afterMove', function (eventData) {
-//   //   console.log('EVENT DATA AFTER MOVE');
-//   //   console.log(eventData);
-//   // });
-
-//   // container.addEventListener('click', onPaginateClick);
-//   // console.log(instance._options.itemsPerPage);
-
-//   function onPaginateClick(eventData) {
-//     // const perPage =
-//     const curPage = eventData.page;
-
-//     const itemsPerPage = instance._options.itemsPerPage;
-//     console.log(curPage);
-
-//     const data = JSON.parse(
-//       localStorage.getItem(LOCAL_STORAGE_KEYS.INGREDIENTS)
-//     );
-//     instance.setTotalItems(data.length);
-
-//     const list = document.querySelector('.favorite-list');
-//     const startIndex = (curPage - 1) * itemsPerPage;
-//     list.innerHTML = createFavoriteIngredientsMarkup(
-//       data.slice(startIndex, startIndex + itemsPerPage)
-//     );
-
-//     console.log(data);
-//   }
-// }
-
-// const data = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.INGREDIENTS));
-// document.querySelector('.favorite-list').innerHTML =
-//   createFavoriteIngredientsMarkup(data.slice(0, rows));
 
 renderFavoriteIngredients();

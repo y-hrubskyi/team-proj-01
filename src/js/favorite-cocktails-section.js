@@ -61,7 +61,8 @@ function renderFavoriteCocktails() {
   });
   setupClickHandlerOnOpenModal(
     favoriteCocktailsList,
-    createFavoriteCocktailsMarkup
+    createFavoriteCocktailsMarkup,
+    instance
   );
 }
 

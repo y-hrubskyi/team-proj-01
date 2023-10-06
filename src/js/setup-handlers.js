@@ -34,7 +34,8 @@ export function setupClickHandlerOnWorkWithLocaleStorage(data, box, key) {
 export function setupClickHandlerOnModalOnWorkWithLocaleStorage(
   card,
   key,
-  renderFunctionAfterChangeSmth
+  renderFunctionAfterChangeSmth,
+  instance
 ) {
   const modal = document.querySelector('.modal-container');
 
@@ -60,7 +61,11 @@ export function setupClickHandlerOnModalOnWorkWithLocaleStorage(
       target.ariaLabel = 'remove from favorite';
 
       //render favorite list if we are on favorite section
-      renderFavoriteListWithOpenModal(favorites, renderFunctionAfterChangeSmth);
+      renderFavoriteListWithOpenModal(
+        favorites,
+        renderFunctionAfterChangeSmth,
+        instance
+      );
       //render svg-icon if we are on main section
       document
         .querySelector(`[data-id="${id}"] .svg-icon-heart`)
@@ -85,7 +90,11 @@ export function setupClickHandlerOnModalOnWorkWithLocaleStorage(
       target.ariaLabel = 'add to favorite';
 
       //render favorite list if we are on favorite section
-      renderFavoriteListWithOpenModal(favorites, renderFunctionAfterChangeSmth);
+      renderFavoriteListWithOpenModal(
+        favorites,
+        renderFunctionAfterChangeSmth,
+        instance
+      );
       //render svg-icon if we are on main section
       document
         .querySelector(`[data-id="${id}"] .svg-icon-heart`)
@@ -94,7 +103,11 @@ export function setupClickHandlerOnModalOnWorkWithLocaleStorage(
   });
 }
 
-function renderFavoriteListWithOpenModal(data, renderFunctionAfterChangeSmth) {
+function renderFavoriteListWithOpenModal(
+  data,
+  renderFunctionAfterChangeSmth,
+  instance
+) {
   const favoriteList = document.querySelector(
     '.favorite-section .favorite-list'
   );
@@ -121,13 +134,37 @@ function renderFavoriteListWithOpenModal(data, renderFunctionAfterChangeSmth) {
   favoriteList.classList.remove('visually-hidden');
 
   try {
-    favoriteList.innerHTML = renderFunctionAfterChangeSmth(data);
+    //! lib remove
+    console.log(instance);
+    const currentPage = instance.getCurrentPage();
+    console.log('curPage: ', currentPage);
+    const itemsPerPage = instance._options.itemsPerPage;
+    console.log('itemsPerPage: ', itemsPerPage);
+
+    instance.setTotalItems(data.length);
+    const totalItems = instance._options.totalItems;
+    console.log('totalItems ', totalItems);
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    favoriteList.innerHTML = renderFunctionAfterChangeSmth(
+      data.slice(startIndex, startIndex + itemsPerPage)
+    );
+
+    if (totalItems % itemsPerPage === 0) {
+      instance.reset(data.length);
+      instance.movePageTo(currentPage - 1);
+    }
+
+    console.log('products: ', products);
+
+    // favoriteList.innerHTML = renderFunctionAfterChangeSmth(data);
   } catch (error) {}
 }
 
 export async function setupClickHandlerOnOpenModal(
   box,
-  renderFunctionAfterChangeSmth
+  renderFunctionAfterChangeSmth,
+  instance
 ) {
   box.addEventListener('click', async function (e) {
     const button = e.target.closest('.learn-more-btn');
@@ -138,20 +175,25 @@ export async function setupClickHandlerOnOpenModal(
     const cocktailId = button.closest('.cocktail-card').dataset.id;
     try {
       const cocktail = await getCocktailById(cocktailId);
-      openModal(cocktail, renderFunctionAfterChangeSmth);
+      openModal(cocktail, renderFunctionAfterChangeSmth, instance);
     } catch (error) {
       console.log(error);
     }
   });
 }
 
-export async function openModal(cocktail, renderFunctionAfterChangeSmth) {
+export async function openModal(
+  cocktail,
+  renderFunctionAfterChangeSmth,
+  instance
+) {
   renderModalCocktail(...cocktail);
   setupModalCloseListeners();
   setupClickHandlerOnModalOnWorkWithLocaleStorage(
     cocktail,
     LOCAL_STORAGE_KEYS.COCKTAILS,
-    renderFunctionAfterChangeSmth
+    renderFunctionAfterChangeSmth,
+    instance
   );
 
   const ingredientsList = document.querySelector(

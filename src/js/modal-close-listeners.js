@@ -28,13 +28,11 @@ async function onBackModalCloseBtnClick(event, renderFunctionAfterChangeSmth) {
     closeModal();
     return;
   }
-  console.log(event.target.closest('.modal-container').dataset.cocktailId);
 
   try {
     const prevModalData =
       JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.PREV_MODAL_DATA)) ||
       {};
-    console.log(prevModalData);
     openModal(prevModalData, renderFunctionAfterChangeSmth);
   } catch (error) {
     console.log(error);

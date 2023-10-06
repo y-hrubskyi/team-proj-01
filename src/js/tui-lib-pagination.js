@@ -41,17 +41,41 @@ export function paginateLibFn(data, itemsPerPage, box, renderFn) {
   };
 
   const instance = new Pagination(paginationContainer, options);
-  onPaginationContainerClick({ page: 1 }, itemsPerPage, box, renderFn);
+  onPaginationContainerClick(
+    instance,
+    { page: 1 },
+    itemsPerPage,
+    box,
+    data,
+    renderFn
+  );
 
   instance.on('beforeMove', function (eventData) {
-    onPaginationContainerClick(eventData, itemsPerPage, box, renderFn);
+    onPaginationContainerClick(
+      instance,
+      eventData,
+      itemsPerPage,
+      box,
+      data,
+      renderFn
+    );
   });
 
   return instance;
+}
 
-  function onPaginationContainerClick(eventData, itemsPerPage, box, renderFn) {
-    const curPage = eventData.page;
-    const startIndex = (curPage - 1) * itemsPerPage;
-    box.innerHTML = renderFn(data.slice(startIndex, startIndex + itemsPerPage));
-  }
+function onPaginationContainerClick(
+  instance,
+  eventData,
+  itemsPerPage,
+  box,
+  data,
+  renderFn
+) {
+  const curPage = eventData.page;
+  const startIndex = (curPage - 1) * itemsPerPage;
+  box.innerHTML = renderFn(data.slice(startIndex, startIndex + itemsPerPage));
+
+  // console.log('PAGINATION ON instance: ', instance);
+  // console.log('PAGINATION ON data: ', data);
 }

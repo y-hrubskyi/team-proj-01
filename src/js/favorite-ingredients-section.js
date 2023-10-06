@@ -107,34 +107,55 @@ function onRemoveBtnCLick(button, instance) {
     placeholderEmptyFavoriteList
       .closest('.favorite-section')
       .classList.add('is-empty');
-  } else {
-    //* default
-    //* favoriteIngredientsList.innerHTML =
-    //*  createFavoriteIngredientsMarkup(products);
+    return;
+  }
+  //* default
+  //* favoriteIngredientsList.innerHTML =
+  //*  createFavoriteIngredientsMarkup(products);
 
-    //! lib
-    // paginateLibFn(
-    //   products,
-    //   6,
-    //   favoriteIngredientsList,
-    //   createFavoriteIngredientsMarkup
-    // );
+  //! lib
+  // paginateLibFn(
+  //   products,
+  //   6,
+  //   favoriteIngredientsList,
+  //   createFavoriteIngredientsMarkup
+  // );
 
-    //! lib remove
-    const currentPage = instance.getCurrentPage();
-    const itemsPerPage = instance._options.itemsPerPage;
+  //! lib remove
+  // console.log('PRODUCTS: ', products);
+  // console.log('INSTANCE: ', instance);
 
-    instance.setTotalItems(products.length);
-    const totalItems = instance._options.totalItems;
+  const paginationContainer = document.querySelector(
+    '#tui-pagination-container'
+  );
+  if (products.length <= instance?._options?.itemsPerPage) {
+    paginationContainer.classList.add('is-hidden');
+    favoriteIngredientsList.innerHTML =
+      createFavoriteIngredientsMarkup(products);
+    return;
+  }
 
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    favoriteIngredientsList.innerHTML = createFavoriteIngredientsMarkup(
-      products.slice(startIndex, startIndex + itemsPerPage)
-    );
+  const currentPage = instance.getCurrentPage();
+  console.log('currentPage: ', currentPage);
+  const itemsPerPage = instance._options.itemsPerPage;
+  console.log('itemsPerPage: ', itemsPerPage);
 
-    if (totalItems % itemsPerPage === 0) {
-      instance.reset(products.length);
+  instance.setTotalItems(products.length);
+  const totalItems = instance._options.totalItems;
+  console.log('totalItems: ', totalItems);
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  favoriteIngredientsList.innerHTML = createFavoriteIngredientsMarkup(
+    products.slice(startIndex, startIndex + itemsPerPage)
+  );
+
+  if (totalItems % itemsPerPage === 0) {
+    instance.reset(products.length);
+
+    if (currentPage * itemsPerPage > totalItems) {
       instance.movePageTo(currentPage - 1);
+    } else {
+      instance.movePageTo(currentPage);
     }
   }
 }

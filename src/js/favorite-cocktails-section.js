@@ -99,6 +99,15 @@ function clickHandler(e, instance) {
     // );
 
     //! lib remove
+    const paginationContainer = document.querySelector(
+      '#tui-pagination-container'
+    );
+    if (products.length <= instance?._options?.itemsPerPage) {
+      paginationContainer.classList.add('is-hidden');
+      favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(products);
+      return;
+    }
+
     const currentPage = instance.getCurrentPage();
     const itemsPerPage = instance._options.itemsPerPage;
 

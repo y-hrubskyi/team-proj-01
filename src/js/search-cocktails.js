@@ -11,6 +11,7 @@ import {
   setupClickHandlerOnWorkWithLocaleStorage,
 } from './setup-handlers';
 import { sortByRating } from './features/sort-by-rating';
+import { paginateLibFn } from './tui-lib-pagination';
 
 const keysList = [
   'A',
@@ -58,17 +59,23 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
       cocktailName,
     }); //add function render card with informaton of no resuts
 
+    //* default
+    //* const cocktailsToRender =
+    //*   getDeviceType() === 'desktop'
+    //*     ? searchResults.slice(0, 9)
+    //*     : searchResults.slice(0, 8);
+
+    //? manual
     //? const cocktailsToRender = getDeviceType() === 'desktop' ? 9 : 8;
-    const cocktailsToRender =
-      getDeviceType() === 'desktop'
-        ? searchResults.slice(0, 9)
-        : searchResults.slice(0, 8);
+
+    //! lib
+    const itemsPerPage = getDeviceType() === 'desktop' ? 9 : 8;
 
     renderResultInfo();
-    const searchCocktailsList = document.querySelector(
-      '.random-cocktails-list-js'
-    );
+    const searchCocktailsList = document.querySelector('.cocktails-list');
     newTextAfterSearch();
+
+    //? manual
     //? const paginationFn = paginateArray(
     //?   searchResults,
     //?   cocktailsToRender,
@@ -76,8 +83,20 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
     //?   createCocktailsMarkup
     //? );
 
+    //! lib
+    paginateLibFn(
+      searchResults,
+      itemsPerPage,
+      searchCocktailsList,
+      createCocktailsMarkup
+    );
+
+    //* default
+    //* searchCocktailsList.innerHTML = createCocktailsMarkup(cocktailsToRender);
+
+    //? manual
     //? searchCocktailsList.innerHTML = createCocktailsMarkup(paginationFn);
-    searchCocktailsList.innerHTML = createCocktailsMarkup(cocktailsToRender);
+
     sortByRating(searchCocktailsList);
     setupClickHandlerOnWorkWithLocaleStorage(
       searchResults,
@@ -86,12 +105,19 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
     );
     setupClickHandlerOnOpenModal(searchCocktailsList);
   } catch {
+    //? manual
     //? const paginationList = document.getElementById('pagination-list');
     //? const isActivePagination = document.querySelector('.pagination-container');
     //? paginationList.innerHTML = '';
     //? isActivePagination.classList.add('is-active-pagination');
 
-    renderNoResultInfo();
+    //! lib
+    console.log(document.querySelector('#tui-pagination-container'));
+    document
+      .querySelector('#tui-pagination-container')
+      .classList.add('is-hidden');
+
+    renderNoResultInfo(document.querySelector('#tui-pagination-container'));
   }
 }
 

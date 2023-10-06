@@ -7,3 +7,4 @@ import './js/random-cocktails';
 // import './js/pagination';
 import './js/features/page-scroll';
 import './js/features/feedback';
+import './js/tui-lib-pagination';

@@ -7,6 +7,7 @@ import {
   renderModalIngredient,
 } from './render-functions';
 import { setupClickHandlerOnModalOnWorkWithLocaleStorage } from './setup-handlers';
+import { paginateLibFn } from './tui-lib-pagination';
 
 const favoriteIngredientsList = document.querySelector(
   '.favorite-ingredients-list'
@@ -30,6 +31,7 @@ function renderFavoriteIngredients() {
     return;
   }
 
+  //? manual
   //? const paginationFn = paginateArray(
   //?   products,
   //?   rows,
@@ -37,15 +39,26 @@ function renderFavoriteIngredients() {
   //?   createFavoriteIngredientsMarkup
   //? );
 
+  //! lib
+  paginateLibFn(
+    products,
+    6,
+    favoriteIngredientsList,
+    createFavoriteIngredientsMarkup
+  );
+
   placeholderEmptyFavoriteList.classList.add('visually-hidden');
   placeholderEmptyFavoriteList
     .closest('.favorite-section')
     .classList.remove('is-empty');
 
   favoriteIngredientsList.classList.remove('visually-hidden');
+  //? manual
   //? favoriteIngredientsList.innerHTML =
   //?   createFavoriteIngredientsMarkup(paginationFn);
-  favoriteIngredientsList.innerHTML = createFavoriteIngredientsMarkup(products);
+
+  //* default
+  //* favoriteIngredientsList.innerHTML = createFavoriteIngredientsMarkup(products);
   favoriteIngredientsList.addEventListener('click', clickHandler);
 }
 
@@ -94,9 +107,93 @@ function onRemoveBtnCLick(button) {
       .closest('.favorite-section')
       .classList.add('is-empty');
   } else {
-    favoriteIngredientsList.innerHTML =
-      createFavoriteIngredientsMarkup(products);
+    //* default
+    //* favoriteIngredientsList.innerHTML =
+    //*  createFavoriteIngredientsMarkup(products);
+
+    //! lib
+    paginateLibFn(
+      products,
+      6,
+      favoriteIngredientsList,
+      createFavoriteIngredientsMarkup
+    );
   }
 }
+
+// import Pagination from 'tui-pagination';
+// prepareForRender();
+
+// function prepareForRender() {
+//   const data = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.INGREDIENTS));
+//   const options = {
+//     totalItems: data.length,
+//     itemsPerPage: 3,
+//     visiblePages: 5,
+//     usageStatistics: false,
+//     // firstItemClassName: 'smth',
+//     // lastItemClassName: 'smth',
+//     // template: {
+//     //   page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+//     //   currentPage:
+//     //     '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+//     //   moveButton:
+//     //     '<a href="#" class="tui-page-btn tui-{{type}}">' +
+//     //     '<span class="tui-ico-{{type}}">{{type}}</span>' +
+//     //     '</a>',
+//     //   disabledMoveButton:
+//     //     '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+//     //     '<span class="tui-ico-{{type}}">{{type}}</span>' +
+//     //     '</span>',
+//     //   moreButton:
+//     //     '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+//     //     '<span class="tui-ico-ellip">...</span>' +
+//     //     '</a>',
+//     // },
+//   };
+
+//   const container = document.querySelector('#tui-pagination-container');
+//   const instance = new Pagination(container, options);
+//   // console.log(instance);
+
+//   instance.on('beforeMove', function (eventData) {
+//     console.log('EVENT DATA BEFORE MOVE ');
+//     console.log(eventData);
+//     onPaginateClick(eventData);
+//   });
+
+//   // instance.on('afterMove', function (eventData) {
+//   //   console.log('EVENT DATA AFTER MOVE');
+//   //   console.log(eventData);
+//   // });
+
+//   // container.addEventListener('click', onPaginateClick);
+//   // console.log(instance._options.itemsPerPage);
+
+//   function onPaginateClick(eventData) {
+//     // const perPage =
+//     const curPage = eventData.page;
+
+//     const itemsPerPage = instance._options.itemsPerPage;
+//     console.log(curPage);
+
+//     const data = JSON.parse(
+//       localStorage.getItem(LOCAL_STORAGE_KEYS.INGREDIENTS)
+//     );
+//     instance.setTotalItems(data.length);
+
+//     const list = document.querySelector('.favorite-list');
+//     const startIndex = (curPage - 1) * itemsPerPage;
+//     list.innerHTML = createFavoriteIngredientsMarkup(
+//       data.slice(startIndex, startIndex + itemsPerPage)
+//     );
+
+//     console.log(data);
+//   }
+// }
+
+// const data = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.INGREDIENTS));
+// document.querySelector('.favorite-list').innerHTML =
+//   createFavoriteIngredientsMarkup(data.slice(0, rows));
 
 renderFavoriteIngredients();

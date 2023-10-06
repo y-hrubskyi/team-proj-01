@@ -44,7 +44,6 @@ function renderFavoriteIngredients() {
     favoriteIngredientsList,
     createFavoriteIngredientsMarkup
   );
-  console.log(instance);
 
   placeholderEmptyFavoriteList.classList.add('visually-hidden');
   placeholderEmptyFavoriteList
@@ -122,15 +121,11 @@ function onRemoveBtnCLick(button, instance) {
     // );
 
     //! lib remove
-    console.log(instance);
     const currentPage = instance.getCurrentPage();
-    console.log('curPage: ', currentPage);
     const itemsPerPage = instance._options.itemsPerPage;
-    console.log('itemsPerPage: ', itemsPerPage);
 
     instance.setTotalItems(products.length);
     const totalItems = instance._options.totalItems;
-    console.log('totalItems ', totalItems);
 
     const startIndex = (currentPage - 1) * itemsPerPage;
     favoriteIngredientsList.innerHTML = createFavoriteIngredientsMarkup(
@@ -141,8 +136,6 @@ function onRemoveBtnCLick(button, instance) {
       instance.reset(products.length);
       instance.movePageTo(currentPage - 1);
     }
-
-    console.log('products: ', products);
   }
 }
 

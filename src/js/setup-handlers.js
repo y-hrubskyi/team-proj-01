@@ -52,7 +52,7 @@ export function setupClickHandlerOnModalOnWorkWithLocaleStorage(
 
       favorites.push(...card);
       localStorage.setItem(key, JSON.stringify(favorites));
-      console.log('Карта в ЛОКАЛСТОРДЖ');
+      // console.log('Карта в ЛОКАЛСТОРДЖ');
 
       target.classList.remove('add-to-localstorage-btn');
       target.classList.add('remove-from-localstorage-btn');
@@ -71,7 +71,6 @@ export function setupClickHandlerOnModalOnWorkWithLocaleStorage(
         .querySelector(`[data-id="${id}"] .svg-icon-heart`)
         ?.classList?.add('is-active');
     } else if (target.closest('.remove-from-localstorage-btn')) {
-      // console.log('repeated click?');
       const favorites = JSON.parse(localStorage.getItem(key)) || [];
 
       const index = favorites.findIndex(favCard => favCard._id === id);
@@ -81,7 +80,7 @@ export function setupClickHandlerOnModalOnWorkWithLocaleStorage(
 
       favorites.splice(index, 1);
       localStorage.setItem(key, JSON.stringify(favorites));
-      console.log('Карта удалена с ЛОКАЛСТОРДЖ');
+      // console.log('Карта удалена с ЛОКАЛСТОРДЖ');
 
       target.classList.remove('remove-from-localstorage-btn');
       target.classList.add('add-to-localstorage-btn');
@@ -135,15 +134,11 @@ function renderFavoriteListWithOpenModal(
 
   try {
     //! lib remove
-    console.log(instance);
     const currentPage = instance.getCurrentPage();
-    console.log('curPage: ', currentPage);
     const itemsPerPage = instance._options.itemsPerPage;
-    console.log('itemsPerPage: ', itemsPerPage);
 
     instance.setTotalItems(data.length);
     const totalItems = instance._options.totalItems;
-    console.log('totalItems ', totalItems);
 
     const startIndex = (currentPage - 1) * itemsPerPage;
     favoriteList.innerHTML = renderFunctionAfterChangeSmth(
@@ -155,9 +150,8 @@ function renderFavoriteListWithOpenModal(
       instance.movePageTo(currentPage - 1);
     }
 
-    console.log('products: ', products);
-
-    // favoriteList.innerHTML = renderFunctionAfterChangeSmth(data);
+    //* default
+    //* favoriteList.innerHTML = renderFunctionAfterChangeSmth(data);
   } catch (error) {}
 }
 

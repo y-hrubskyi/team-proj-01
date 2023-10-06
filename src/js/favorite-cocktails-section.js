@@ -54,7 +54,6 @@ function renderFavoriteCocktails() {
     favoriteCocktailsList,
     createFavoriteCocktailsMarkup
   );
-  console.log(instance);
 
   favoriteCocktailsList.addEventListener('click', e => {
     clickHandler(e, instance);
@@ -100,15 +99,11 @@ function clickHandler(e, instance) {
     // );
 
     //! lib remove
-    console.log(instance);
     const currentPage = instance.getCurrentPage();
-    console.log('curPage: ', currentPage);
     const itemsPerPage = instance._options.itemsPerPage;
-    console.log('itemsPerPage: ', itemsPerPage);
 
     instance.setTotalItems(products.length);
     const totalItems = instance._options.totalItems;
-    console.log('totalItems ', totalItems);
 
     const startIndex = (currentPage - 1) * itemsPerPage;
     favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(
@@ -119,8 +114,6 @@ function clickHandler(e, instance) {
       instance.reset(products.length);
       instance.movePageTo(currentPage - 1);
     }
-
-    console.log('products: ', products);
 
     //* default
     //* favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(products);

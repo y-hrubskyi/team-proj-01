@@ -14,7 +14,7 @@ export function addToLocalStorage(card, svgIcon, key) {
   favorites.push(card);
   localStorage.setItem(key, JSON.stringify(favorites));
   svgIcon.classList.add('is-active');
-  console.log('Карта в ЛОКАЛСТОРДЖ');
+  // console.log('Карта в ЛОКАЛСТОРДЖ');
 }
 
 export function removeFromLocalStorage(card, svgIcon, key) {
@@ -27,7 +27,7 @@ export function removeFromLocalStorage(card, svgIcon, key) {
   favorites.splice(index, 1);
   localStorage.setItem(key, JSON.stringify(favorites));
   svgIcon.classList.remove('is-active');
-  console.log('Карта в удалена с ЛОКАЛСТОРДЖ');
+  // console.log('Карта удалена с ЛОКАЛСТОРДЖ');
 }
 
 export function isInLocaleStorage({ _id: id }, key) {

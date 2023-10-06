@@ -112,7 +112,6 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
     //? isActivePagination.classList.add('is-active-pagination');
 
     //! lib
-    console.log(document.querySelector('#tui-pagination-container'));
     document
       .querySelector('#tui-pagination-container')
       .classList.add('is-hidden');

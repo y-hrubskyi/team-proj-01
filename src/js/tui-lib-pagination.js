@@ -51,12 +51,7 @@ export function paginateLibFn(data, itemsPerPage, box, renderFn) {
 
   function onPaginationContainerClick(eventData, itemsPerPage, box, renderFn) {
     const curPage = eventData.page;
-    console.log('curPage: ', curPage);
-    console.log('itemsPerPage: ', itemsPerPage);
-
     const startIndex = (curPage - 1) * itemsPerPage;
     box.innerHTML = renderFn(data.slice(startIndex, startIndex + itemsPerPage));
-
-    console.log(data);
   }
 }

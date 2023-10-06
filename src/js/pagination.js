@@ -68,12 +68,11 @@ export function paginateArray(arrDatas, rowPerPage, box, renderFn) {
           markup = markup.slice(0, 3).concat(dotsPagination, markup.slice(-3));
         } else {
           markup = markup
-            .slice(0, 2)
+            .slice(0, 1)
             .concat(
-              dotsPagination,
               markup.slice(current_page - 2, current_page),
               dotsPagination,
-              markup.slice(-2)
+              markup.slice(-1)
             );
         }
       }

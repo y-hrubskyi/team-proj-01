@@ -47,51 +47,13 @@ export function paginateLibFn(data, itemsPerPage, box, renderFn) {
     onPaginationContainerClick(eventData, itemsPerPage, box, renderFn);
   });
 
-  function onPaginationContainerClick(eventData, itemsPerPage, box, renderFn) {
-    const curPage = eventData.page;
-    console.log('curPage: ', curPage);
-    console.log('itemsPerPage: ', itemsPerPage);
-
-    instance.setTotalItems(data.length);
-
-    const startIndex = (curPage - 1) * itemsPerPage;
-    box.innerHTML = renderFn(data.slice(startIndex, startIndex + itemsPerPage));
-
-    console.log(data);
-  }
-}
-
-export function paginateWithDeletingLibFn(data, itemsPerPage, box, renderFn) {
-  const paginationContainer = document.querySelector(
-    '#tui-pagination-container'
-  );
-  if (data.length <= itemsPerPage) {
-    paginationContainer.classList.add('is-hidden');
-    box.innerHTML = renderFn(data);
-    return;
-  }
-
-  paginationContainer.classList.remove('is-hidden');
-  const options = {
-    totalItems: data.length,
-    itemsPerPage,
-    visiblePages: 5,
-    usageStatistics: false,
-  };
-
-  const instance = new Pagination(paginationContainer, options);
-  onPaginationContainerClick({ page: 1 }, itemsPerPage, box, renderFn);
-
-  instance.on('beforeMove', function (eventData) {
-    onPaginationContainerClick(eventData, itemsPerPage, box, renderFn);
-  });
+  return instance;
 
   function onPaginationContainerClick(eventData, itemsPerPage, box, renderFn) {
     const curPage = eventData.page;
     console.log('curPage: ', curPage);
     console.log('itemsPerPage: ', itemsPerPage);
 
-    instance.setTotalItems(data.length);
     const startIndex = (curPage - 1) * itemsPerPage;
     box.innerHTML = renderFn(data.slice(startIndex, startIndex + itemsPerPage));
 

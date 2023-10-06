@@ -40,12 +40,13 @@ function renderFavoriteIngredients() {
   //? );
 
   //! lib
-  paginateLibFn(
+  const instance = paginateLibFn(
     products,
     6,
     favoriteIngredientsList,
     createFavoriteIngredientsMarkup
   );
+  console.log(instance);
 
   placeholderEmptyFavoriteList.classList.add('visually-hidden');
   placeholderEmptyFavoriteList
@@ -59,14 +60,16 @@ function renderFavoriteIngredients() {
 
   //* default
   //* favoriteIngredientsList.innerHTML = createFavoriteIngredientsMarkup(products);
-  favoriteIngredientsList.addEventListener('click', clickHandler);
+  favoriteIngredientsList.addEventListener('click', e => {
+    clickHandler(e, instance);
+  });
 }
 
-function clickHandler(e) {
+function clickHandler(e, instance) {
   const target = e.target;
 
   if (target.closest('.remove-from-localstorage-btn')) {
-    onRemoveBtnCLick(target);
+    onRemoveBtnCLick(target, instance);
   }
   if (target.closest('.learn-more-btn')) {
     onLearnMoreBtnCLick(target);
@@ -85,7 +88,7 @@ async function onLearnMoreBtnCLick(button) {
   );
 }
 
-function onRemoveBtnCLick(button) {
+function onRemoveBtnCLick(button, instance) {
   const cardId = button.closest('.favorite-ingredient-item').dataset.id;
 
   let products =
@@ -112,12 +115,34 @@ function onRemoveBtnCLick(button) {
     //*  createFavoriteIngredientsMarkup(products);
 
     //! lib
-    paginateLibFn(
-      products,
-      6,
-      favoriteIngredientsList,
-      createFavoriteIngredientsMarkup
+    // paginateLibFn(
+    //   products,
+    //   6,
+    //   favoriteIngredientsList,
+    //   createFavoriteIngredientsMarkup
+    // );
+
+    console.log(instance);
+    const currentPage = instance.getCurrentPage();
+    console.log('curPage: ', currentPage);
+    const itemsPerPage = instance._options.itemsPerPage;
+    console.log('itemsPerPage: ', itemsPerPage);
+
+    instance.setTotalItems(products.length);
+    const totalItems = instance._options.totalItems;
+    console.log('totalItems ', totalItems);
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    favoriteIngredientsList.innerHTML = createFavoriteIngredientsMarkup(
+      products.slice(startIndex, startIndex + itemsPerPage)
     );
+
+    if (totalItems % itemsPerPage === 0) {
+      instance.reset(products.length);
+      instance.movePageTo(currentPage - 1);
+    }
+
+    console.log('products: ', products);
   }
 }
 

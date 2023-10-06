@@ -1,6 +1,8 @@
-import { LOCAL_STORAGE_KEYS } from './constants';
-import { isInLocaleStorage } from './local-storage';
-import { getRandomRating } from './sort-by-rating';
+import {
+  LOCAL_STORAGE_KEYS,
+  isInLocaleStorage,
+} from './services/local-storage-service';
+import { getRandomRating } from './features/sort-by-rating';
 import spriteUrl from '/img/sprite.svg';
 
 // createCocktailsMarkup
@@ -261,6 +263,8 @@ export function setupParamsForRender(obj, key) {
 
 function createIngredientItemMarkup(ingredient) {
   return `<li class="per-cocktail-ingredient-item">
-            <button type="button" class="per-cocktail-ingredient-btn" data-id="${ingredient.ingredientId}">${ingredient.title}</button>
+            <button type="button" class="per-cocktail-ingredient-btn" data-id="${
+              ingredient.ingredientId
+            }">${ingredient.measure || ''} ${ingredient.title}</button>
           </li>`;
 }

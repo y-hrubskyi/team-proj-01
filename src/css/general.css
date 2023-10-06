@@ -10,23 +10,28 @@
   --general-transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-body {
-  font-family: var(--primary-font-family);
-
-  transition: color 500ms linear, background-color 500ms linear;
-}
-
 body.light-theme {
   --primary-text-color: #242424;
   --primary-bg-color: #fdfdff;
-  color: var(--primary-text-color);
 }
 
 body.dark-theme {
   --primary-text-color: #fdfdff;
   --primary-bg-color: #232330;
-  color: var(--primary-text-color);
 }
+
+body {
+  font-family: var(--primary-font-family);
+  color: var(--primary-text-color);
+
+  transition: color 500ms linear, background-color 500ms linear;
+}
+
+/* smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+/* smooth scrolling */
 
 /* Fonts */
 @font-face {
@@ -94,14 +99,16 @@ body.dark-theme {
   overflow: hidden;
 }
 
+.hidden {
+  display: none;
+}
+
 /* container */
 .container {
   padding-left: 20px;
   padding-right: 20px;
   margin-left: auto;
   margin-right: auto;
-
-  /* outline: 1px solid tomato; */
 }
 
 @media screen and (min-width: 375px) {
@@ -283,9 +290,3 @@ body.dark-theme .bg {
     }
   }
 }
-
-/* smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-/* smooth scrolling */

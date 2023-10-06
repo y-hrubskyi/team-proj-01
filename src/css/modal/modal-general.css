@@ -35,9 +35,6 @@
 
   transition: transform var(--general-transition),
     opacity var(--general-transition), visibility var(--general-transition);
-
-  /* scrollbar-width: thin;
-  scrollbar-color: hsl(0 0% 50%); */
 }
 
 .backdrop .modal {

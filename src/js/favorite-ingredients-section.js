@@ -1,12 +1,13 @@
-import { LOCAL_STORAGE_KEYS } from './constants';
-import { getIngredientById } from './drinkify-api-service';
+import { LOCAL_STORAGE_KEYS } from './services/local-storage-service';
+import { getIngredientById } from './services/drinkify-api-service';
 import { setupModalCloseListeners } from './modal-close-listeners';
-import { paginateArray } from './pagination';
+//? import { paginateArray } from './pagination';
 import {
   createFavoriteIngredientsMarkup,
   renderModalIngredient,
 } from './render-functions';
 import { setupClickHandlerOnModalOnWorkWithLocaleStorage } from './setup-handlers';
+import { paginateLibFn } from './tui-lib-pagination';
 
 const favoriteIngredientsList = document.querySelector(
   '.favorite-ingredients-list'
@@ -14,8 +15,6 @@ const favoriteIngredientsList = document.querySelector(
 const placeholderEmptyFavoriteList = document.querySelector(
   '.placeholder-empty-favorite-list'
 );
-
-let rows = 6;
 
 function renderFavoriteIngredients() {
   const products =
@@ -30,9 +29,18 @@ function renderFavoriteIngredients() {
     return;
   }
 
-  const paginationFn = paginateArray(
+  //? manual
+  //? const paginationFn = paginateArray(
+  //?   products,
+  //?   rows,
+  //?   favoriteIngredientsList,
+  //?   createFavoriteIngredientsMarkup
+  //? );
+
+  //! lib
+  const instance = paginateLibFn(
     products,
-    rows,
+    6,
     favoriteIngredientsList,
     createFavoriteIngredientsMarkup
   );
@@ -43,23 +51,29 @@ function renderFavoriteIngredients() {
     .classList.remove('is-empty');
 
   favoriteIngredientsList.classList.remove('visually-hidden');
-  favoriteIngredientsList.innerHTML =
-    createFavoriteIngredientsMarkup(paginationFn);
-  favoriteIngredientsList.addEventListener('click', clickHandler);
+  //? manual
+  //? favoriteIngredientsList.innerHTML =
+  //?   createFavoriteIngredientsMarkup(paginationFn);
+
+  //* default
+  //* favoriteIngredientsList.innerHTML = createFavoriteIngredientsMarkup(products);
+  favoriteIngredientsList.addEventListener('click', e => {
+    clickHandler(e, instance);
+  });
 }
 
-function clickHandler(e) {
+function clickHandler(e, instance) {
   const target = e.target;
 
   if (target.closest('.remove-from-localstorage-btn')) {
-    onRemoveBtnCLick(target);
+    onRemoveBtnCLick(target, instance);
   }
   if (target.closest('.learn-more-btn')) {
-    onLearnMoreBtnCLick(target);
+    onLearnMoreBtnCLick(target, instance);
   }
 }
 
-async function onLearnMoreBtnCLick(button) {
+async function onLearnMoreBtnCLick(button, instance) {
   const ingredientId = button.closest('.favorite-ingredient-item').dataset.id;
   const ingredient = await getIngredientById(ingredientId);
   renderModalIngredient(...ingredient);
@@ -67,11 +81,12 @@ async function onLearnMoreBtnCLick(button) {
   setupClickHandlerOnModalOnWorkWithLocaleStorage(
     ingredient,
     LOCAL_STORAGE_KEYS.INGREDIENTS,
-    createFavoriteIngredientsMarkup
+    createFavoriteIngredientsMarkup,
+    instance
   );
 }
 
-function onRemoveBtnCLick(button) {
+function onRemoveBtnCLick(button, instance) {
   const cardId = button.closest('.favorite-ingredient-item').dataset.id;
 
   let products =
@@ -92,9 +107,56 @@ function onRemoveBtnCLick(button) {
     placeholderEmptyFavoriteList
       .closest('.favorite-section')
       .classList.add('is-empty');
-  } else {
+    return;
+  }
+  //* default
+  //* favoriteIngredientsList.innerHTML =
+  //*  createFavoriteIngredientsMarkup(products);
+
+  //! lib
+  // paginateLibFn(
+  //   products,
+  //   6,
+  //   favoriteIngredientsList,
+  //   createFavoriteIngredientsMarkup
+  // );
+
+  //! lib remove
+  // console.log('PRODUCTS: ', products);
+  // console.log('INSTANCE: ', instance);
+
+  const paginationContainer = document.querySelector(
+    '#tui-pagination-container'
+  );
+  if (products.length <= instance?._options?.itemsPerPage) {
+    paginationContainer.classList.add('is-hidden');
     favoriteIngredientsList.innerHTML =
       createFavoriteIngredientsMarkup(products);
+    return;
+  }
+
+  const currentPage = instance.getCurrentPage();
+  console.log('currentPage: ', currentPage);
+  const itemsPerPage = instance._options.itemsPerPage;
+  console.log('itemsPerPage: ', itemsPerPage);
+
+  instance.setTotalItems(products.length);
+  const totalItems = instance._options.totalItems;
+  console.log('totalItems: ', totalItems);
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  favoriteIngredientsList.innerHTML = createFavoriteIngredientsMarkup(
+    products.slice(startIndex, startIndex + itemsPerPage)
+  );
+
+  if (totalItems % itemsPerPage === 0) {
+    instance.reset(products.length);
+
+    if (currentPage * itemsPerPage > totalItems) {
+      instance.movePageTo(currentPage - 1);
+    } else {
+      instance.movePageTo(currentPage);
+    }
   }
 }
 

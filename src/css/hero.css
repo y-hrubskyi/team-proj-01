@@ -181,8 +181,6 @@
   }
 }
 
-/* @media screen and (min-width: 768px) and (max-width: 1279.9px) {
-} */
 @media screen and (min-width: 1280px) {
   .hero-container {
     justify-content: space-between;

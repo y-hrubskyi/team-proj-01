@@ -98,8 +98,6 @@ body.dark-theme .per-cocktail-ingredient-btn:focus {
   color: rgba(36, 36, 36, 0.5);
 
   overflow: auto;
-  /* scrollbar-width: thin;
-  scrollbar-color: hsl(0 0% 50%); */
 }
 
 body.dark-theme .cocktail-instruction {

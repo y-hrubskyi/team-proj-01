@@ -29,12 +29,6 @@ body {
   gap: 20px;
 }
 
-@media screen and (max-width: 767px) and (min-height: 696px) {
-  .favorite-section.is-empty .placeholder-empty-favorite-list {
-    height: calc(100vh - (696px - 190px));
-  }
-}
-
 .empty-favorite-img {
   width: 142px;
   height: 122px;
@@ -67,12 +61,6 @@ body {
 
   .placeholder-empty-favorite-list {
     gap: 40px;
-  }
-
-  @media screen and (min-height: 899px) {
-    .favorite-section.is-empty .placeholder-empty-favorite-list {
-      height: calc(100vh - (899px - 297px));
-    }
   }
 
   .empty-favorite-img {

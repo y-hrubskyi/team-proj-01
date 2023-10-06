@@ -78,13 +78,13 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
       searchCocktailsList,
       LOCAL_STORAGE_KEYS.COCKTAILS
     );
+
     setupClickHandlerOnOpenModal(searchCocktailsList);
   } catch {
     const paginationList = document.getElementById('pagination-list');
     const isActivePagination = document.querySelector('.pagination-container');
     paginationList.innerHTML = '';
     isActivePagination.classList.add('is-active-pagination');
-
     renderNoResultInfo();
   }
 }

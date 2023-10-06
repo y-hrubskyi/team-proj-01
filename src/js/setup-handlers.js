@@ -52,7 +52,7 @@ export function setupClickHandlerOnModalOnWorkWithLocaleStorage(
 
       favorites.push(...card);
       localStorage.setItem(key, JSON.stringify(favorites));
-      // console.log('Карта в ЛОКАЛСТОРДЖ');
+      console.log('Карта в ЛОКАЛСТОРДЖ');
 
       target.classList.remove('add-to-localstorage-btn');
       target.classList.add('remove-from-localstorage-btn');
@@ -80,7 +80,7 @@ export function setupClickHandlerOnModalOnWorkWithLocaleStorage(
 
       favorites.splice(index, 1);
       localStorage.setItem(key, JSON.stringify(favorites));
-      // console.log('Карта удалена с ЛОКАЛСТОРДЖ');
+      console.log('Карта удалена с ЛОКАЛСТОРДЖ');
 
       target.classList.remove('remove-from-localstorage-btn');
       target.classList.add('add-to-localstorage-btn');
@@ -134,6 +134,15 @@ function renderFavoriteListWithOpenModal(
 
   try {
     //! lib remove
+    const paginationContainer = document.querySelector(
+      '#tui-pagination-container'
+    );
+    if (data.length <= instance._options.itemsPerPage) {
+      paginationContainer.classList.add('is-hidden');
+      favoriteList.innerHTML = renderFunctionAfterChangeSmth(products);
+      return;
+    }
+
     const currentPage = instance.getCurrentPage();
     const itemsPerPage = instance._options.itemsPerPage;
 

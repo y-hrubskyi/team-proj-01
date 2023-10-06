@@ -134,10 +134,88 @@ var sliderSelector = '.members-swiper',
       eventsTarget: '.members-swiper',
     },
   };
+
+import img1 from '/img/swiper/img-1.webp';
+import img2 from '/img/swiper/img-2.webp';
+import img3 from '/img/swiper/img-3.webp';
+import img4 from '/img/swiper/img-4.webp';
+import img5 from '/img/swiper/img-5.webp';
+import img6 from '/img/swiper/img-6.webp';
+import img7 from '/img/swiper/img-7.webp';
+import img8 from '/img/swiper/img-8.webp';
+import img9 from '/img/swiper/img-9.webp';
+import img10 from '/img/swiper/img-10.webp';
+
+const members = [
+  {
+    name: 'YAKIV',
+    fullname: 'YAKIV HRUBSKYI',
+    position: 'Team Lead',
+    img: img1,
+  },
+  {
+    name: 'ILIA',
+    fullname: 'ILIA SEMENOVA',
+    position: 'Scrum Master',
+    img: img2,
+  },
+  {
+    name: 'SERHII',
+    fullname: 'SERHII LUTSENKO',
+    position: 'FullStack Developer',
+    img: img3,
+  },
+  {
+    name: 'SERGII',
+    fullname: 'SERGII PIGAN',
+    position: 'FullStack Developer',
+    img: img4,
+  },
+  {
+    name: 'YURII',
+    fullname: 'YURII KRAVCHUK',
+    position: 'FullStack Developer',
+    img: img5,
+  },
+  {
+    name: 'OLESIA',
+    fullname: 'OLESIA MEDVEDEVA',
+    position: 'FullStack Developer',
+    img: img6,
+  },
+  {
+    name: 'OLEXANDRA',
+    fullname: 'OLEXANDRA PRYSCHEPA',
+    position: 'FullStack Developer',
+    img: img7,
+  },
+  {
+    name: 'ANGELINA',
+    fullname: 'ANGELINA CHOLAK',
+    position: 'FullStack Developer',
+    img: img8,
+  },
+  {
+    name: 'ANDRII',
+    fullname: 'ANDRII POPOV',
+    position: 'FullStack Developer',
+    img: img9,
+  },
+  {
+    name: 'MYKOLA',
+    fullname: 'MYKOLA PAVLOVYCH',
+    position: 'FullStack Developer',
+    img: img10,
+  },
+];
+
 const mySwiper = new Swiper(sliderSelector, options);
 mySwiper.init();
+
 const membersList = document.querySelector('.members-list');
+membersList.innerHTML = createMembersMarkup(members);
 membersList.addEventListener('click', onMembersListClick);
+
 function onMembersListClick(e) {
   if (e.target.closest('.btn-like')) {
     e.target.closest('.btn-like').classList.toggle('is-active');
@@ -146,6 +224,7 @@ function onMembersListClick(e) {
       .querySelector('.btn-dislike ')
       .classList.remove('is-active');
   }
+
   if (e.target.closest('.btn-dislike')) {
     e.target.closest('.btn-dislike').classList.toggle('is-active');
     e.target
@@ -153,4 +232,45 @@ function onMembersListClick(e) {
       .querySelector('.btn-like ')
       .classList.remove('is-active');
   }
+}
+
+import spriteUrl from '/img/sprite.svg';
+
+function createMembersMarkup(members) {
+  return members.map(
+    member => `<li class="members-list-item swiper-slide">
+                <img
+                  width="316"
+                  height="289"
+                  class="members-foto"
+                  src="${member.img}"
+                  srcset=""
+                  alt="${member.name}"
+                />
+                <h2 class="members-name">${member.fullname}</h2>
+                <h3 class="members-subtitle-name">${member.position}</h3>
+                <div class="like-dislike-btn">
+                  <button type="button" class="btn-like">
+                    <svg
+                      width="24px"
+                      height="24px"
+                      class="svg-icon-heart"
+                      aria-label="like button"
+                    >
+                      <use href="${spriteUrl}#icon-heart"></use>
+                    </svg>
+                  </button>
+                  <button type="button" class="btn-dislike">
+                    <svg
+                      width="24px"
+                      height="24px"
+                      class="svg-icon-dislike"
+                      aria-label="like button"
+                    >
+                      <use href="${spriteUrl}#icon-dislike"></use>
+                    </svg>
+                  </button>
+                </div>
+              </li>`
+  );
 }

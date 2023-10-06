@@ -301,6 +301,10 @@ header .nav-link:focus {
 }
 
 .list-modal-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
   text-align: center;
 }
 

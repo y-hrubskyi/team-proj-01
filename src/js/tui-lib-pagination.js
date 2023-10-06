@@ -1,4 +1,5 @@
 import Pagination from 'tui-pagination';
+import spriteUrl from '/img/sprite.svg';
 
 export function paginateLibFn(data, itemsPerPage, box, renderFn) {
   const paginationContainer = document.querySelector(
@@ -25,13 +26,13 @@ export function paginateLibFn(data, itemsPerPage, box, renderFn) {
       moveButton:
         '<button type="button" class="tui-page-btn tui-{{type}}">' +
         '<svg width="18px" height="18px">' +
-        '<use href="../img/sprite.svg#icon-arrow"></use>' +
+        `<use href="${spriteUrl}#icon-arrow"></use>` +
         '</svg >' +
         '</button>',
       disabledMoveButton:
         '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
         '<svg width="18px" height="18px">' +
-        '<use href="../img/sprite.svg#icon-arrow"></use>' +
+        `<use href="${spriteUrl}#icon-arrow"></use>` +
         '</svg >' +
         '</span>',
       moreButton:

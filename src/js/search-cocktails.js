@@ -5,12 +5,13 @@ import { searchCocktailsByFillter } from './services/drinkify-api-service';
 import { LOCAL_STORAGE_KEYS } from './services/local-storage-service';
 import { createCocktailsMarkup } from './render-functions';
 import { getDeviceType } from './random-cocktails';
-import { paginateArray } from './pagination';
+//? import { paginateArray } from './pagination';
 import {
   setupClickHandlerOnOpenModal,
   setupClickHandlerOnWorkWithLocaleStorage,
 } from './setup-handlers';
 import { sortByRating } from './features/sort-by-rating';
+import { paginateLibFn } from './tui-lib-pagination';
 
 const keysList = [
   'A',
@@ -58,20 +59,44 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
       cocktailName,
     }); //add function render card with informaton of no resuts
 
-    const cocktailsToRender = getDeviceType() === 'desktop' ? 9 : 8;
+    //* default
+    //* const cocktailsToRender =
+    //*   getDeviceType() === 'desktop'
+    //*     ? searchResults.slice(0, 9)
+    //*     : searchResults.slice(0, 8);
+
+    //? manual
+    //? const cocktailsToRender = getDeviceType() === 'desktop' ? 9 : 8;
+
+    //! lib
+    const itemsPerPage = getDeviceType() === 'desktop' ? 9 : 8;
+
     renderResultInfo();
-    const searchCocktailsList = document.querySelector(
-      '.random-cocktails-list-js'
-    );
+    const searchCocktailsList = document.querySelector('.cocktails-list');
     newTextAfterSearch();
-    const paginationFn = paginateArray(
+
+    //? manual
+    //? const paginationFn = paginateArray(
+    //?   searchResults,
+    //?   cocktailsToRender,
+    //?   searchCocktailsList,
+    //?   createCocktailsMarkup
+    //? );
+
+    //! lib
+    paginateLibFn(
       searchResults,
-      cocktailsToRender,
+      itemsPerPage,
       searchCocktailsList,
       createCocktailsMarkup
     );
 
-    searchCocktailsList.innerHTML = createCocktailsMarkup(paginationFn);
+    //* default
+    //* searchCocktailsList.innerHTML = createCocktailsMarkup(cocktailsToRender);
+
+    //? manual
+    //? searchCocktailsList.innerHTML = createCocktailsMarkup(paginationFn);
+
     sortByRating(searchCocktailsList);
     setupClickHandlerOnWorkWithLocaleStorage(
       searchResults,
@@ -80,12 +105,19 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
     );
     setupClickHandlerOnOpenModal(searchCocktailsList);
   } catch {
-    const paginationList = document.getElementById('pagination-list');
-    const isActivePagination = document.querySelector('.pagination-container');
-    paginationList.innerHTML = '';
-    isActivePagination.classList.add('is-active-pagination');
+    //? manual
+    //? const paginationList = document.getElementById('pagination-list');
+    //? const isActivePagination = document.querySelector('.pagination-container');
+    //? paginationList.innerHTML = '';
+    //? isActivePagination.classList.add('is-active-pagination');
 
-    renderNoResultInfo();
+    //! lib
+    console.log(document.querySelector('#tui-pagination-container'));
+    document
+      .querySelector('#tui-pagination-container')
+      .classList.add('is-hidden');
+
+    renderNoResultInfo(document.querySelector('#tui-pagination-container'));
   }
 }
 

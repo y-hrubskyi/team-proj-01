@@ -263,6 +263,6 @@ export function setupParamsForRender(obj, key) {
 
 function createIngredientItemMarkup(ingredient) {
   return `<li class="per-cocktail-ingredient-item">
-            <button type="button" class="per-cocktail-ingredient-btn" data-id="${ingredient.ingredientId}">${ingredient.title}</button>
+            <button type="button" class="per-cocktail-ingredient-btn" data-id="${ingredient.ingredientId}">${ingredient.measure} ${ingredient.title}</button>
           </li>`;
 }

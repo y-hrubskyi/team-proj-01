@@ -237,18 +237,19 @@ function onMembersListClick(e) {
 import spriteUrl from '/img/sprite.svg';
 
 function createMembersMarkup(members) {
-  return members.map(
-    member => `<li class="members-list-item swiper-slide">
+  return members
+    .map(
+      member => `<li class="members-list-item swiper-slide">
                 <img
                   width="316"
                   height="289"
-                  class="members-foto"
+                  class="member-foto"
                   src="${member.img}"
                   srcset=""
                   alt="${member.name}"
                 />
-                <h2 class="members-name">${member.fullname}</h2>
-                <h3 class="members-subtitle-name">${member.position}</h3>
+                <h2 class="member-name">${member.fullname}</h2>
+                <h3 class="member-position">${member.position}</h3>
                 <div class="like-dislike-btn">
                   <button type="button" class="btn-like">
                     <svg
@@ -272,5 +273,6 @@ function createMembersMarkup(members) {
                   </button>
                 </div>
               </li>`
-  );
+    )
+    .join('');
 }

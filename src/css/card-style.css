@@ -1,137 +1,129 @@
 .contact-section {
   padding-top: 80px;
   padding-bottom: 80px;
-}
-
-.members-foto {
-  width: 316px;
-  height: 289px;
-  margin-top: 20px;
-
-  max-width: 100%;
-  border-radius: 16px;
-}
-.btn-like {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--accent-color);
-  border-radius: 12px;
-  border: none;
-  transition: background-color var(--general-transition);
-}
-.btn-dislike {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 48px;
-  height: 48px;
-  background-color: var(--accent-color);
-  border-radius: 12px;
-  border: none;
-  transition: background-color var(--general-transition);
-}
-.btn-like:hover,
-.btn-like:focus {
-  background-color: rgba(110, 127, 207, 1);
-}
-.btn-dislike:hover,
-.btn-dislike:focus {
-  background-color: rgba(110, 127, 207, 1);
-}
-.btn-dislike.is-active .svg-icon-dislike {
-  fill: black;
-}
-.like-dislike-btn {
-  display: flex;
-  gap: 40px;
-  justify-content: center;
-  padding-bottom: 20px;
-  fill: var(--primary-svg-color);
-}
-.btn-like .svg-icon-heart {
-  stroke: var(--primary-svg-color);
-  fill: transparent;
-  transition: fill var(--general-transition);
-}
-
-.btn-like.is-active .svg-icon-heart {
-  fill: var(--primary-svg-color);
-}
-.section-title {
   text-align: center;
-}
-.members-name {
-  text-align: center;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.2;
-}
-.members-subtitle-name {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 14px;
-  line-height: 18px;
-}
-.card-list-slider-wrapper {
-  display: flex;
-  gap: 30px;
-}
-
-.members-list-item {
-  border: 1px solid rgba(17, 17, 17, 0.1);
-  box-shadow: 0px 9.04932px 26.5717px rgba(215, 228, 249, 0.25);
-  border-radius: 15px;
-  position: relative;
-  height: 200px;
-}
-
-.members-direction {
-  text-align: center;
-  font-size: 14px;
-  line-height: 1.28;
-  letter-spacing: -0.02em;
-  color: rgba(17, 17, 17, 0.7);
 }
 
 .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
   background-color: var(--accent-color);
 }
 
-@media screen and (max-width: 767px) {
-  .members-list {
-    margin-top: 74px;
-    padding-bottom: 33px;
-  }
-
-  .members-list-item {
-    max-width: 335px;
-    padding-left: 18px;
-    padding-right: 18px;
-  }
+.members-list {
+  padding-top: 33px;
+  padding-bottom: 33px;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1199px) {
-  .members-list-item {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
+.members-list-item {
+  position: relative;
+
+  padding: 18px 18px 38px 18px;
+
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 15px;
+  box-shadow: 0px 9.04932px 26.5717px rgba(215, 228, 249, 0.25);
+}
+
+.member-foto {
+  width: 316px;
+  height: 289px;
+  margin-bottom: 20px;
+
+  border-radius: 16px;
+}
+
+.member-name {
+  margin-bottom: 20px;
+
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.member-position {
+  margin-bottom: 20px;
+
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+}
+
+/* .card-list-slider-wrapper {
+  display: flex;
+  gap: 30px;
+} */
+
+/* .members-direction {
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: rgba(17, 17, 17, 0.7);
+} */
+
+.like-dislike-btn {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+.btn-like,
+.btn-dislike {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 12px;
+
+  transition: background-color var(--general-transition);
+}
+
+.btn-like:hover,
+.btn-like:focus,
+.btn-dislike:hover,
+.btn-dislike:focus {
+  background-color: var(--active-color);
+}
+
+.btn-like .svg-icon-heart {
+  stroke: var(--primary-svg-color);
+  fill: transparent;
+  transition: fill var(--general-transition);
+}
+.btn-like.is-active .svg-icon-heart {
+  fill: var(--primary-svg-color);
+}
+
+.btn-dislike .svg-icon-dislike {
+  fill: var(--primary-svg-color);
+  transition: fill var(--general-transition);
+}
+.btn-dislike.is-active .svg-icon-dislike {
+  fill: black;
 }
 
 @media screen and (min-width: 768px) {
+  .contact-section {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
   .members-list {
-    margin-top: 91px;
+    padding-top: 44px;
     padding-bottom: 44px;
+  }
+
+  .members-list-item {
+    padding: 16px 16px 36px 16px;
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   .members-list-item {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding: 24px 24px 44px 24px;
   }
 }

@@ -133,6 +133,7 @@ header .nav-link:focus {
 }
 
 /* logo */
+
 .logo-container {
   display: flex;
   align-items: center;
@@ -442,7 +443,14 @@ header .nav-link:focus {
 
   .header-nav {
     display: block;
-    margin-right: 28%;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .dark-light-desctop {

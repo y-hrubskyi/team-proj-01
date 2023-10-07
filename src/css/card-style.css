@@ -20,7 +20,16 @@
 
   border: 1px solid rgba(17, 17, 17, 0.1);
   border-radius: 15px;
-  box-shadow: 0px 9.04932px 26.5717px rgba(215, 228, 249, 0.25);
+
+  box-shadow: 5px 5px 24px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 5px 5px 24px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 5px 5px 24px 0px rgba(0, 0, 0, 0.75);
+}
+
+body.dark-theme .members-list-item {
+  box-shadow: 5px 5px 24px 0px rgba(215, 228, 249, 0.25);
+  -webkit-box-shadow: 5px 5px 24px 0px rgba(215, 228, 249, 0.25);
+  -moz-box-shadow: 5px 5px 24px 0px rgba(215, 228, 249, 0.25);
 }
 
 .member-foto {

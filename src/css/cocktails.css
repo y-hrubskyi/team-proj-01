@@ -199,8 +199,9 @@ body.light-theme .learn-more-cocktail-btn:focus {
 
 .sort-by-rating {
   margin-right: auto;
-  padding: 8px 10px 8px 10px;
   margin-bottom: 15px;
+  padding: 8px 10px 8px 10px;
+
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
@@ -210,15 +211,17 @@ body.light-theme .learn-more-cocktail-btn:focus {
   color: var(--primary-text-color);
 
   background-color: var(--primary-bg-color);
-  border: none;
+  border: 1px solid var(--accent-color);
   border-radius: 5px;
 
   transition: color var(--general-transition),
     background-color var(--general-transition);
 }
-.sort-by-rating:hover {
-  background-color: var(--accent-color);
+
+.sort-by-rating:hover,
+.sort-by-rating:focus {
   color: var(--primary-bg-color);
+  background-color: var(--accent-color);
 }
 
 .rating-cocktails {

@@ -135,16 +135,17 @@ var sliderSelector = '.members-swiper',
     },
   };
 
-import img1 from '/img/swiper/img-1.webp';
-import img2 from '/img/swiper/img-2.webp';
-import img3 from '/img/swiper/img-3.webp';
-import img4 from '/img/swiper/img-4.webp';
-import img5 from '/img/swiper/img-5.webp';
-import img6 from '/img/swiper/img-6.webp';
-import img7 from '/img/swiper/img-7.webp';
-import img8 from '/img/swiper/img-8.webp';
-import img9 from '/img/swiper/img-9.webp';
-import img10 from '/img/swiper/img-10.webp';
+import img1 from '/img/contact/img-1.webp';
+import img2 from '/img/contact/img-2.webp';
+import img3 from '/img/contact/img-3.webp';
+import img4 from '/img/contact/img-4.webp';
+import img5 from '/img/contact/img-5.webp';
+import img6 from '/img/contact/img-6.webp';
+import img7 from '/img/contact/img-7.webp';
+import img8 from '/img/contact/img-8.webp';
+import img9 from '/img/contact/img-9.webp';
+import img10 from '/img/contact/img-10.webp';
+import spriteUrl from '/img/sprite.svg';
 
 const members = [
   {
@@ -233,8 +234,6 @@ function onMembersListClick(e) {
       .classList.remove('is-active');
   }
 }
-
-import spriteUrl from '/img/sprite.svg';
 
 function createMembersMarkup(members) {
   return members

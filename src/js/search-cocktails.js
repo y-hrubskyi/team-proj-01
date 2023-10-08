@@ -57,7 +57,11 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
     const searchResults = await searchCocktailsByFillter({
       firstLetter,
       cocktailName,
-    }); //add function render card with informaton of no resuts
+    });
+    localStorage.setItem(
+      LOCAL_STORAGE_KEYS.CURRENT_DATA,
+      JSON.stringify(searchResults)
+    );
 
     //* default
     //* const cocktailsToRender =
@@ -84,12 +88,8 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
     //? );
 
     //! lib
-    paginateLibFn(
-      searchResults,
-      itemsPerPage,
-      searchCocktailsList,
-      createCocktailsMarkup
-    );
+
+    paginateLibFn(itemsPerPage, searchCocktailsList, createCocktailsMarkup);
 
     //* default
     //* searchCocktailsList.innerHTML = createCocktailsMarkup(cocktailsToRender);
@@ -116,7 +116,7 @@ export async function renderSearchResults({ firstLetter, cocktailName } = {}) {
       .querySelector('#tui-pagination-container')
       .classList.add('is-hidden');
 
-    renderNoResultInfo(document.querySelector('#tui-pagination-container'));
+    renderNoResultInfo();
   }
 }
 

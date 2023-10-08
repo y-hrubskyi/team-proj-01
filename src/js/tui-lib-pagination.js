@@ -1,10 +1,16 @@
 import Pagination from 'tui-pagination';
 import spriteUrl from '/img/sprite.svg';
+import { LOCAL_STORAGE_KEYS } from './services/local-storage-service';
 
-export function paginateLibFn(data, itemsPerPage, box, renderFn) {
+export function paginateLibFn(itemsPerPage, box, renderFn) {
   const paginationContainer = document.querySelector(
     '#tui-pagination-container'
   );
+  const data = JSON.parse(
+    localStorage.getItem(LOCAL_STORAGE_KEYS.CURRENT_DATA)
+  );
+  // console.log(data);
+  // console.log(data.length);
   if (data.length <= itemsPerPage) {
     paginationContainer.classList.add('is-hidden');
     box.innerHTML = renderFn(data);
@@ -40,40 +46,24 @@ export function paginateLibFn(data, itemsPerPage, box, renderFn) {
     },
   };
 
+  // console.log('ПЕРЕД СОЗДАНИЕМ ПАГИНАЦИИ');
   const instance = new Pagination(paginationContainer, options);
-  onPaginationContainerClick(
-    instance,
-    { page: 1 },
-    itemsPerPage,
-    box,
-    data,
-    renderFn
-  );
+  // console.log('ПАГИНАЦИЯ ВРОДЕ СОЗДАНА');
+  onPaginationContainerClick({ page: 1 }, itemsPerPage, box, renderFn);
 
   instance.on('beforeMove', function (eventData) {
-    onPaginationContainerClick(
-      instance,
-      eventData,
-      itemsPerPage,
-      box,
-      data,
-      renderFn
-    );
+    onPaginationContainerClick(eventData, itemsPerPage, box, renderFn);
   });
 
   return instance;
 }
 
-function onPaginationContainerClick(
-  instance,
-  eventData,
-  itemsPerPage,
-  box,
-  data,
-  renderFn
-) {
+function onPaginationContainerClick(eventData, itemsPerPage, box, renderFn) {
   const curPage = eventData.page;
   const startIndex = (curPage - 1) * itemsPerPage;
+  const data = JSON.parse(
+    localStorage.getItem(LOCAL_STORAGE_KEYS.CURRENT_DATA)
+  );
   box.innerHTML = renderFn(data.slice(startIndex, startIndex + itemsPerPage));
 
   // console.log('PAGINATION ON instance: ', instance);

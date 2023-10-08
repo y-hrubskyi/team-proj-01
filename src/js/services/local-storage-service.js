@@ -2,6 +2,7 @@ export const LOCAL_STORAGE_KEYS = {
   COCKTAILS: 'favoriteCocktails',
   INGREDIENTS: 'favoriteIngredients',
   PREV_MODAL_DATA: 'prevModalData',
+  CURRENT_DATA: 'currentData',
 };
 
 export function addToLocalStorage(card, svgIcon, key) {

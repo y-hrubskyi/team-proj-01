@@ -38,8 +38,11 @@ function renderFavoriteIngredients() {
   //? );
 
   //! lib
+  localStorage.setItem(
+    LOCAL_STORAGE_KEYS.CURRENT_DATA,
+    JSON.stringify(products)
+  );
   const instance = paginateLibFn(
-    products,
     6,
     favoriteIngredientsList,
     createFavoriteIngredientsMarkup
@@ -99,6 +102,10 @@ function onRemoveBtnCLick(button, instance) {
       LOCAL_STORAGE_KEYS.INGREDIENTS,
       JSON.stringify(products)
     );
+    localStorage.setItem(
+      LOCAL_STORAGE_KEYS.CURRENT_DATA,
+      JSON.stringify(products)
+    );
   }
 
   if (!products.length) {
@@ -136,13 +143,13 @@ function onRemoveBtnCLick(button, instance) {
   }
 
   const currentPage = instance.getCurrentPage();
-  console.log('currentPage: ', currentPage);
+  // console.log('currentPage: ', currentPage);
   const itemsPerPage = instance._options.itemsPerPage;
-  console.log('itemsPerPage: ', itemsPerPage);
+  // console.log('itemsPerPage: ', itemsPerPage);
 
   instance.setTotalItems(products.length);
   const totalItems = instance._options.totalItems;
-  console.log('totalItems: ', totalItems);
+  // console.log('totalItems: ', totalItems);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   favoriteIngredientsList.innerHTML = createFavoriteIngredientsMarkup(

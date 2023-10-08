@@ -52,7 +52,7 @@ export function setupClickHandlerOnModalOnWorkWithLocaleStorage(
 
       favorites.push(...card);
       localStorage.setItem(key, JSON.stringify(favorites));
-      console.log('Карта в ЛОКАЛСТОРДЖ');
+      // console.log('Карта в ЛОКАЛСТОРДЖ');
 
       target.classList.remove('add-to-localstorage-btn');
       target.classList.add('remove-from-localstorage-btn');
@@ -80,7 +80,7 @@ export function setupClickHandlerOnModalOnWorkWithLocaleStorage(
 
       favorites.splice(index, 1);
       localStorage.setItem(key, JSON.stringify(favorites));
-      console.log('Карта удалена с ЛОКАЛСТОРДЖ');
+      // console.log('Карта удалена с ЛОКАЛСТОРДЖ');
 
       target.classList.remove('remove-from-localstorage-btn');
       target.classList.add('add-to-localstorage-btn');
@@ -107,6 +107,7 @@ function renderFavoriteListWithOpenModal(
   renderFunctionAfterChangeSmth,
   instance
 ) {
+  localStorage.setItem(LOCAL_STORAGE_KEYS.CURRENT_DATA, JSON.stringify(data));
   const favoriteList = document.querySelector(
     '.favorite-section .favorite-list'
   );
@@ -134,20 +135,27 @@ function renderFavoriteListWithOpenModal(
 
   try {
     //! lib remove
+    // console.log('PRODUCTS: ', data);
+    // console.log('INSTANCE: ', instance);
+
     const paginationContainer = document.querySelector(
       '#tui-pagination-container'
     );
     if (data.length <= instance._options.itemsPerPage) {
       paginationContainer.classList.add('is-hidden');
+      instance.movePageTo(1);
       favoriteList.innerHTML = renderFunctionAfterChangeSmth(products);
       return;
     }
 
     const currentPage = instance.getCurrentPage();
+    // console.log('currentPage: ', currentPage);
     const itemsPerPage = instance._options.itemsPerPage;
+    // console.log('itemsPerPage: ', itemsPerPage);
 
     instance.setTotalItems(data.length);
     const totalItems = instance._options.totalItems;
+    // console.log('totalItems: ', totalItems);
 
     const startIndex = (currentPage - 1) * itemsPerPage;
     favoriteList.innerHTML = renderFunctionAfterChangeSmth(
@@ -156,7 +164,18 @@ function renderFavoriteListWithOpenModal(
 
     if (totalItems % itemsPerPage === 0) {
       instance.reset(data.length);
-      instance.movePageTo(currentPage - 1);
+
+      if (currentPage * itemsPerPage > totalItems) {
+        instance.movePageTo(currentPage - 1);
+      } else {
+        instance.movePageTo(currentPage);
+      }
+    }
+
+    if (totalItems % itemsPerPage === 1) {
+      instance.reset(data.length);
+      instance.movePageTo(currentPage);
+      paginationContainer.classList.remove('is-hidden');
     }
 
     //* default

@@ -248,13 +248,13 @@ export function setupParamsForRender(obj, key) {
     params.textContent = 'remove from favorite';
     params.styleClass = 'modal-remove-button';
     params.ariaLabel = 'remove from favorite';
-    console.log('is in locale storage');
+    // console.log('is in locale storage');
   } else {
     params.actionClass = 'add-to-localstorage-btn';
     params.textContent = 'add to favorite';
     params.styleClass = '';
     params.ariaLabel = 'add to favorite';
-    console.log(`isn't in locale storage`);
+    // console.log(`isn't in locale storage`);
   }
   // console.log('PARAMS: ', params);
 

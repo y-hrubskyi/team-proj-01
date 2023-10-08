@@ -48,8 +48,11 @@ function renderFavoriteCocktails() {
   //* favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(products);
 
   //! lib
+  localStorage.setItem(
+    LOCAL_STORAGE_KEYS.CURRENT_DATA,
+    JSON.stringify(products)
+  );
   const instance = paginateLibFn(
-    products,
     6,
     favoriteCocktailsList,
     createFavoriteCocktailsMarkup
@@ -81,6 +84,10 @@ function clickHandler(e, instance) {
       LOCAL_STORAGE_KEYS.COCKTAILS,
       JSON.stringify(products)
     );
+    localStorage.setItem(
+      LOCAL_STORAGE_KEYS.CURRENT_DATA,
+      JSON.stringify(products)
+    );
   }
 
   if (!products.length) {
@@ -89,44 +96,55 @@ function clickHandler(e, instance) {
     placeholderEmptyFavoriteList
       .closest('.favorite-section')
       .classList.add('is-empty');
-  } else {
-    //! lib
-    // paginateLibFn(
-    //   products,
-    //   6,
-    //   favoriteCocktailsList,
-    //   createFavoriteCocktailsMarkup
-    // );
-
-    //! lib remove
-    const paginationContainer = document.querySelector(
-      '#tui-pagination-container'
-    );
-    if (products.length <= instance?._options?.itemsPerPage) {
-      paginationContainer.classList.add('is-hidden');
-      favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(products);
-      return;
-    }
-
-    const currentPage = instance.getCurrentPage();
-    const itemsPerPage = instance._options.itemsPerPage;
-
-    instance.setTotalItems(products.length);
-    const totalItems = instance._options.totalItems;
-
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(
-      products.slice(startIndex, startIndex + itemsPerPage)
-    );
-
-    if (totalItems % itemsPerPage === 0) {
-      instance.reset(products.length);
-      instance.movePageTo(currentPage - 1);
-    }
-
-    //* default
-    //* favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(products);
+    return;
   }
+  //! lib
+  // paginateLibFn(
+  //   products,
+  //   6,
+  //   favoriteCocktailsList,
+  //   createFavoriteCocktailsMarkup
+  // );
+
+  //! lib remove
+  // console.log('PRODUCTS: ', products);
+  // console.log('INSTANCE: ', instance);
+
+  const paginationContainer = document.querySelector(
+    '#tui-pagination-container'
+  );
+  if (products.length <= instance?._options?.itemsPerPage) {
+    paginationContainer.classList.add('is-hidden');
+    favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(products);
+    return;
+  }
+
+  const currentPage = instance.getCurrentPage();
+  // console.log('currentPage: ', currentPage);
+  const itemsPerPage = instance._options.itemsPerPage;
+  // console.log('itemsPerPage: ', itemsPerPage);
+
+  instance.setTotalItems(products.length);
+  const totalItems = instance._options.totalItems;
+  // console.log('totalItems: ', totalItems);
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(
+    products.slice(startIndex, startIndex + itemsPerPage)
+  );
+
+  if (totalItems % itemsPerPage === 0) {
+    instance.reset(products.length);
+
+    if (currentPage * itemsPerPage > totalItems) {
+      instance.movePageTo(currentPage - 1);
+    } else {
+      instance.movePageTo(currentPage);
+    }
+  }
+
+  //* default
+  //* favoriteCocktailsList.innerHTML = createFavoriteCocktailsMarkup(products);
 }
 
 renderFavoriteCocktails();

@@ -30,6 +30,7 @@ Include demo GIF to visually showcase the application.
 ## Tech Stack
 
 - **Frontend:**
+  - Vite: Bundler used for automating the project build process.
   - HTML5: Used for structuring the content of web pages.
   - CSS3: Utilized for styling and formatting web pages.
   - JavaScript: Employed for adding interactivity and dynamic behavior to web
@@ -39,7 +40,6 @@ Include demo GIF to visually showcase the application.
     features in the application.
   - Swiper: JavaScript library used for creating touch slider and carousel
     components for the application.
-  - Vite: Bundler used for automating the project build process.
 - **Backend:**
   - Backend Service: [Cocktail API](https://drinkify.b.goit.study/api-docs/).
 - **Deployment:**

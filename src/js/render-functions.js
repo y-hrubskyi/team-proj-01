@@ -10,31 +10,54 @@ export function createCocktailsMarkup(arr) {
   return arr
     .map(
       item =>
-        `<li class="cocktail-card" data-id="${item._id}" >
-            <img class="cocktail-card-img" src="${item.drinkThumb}" alt="${
-          item.drink
-        }" width="307" height="257"/>
-            <div class="cocktail-info">
-              <h3 class="cocktail-title">${
-                item.drink
-              }<span class="rating-cocktails hidden">${getRandomRating()}</span></h3>
-              <p class="cocktail-description">${item.description}</p>
-              <div>
-                <div class="cocktail-card-btns-wrapper">
-                  <button type="button" class="learn-more-cocktail-btn learn-more-btn" data-modal-open>Learn More</button>
-                  <button type="button" class="add-or-remove-from-ls-btn">
-                    <svg width="18px" height="18px" class="svg-icon-heart ${
-                      isInLocaleStorage(item, LOCAL_STORAGE_KEYS.COCKTAILS)
-                        ? 'is-active'
-                        : ''
-                    }" aria-label="add or remove to/from favorite">
-                      <use href="${spriteUrl}#icon-heart"></use>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </li>`
+        `<li class="cocktail-card" data-id="${item._id}">
+           <img
+             class="cocktail-card-img"
+             src="${item.drinkThumb}"
+             alt="${item.drink}"
+             width="307"
+             height="257"
+           />
+           <div class="cocktail-info">
+             <h3 class="cocktail-title">
+               ${item.drink}
+               <span class="rating-cocktails hidden">${getRandomRating()}</span>
+             </h3>
+             <p class="cocktail-description">${item.description}</p>
+             <div>
+               <div class="cocktail-card-btns-wrapper">
+                 <button
+                   type="button"
+                   class="learn-more-cocktail-btn learn-more-btn"
+                   data-modal-open
+                 >
+                   Learn More
+                 </button>
+                 <button
+                   type="button"
+                   class="add-or-remove-from-ls-btn"
+                   aria-label="${
+                     isInLocaleStorage(item, LOCAL_STORAGE_KEYS.COCKTAILS)
+                       ? 'remove from'
+                       : 'add to'
+                   } favorites"
+                 >
+                   <svg
+                     width="18px"
+                     height="18px"
+                     class="svg-icon-heart ${
+                       isInLocaleStorage(item, LOCAL_STORAGE_KEYS.COCKTAILS)
+                         ? 'is-active'
+                         : ''
+                     }"
+                   >
+                     <use href="${spriteUrl}#icon-heart"></use>
+                   </svg>
+                 </button>
+               </div>
+             </div>
+           </div>
+         </li>`
     )
     .join('');
 }
@@ -45,22 +68,34 @@ export function createFavoriteCocktailsMarkup(arr) {
     .map(
       item =>
         `<li class="cocktail-card" data-id="${item._id}">
-            <img class="cocktail-card-img" src="${item.drinkThumb}" alt="${item.drink}" width="307" height="257"/>
-            <div class="cocktail-info">
-              <h3 class="cocktail-title">${item.drink}</h3>
-              <p class="cocktail-description">${item.description}</p>
-              <div>
-                <div class="cocktail-card-btns-wrapper">
-                  <button type="button" class="learn-more-cocktail-btn learn-more-btn">Learn More</button>
-                  <button type="button" class="add-or-remove-from-ls-btn remove-from-localstorage-btn" aria-label="remove from favorite">
-                    <svg width="18px" height="18px" class="icon-trash">
-                      <use href="${spriteUrl}#icon-trash"></use>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </li>`
+           <img
+             class="cocktail-card-img"
+             src="${item.drinkThumb}"
+             alt="${item.drink}"
+             width="307"
+             height="257"
+           />
+           <div class="cocktail-info">
+             <h3 class="cocktail-title">${item.drink}</h3>
+             <p class="cocktail-description">${item.description}</p>
+             <div>
+               <div class="cocktail-card-btns-wrapper">
+                 <button type="button" class="learn-more-cocktail-btn learn-more-btn">
+                   Learn More
+                 </button>
+                 <button
+                   type="button"
+                   class="add-or-remove-from-ls-btn remove-from-localstorage-btn"
+                   aria-label="remove from favorite"
+                 >
+                   <svg width="18px" height="18px" class="icon-trash">
+                     <use href="${spriteUrl}#icon-trash"></use>
+                   </svg>
+                 </button>
+               </div>
+             </div>
+           </div>
+         </li>`
     )
     .join('');
 }
@@ -70,25 +105,30 @@ export function createFavoriteIngredientsMarkup(arr) {
   return arr
     .map(
       item =>
-        `<li class="favorite-ingredient-item ingredient-card" data-id="${
-          item._id
-        }">
-            <h3 class="fav-ingredient-title">${item.title}</h3>
-            <h4 class="is-alcoholic-drink-title">${
-              item.alcolol === 'Yes' ? 'Alcoholic' : 'Non-Alcoholic'
-            }</h4>
-            <p class="fav-ingredient-description">
-              ${item.description}
-            </p>
-            <div class="ingredient-card-btns">
-              <button type="button" class="learn-more-ingredient-btn learn-more-btn">learn more</button>
-              <button type="button" class="remove-ingredient-btn remove-from-localstorage-btn" aria-label="remove from favorite">
-                <svg width="18px" height="18px" class="icon-trash">
-                  <use href="${spriteUrl}#icon-trash"></use>
-                </svg>
-              </button>
-            </div>
-          </li>`
+        `<li
+           class="favorite-ingredient-item ingredient-card"
+           data-id="${item._id}"
+         >
+           <h3 class="fav-ingredient-title">${item.title}</h3>
+           <h4 class="is-alcoholic-drink-title">
+             ${item.alcolol === 'Yes' ? 'Alcoholic' : 'Non-Alcoholic'}
+           </h4>
+           <p class="fav-ingredient-description">${item.description}</p>
+           <div class="ingredient-card-btns">
+             <button type="button" class="learn-more-ingredient-btn learn-more-btn">
+               learn more
+             </button>
+             <button
+               type="button"
+               class="remove-ingredient-btn remove-from-localstorage-btn"
+               aria-label="remove from favorite"
+             >
+               <svg width="18px" height="18px" class="icon-trash">
+                 <use href="${spriteUrl}#icon-trash"></use>
+               </svg>
+             </button>
+           </div>
+         </li>`
     )
     .join('');
 }
@@ -263,8 +303,12 @@ export function setupParamsForRender(obj, key) {
 
 function createIngredientItemMarkup(ingredient) {
   return `<li class="per-cocktail-ingredient-item">
-            <button type="button" class="per-cocktail-ingredient-btn" data-id="${
-              ingredient.ingredientId
-            }">${ingredient.measure || ''} ${ingredient.title}</button>
+            <button
+              type="button"
+              class="per-cocktail-ingredient-btn"
+              data-id="${ingredient.ingredientId}"
+            >
+              ${ingredient.measure || ''} ${ingredient.title}
+            </button>
           </li>`;
 }

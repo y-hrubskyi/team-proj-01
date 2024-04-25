@@ -25,7 +25,7 @@ import{s as ce}from"./sprite-81a4ee87.js";function fe(t){return t!==null&&typeof
                       width="24px"
                       height="24px"
                       class="svg-icon-dislike"
-                      aria-label="like button"
+                      aria-label="dislike button"
                     >
                       <use href="${ce}#icon-dislike"></use>
                     </svg>

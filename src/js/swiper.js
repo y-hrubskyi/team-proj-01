@@ -265,7 +265,7 @@ function createMembersMarkup(members) {
                       width="24px"
                       height="24px"
                       class="svg-icon-dislike"
-                      aria-label="like button"
+                      aria-label="dislike button"
                     >
                       <use href="${spriteUrl}#icon-dislike"></use>
                     </svg>

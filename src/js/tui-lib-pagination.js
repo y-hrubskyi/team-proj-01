@@ -30,7 +30,7 @@ export function paginateLibFn(itemsPerPage, box, renderFn) {
       currentPage:
         '<button class="tui-page-btn tui-is-selected">{{page}}</button>',
       moveButton:
-        '<button type="button" class="tui-page-btn tui-{{type}}">' +
+        '<button type="button" class="tui-page-btn tui-{{type}}" aria-label="previos/next page">' +
         '<svg width="18px" height="18px">' +
         `<use href="${spriteUrl}#icon-arrow"></use>` +
         '</svg >' +
